@@ -1,0 +1,25 @@
+jquery					http://www.jquery.com
+jquery.ui				http://www.jqueryui.com
+jquery.validate				http://bassistance.de/jquery-plugins/jquery-plugin-validation/
+jquery.form				http://jquery.malsup.com/form/
+jquery.collapser			own
+jquery.rssreader			customized
+jquery.jqplot				http://www.jqplot.com
+jquery.cookie				https://github.com/carhartl/jquery-cookie
+jquery.superfish & jquery.supersubs	http://users.tpg.com.au/j_birch/plugins/superfish/
+jquery.gccolor				http://gusc.lv/jquery/gccolor.html
+jquery.notify				https://github.com/ehynds/jquery-notify
+jquery.timepicker			http://trentrichardson.com/examples/timepicker/
+jquery.multiselect			http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/
+jquery.multiselect.filer		http://www.erichynds.com/examples/jquery-ui-multiselect-widget/demos/index.htm#filter
+jquery.slimbox2				http://www.digitalia.be/software/slimbox2
+jquery.ui.stars				http://plugins.jquery.com/project/Star_Rating_widget
+jquery.ui.framedialog			http://plugins.jquery.com/project/jquery-framedialog
+jquery.qtip2				http://craigsworks.com/projects/qtip2/
+jquery.fullcalendar			http://arshaw.com/fullcalendar/
+jquery.eqdualheight			http://www.cssnewbie.com/equalheights-jquery-plugin/
+jquery.fileinput			http://plugins.jquery.com/project/fileinput
+detectmobilebrowser			http://detectmobilebrowsers.com/
+
+TEMPORARY
+jquery.tooltip alpha		https://github.com/jquery/jquery-ui/blob/99900d57cec7a2b3b4b09397b101bb8d7a7d449c/ui/

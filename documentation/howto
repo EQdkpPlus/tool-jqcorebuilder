@@ -1,0 +1,9 @@
+cd /Users/webmaster/Sites/eqdkp_tools/jqcore_builder/
+sh build_core_u.sh
+sh build_core.sh
+sh build_template.sh
+
+// UglifyJS hints
+ln -s /Users/webmaster/Sites/tools/UglifyJS/uglify-js.js
+ln -s /Users/webmaster/Sites/tools/UglifyJS/bin/uglifyjs
+/Users/webmaster/Sites/tools/UglifyJS/bin/uglifyjs -o ../out/core.js jquery.jstree.js
