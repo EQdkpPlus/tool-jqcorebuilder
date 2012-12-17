@@ -7,9 +7,14 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: "<json:package.json>",
 		meta: {
-			banner: '/*! <%= pkg.title %> - v<%= pkg.version %> - ' +
-				'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-				'* <%= pkg.homepage %> */'
+			banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+					'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+					'<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
+					'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + "\n" +
+					' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
+		},
+		build: {
+			eqdkppath: '/Users/webmaster/Sites/eqdkp'
 		},
 		concat: {
 			js: {
@@ -25,6 +30,10 @@ module.exports = function(grunt) {
 			js: {
 				src: ["<banner>", '<config:concat.js.dest>'],
 				dest: 'dist/core.min.js'
+			},
+			calendar: {
+				src: ['src/fullcalendar.js'],
+				dest: 'dist/fullcalendar.min.js'
 			}
 		},
 		cssmin: {
@@ -37,11 +46,24 @@ module.exports = function(grunt) {
 			codegen: {
 				ascii_only: true
 			}
-		}
+		},
+		copy: {
+			dist: {
+				files: {
+					"<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/": "dist/fullcalendar.min.js",
+					"<%= build.eqdkppath %>/libraries/jquery/core/": ["dist/core.js", "dist/core.min.js", "dist/core.css", "dist/core.min.css"],
+					"<%= build.eqdkppath %>/templates/": "src/css/fullcalendar.print.css"
+			  }
+			}
+		},
 	});
 
 	grunt.loadNpmTasks('grunt-css');
+    grunt.loadNpmTasks('grunt-contrib-copy');
 
-	// Default task.
+	// build all files
 	grunt.registerTask('default', 'concat min cssmin');
+
+	// build all files & copy to eqdkp folder
+	grunt.registerTask('build', 'concat min cssmin copy');
 };

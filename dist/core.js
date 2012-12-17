@@ -43967,8 +43967,8 @@ function log() {
  * Licensed under the LGPL license.
  * http://docs.jquery.com/License
  *
- * $Rev: 10979 $
- * $Date:: 2011-08-12 #$
+ * $Rev: 12637 $
+ * $Date:: 2012-12-17 #$
  *
  */
 (function($){
