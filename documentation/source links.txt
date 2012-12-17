@@ -20,6 +20,3 @@ jquery.fullcalendar			http://arshaw.com/fullcalendar/
 jquery.eqdualheight			http://www.cssnewbie.com/equalheights-jquery-plugin/
 jquery.fileinput			http://plugins.jquery.com/project/fileinput
 detectmobilebrowser			http://detectmobilebrowsers.com/
-
-TEMPORARY
-jquery.tooltip alpha		https://github.com/jquery/jquery-ui/blob/99900d57cec7a2b3b4b09397b101bb8d7a7d449c/ui/

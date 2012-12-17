@@ -36,10 +36,8 @@ jquery.supersubs.js \
 jquery.validate.js \
 ui.framedialog.js \
 jquery.ui.stars.js \
-jquery.ui.spinner.js \
 jquery-ui-timepicker-addon.js \
 jquery.ui.fileinput.js \
-jquery.ui.tooltip.js \
 detectmobilebrowser.js \
 jqplot/jquery.jqplot.js \
 jqplot/jqplot.cursor.js \
@@ -56,8 +54,6 @@ jqplot/jqplot.canvasAxisTickRenderer.js > ../out/tmpcore.js
 echo "2. Combining CSS"
 cd ../css/
 cat jquery-ui.css \
-jquery.ui.tooltip.css \
-jquery.ui.spinner.css \
 jquery.multiselect.css \
 jquery.multiselect.filter.css \
 jquery-ui-timepicker-addon.css \
