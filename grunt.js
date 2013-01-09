@@ -54,8 +54,16 @@ module.exports = function(grunt) {
 					"<%= build.eqdkppath %>/libraries/jquery/core/": ["dist/core.js", "dist/core.min.js", "dist/core.css", "dist/core.min.css"],
 					"<%= build.eqdkppath %>/templates/": "src/css/fullcalendar.print.css"
 			  }
+			},
+			templates: {
+				files: {
+					"<%= build.eqdkppath %>/templates/eqdkp_default/jquery_tmpl.css": "src/template/eqdkp_default/jquery-ui.min.css",
+					"<%= build.eqdkppath %>/templates/eqdkp_default/images/": "src/template/eqdkp_default/images/*.png",
+					"<%= build.eqdkppath %>/templates/eqdkp_mop/jquery_tmpl.css": "src/template/eqdkp_mop/jquery-ui.min.css",
+					"<%= build.eqdkppath %>/templates/eqdkp_mop/images/": "src/template/eqdkp_mop/images/*.png",
+				}
 			}
-		},
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-css');
