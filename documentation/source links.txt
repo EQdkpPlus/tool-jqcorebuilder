@@ -18,13 +18,14 @@ jquery.fullcalendar			http://arshaw.com/fullcalendar/
 jquery.eqdualheight			http://www.cssnewbie.com/equalheights-jquery-plugin/
 jquery.fileinput			http://plugins.jquery.com/project/fileinput
 detectmobilebrowser			http://detectmobilebrowsers.com/
-jquery.colorbox			http://plugins.jquery.com/colorbox/
+jquery.colorbox				http://plugins.jquery.com/colorbox/
 
 // to be removed soon
 jquery.gccolor				http://gusc.lv/jquery/gccolor.html
 
 // to be added soon
-http://plugins.jquery.com/iris/			new color picker based on jqui
+jquery.spectrum				http://plugins.jquery.com/spectrum/
 
 // interesting for later versions
 http://plugins.jquery.com/blueimp-file-upload-jquery-ui/
+http://plugins.jquery.com/toolbar/
