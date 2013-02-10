@@ -1,4 +1,4 @@
-// Spectrum Colorpicker v1.0.7
+// Spectrum Colorpicker v1.0.9
 // https://github.com/bgrins/spectrum
 // Author: Brian Grinstead
 // License: MIT
@@ -108,7 +108,7 @@
             c += (tinycolor.equals(color, p[i])) ? " sp-thumb-active" : "";
 
             var swatchStyle = rgbaSupport ? ("background-color:" + tiny.toRgbString()) : "filter:" + tiny.toFilter();
-            html.push('<span title="' + tiny.toHexString() + '" data-color="' + tiny.toRgbString() + '" class="' + c + '"><span class="sp-thumb-inner" style="' + swatchStyle + ';" /></span>');
+            html.push('<span title="' + tiny.toRgbString() + '" data-color="' + tiny.toRgbString() + '" class="' + c + '"><span class="sp-thumb-inner" style="' + swatchStyle + ';" /></span>');
         }
         return "<div class='sp-cf " + className + "'>" + html.join('') + "</div>";
     }
@@ -224,12 +224,23 @@
             }
 
             if (localStorageKey && window.localStorage) {
-                try {
-                    selectionPalette = window.localStorage[localStorageKey].split(",");
-                }
-                catch (e) {
 
+                // Migrate old palettes over to new format.  May want to remove this eventually.
+                try {
+                    var oldPalette = window.localStorage[localStorageKey].split(",#");
+                    if (oldPalette.length > 1) {
+                        delete window.localStorage[localStorageKey];
+                        $.each(oldPalette, function(i, c) {
+                             addColorToSelectionPalette(c);
+                        });
+                    }
                 }
+                catch(e) { }
+
+                try {
+                    selectionPalette = window.localStorage[localStorageKey].split(";");
+                }
+                catch (e) { }
             }
 
             offsetElement.bind("click.spectrum touchstart.spectrum", function (e) {
@@ -286,13 +297,13 @@
             });
 
             draggable(slider, function (dragX, dragY) {
-                currentHue = (dragY / slideHeight);
+                currentHue = parseFloat(dragY / slideHeight);
                 move();
             }, dragStart, dragStop);
 
             draggable(dragger, function (dragX, dragY) {
-                currentSaturation = dragX / dragWidth;
-                currentValue = (dragHeight - dragY) / dragHeight;
+                currentSaturation = parseFloat(dragX / dragWidth);
+                currentValue = parseFloat((dragHeight - dragY) / dragHeight);
                 move();
             }, dragStart, dragStop);
 
@@ -336,9 +347,16 @@
 
         function addColorToSelectionPalette(color) {
             if (showSelectionPalette) {
-                selectionPalette.push(tinycolor(color).toHexString());
+                var colorRgb = tinycolor(color).toRgbString();
+                if ($.inArray(colorRgb, selectionPalette) === -1) {
+                    selectionPalette.push(colorRgb);
+                }
+
                 if (localStorageKey && window.localStorage) {
-                    window.localStorage[localStorageKey] = selectionPalette.join(",");
+                    try {
+                        window.localStorage[localStorageKey] = selectionPalette.join(";");
+                    }
+                    catch(e) { }
                 }
             }
         }
@@ -347,24 +365,23 @@
             var unique = [];
             var p = selectionPalette;
             var paletteLookup = {};
-            var hex;
+            var rgb;
 
             if (opts.showPalette) {
 
                 for (var i = 0; i < paletteArray.length; i++) {
                     for (var j = 0; j < paletteArray[i].length; j++) {
-                        hex = tinycolor(paletteArray[i][j]).toHexString();
-                        paletteLookup[hex] = true;
+                        rgb = tinycolor(paletteArray[i][j]).toRgbString();
+                        paletteLookup[rgb] = true;
                     }
                 }
 
                 for (i = 0; i < p.length; i++) {
-                    var color = tinycolor(p[i]);
-                    hex = color.toHexString();
+                    rgb = tinycolor(p[i]).toRgbString();
 
-                    if (!paletteLookup.hasOwnProperty(hex)) {
+                    if (!paletteLookup.hasOwnProperty(rgb)) {
                         unique.push(p[i]);
-                        paletteLookup[hex] = true;
+                        paletteLookup[rgb] = true;
                     }
                 }
             }
@@ -916,6 +933,10 @@
     $.fn.spectrum.loadOpts = {};
     $.fn.spectrum.draggable = draggable;
     $.fn.spectrum.defaults = defaultOpts;
+
+    $.spectrum = { };
+    $.spectrum.localization = { };
+    $.spectrum.palettes = { };
 
     $.fn.spectrum.processNativeColorInputs = function () {
         var colorInput = $("<input type='color' value='!' />")[0];

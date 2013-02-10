@@ -1,12 +1,12 @@
 /*!
- * qTip2 - Pretty powerful tooltips - v2.0.1-4-g
+ * qTip2 - Pretty powerful tooltips - v2.0.1-11-
  * http://qtip2.com
  *
  * Copyright (c) 2013 Craig Michael Thompson
  * Released under the MIT, GPL licenses
  * http://jquery.org/license
  *
- * Date: Fri Jan 4 2013 04:05 GMT+0000
+ * Date: Sat Feb 9 2013 08:05 GMT+0000
  * Plugins: svg ajax tips modal viewport imagemap ie6
  * Styles: basic css3
  */
@@ -441,7 +441,7 @@ function QTip(target, options, id, attr)
 				show: $.trim('' + options.show.event).split(' '),
 				hide: $.trim('' + options.hide.event).split(' ')
 			},
-			IE6 = $.browser.msie && parseInt($.browser.version, 10) === 6;
+			IE6 = PLUGINS.ie === 6;
 
 		// Define show event method
 		function showMethod(event)
@@ -550,7 +550,7 @@ function QTip(target, options, id, attr)
 					isAncestor = elem.parents(selector).filter(tooltip[0]).length > 0;
 
 				if(elem[0] !== target[0] && elem[0] !== tooltip[0] && !isAncestor &&
-					!target.has(elem[0]).length && !elem.attr('disabled')
+					!target.has(elem[0]).length && enabled
 				) {
 					self.hide(event);
 				}
@@ -1027,7 +1027,7 @@ function QTip(target, options, id, attr)
 			function after() {
 				if(state) {
 					// Prevent antialias from disappearing in IE by removing filter
-					if($.browser.msie) { tooltip[0].style.removeAttribute('filter'); }
+					if(PLUGINS.ie) { tooltip[0].style.removeAttribute('filter'); }
 
 					// Remove overflow setting to prevent tip bugs
 					tooltip.css('overflow', '');
@@ -1281,7 +1281,7 @@ function QTip(target, options, id, attr)
 				tooltip.queue(function(next) {
 					// Reset attributes to avoid cross-browser rendering bugs
 					$(this).css({ opacity: '', height: '' });
-					if($.browser.msie) { this.style.removeAttribute('filter'); }
+					if(PLUGINS.ie) { this.style.removeAttribute('filter'); }
 
 					next();
 				});
@@ -1441,7 +1441,7 @@ function init(id, opts)
 	$.data(this, 'qtip', obj);
 
 	// Catch remove/removeqtip events on target element to destroy redundant tooltip
-	elem.bind('remove.qtip-'+id+' removeqtip.qtip-'+id, function(){ obj.destroy(); });
+	elem.one('remove.qtip-'+id+' removeqtip.qtip-'+id, function(){ obj.destroy(); });
 
 	return obj;
 }
@@ -1619,7 +1619,7 @@ PLUGINS = QTIP.plugins = {
 	offset: function(elem, container) {
 		var pos = elem.offset(),
 			docBody = elem.closest('body'),
-			quirks = $.browser.msie && document.compatMode !== 'CSS1Compat',
+			quirks = PLUGINS.ie && document.compatMode !== 'CSS1Compat',
 			parent = container, scrolled,
 			coffset, overflow;
 
@@ -1653,6 +1653,20 @@ PLUGINS = QTIP.plugins = {
 		return pos;
 	},
 
+	/*
+	* IE version detection
+	*
+	* Adapted from: http://ajaxian.com/archives/attack-of-the-ie-conditional-comment
+	* Credit to James Padolsey for the original implemntation!
+	*/
+	ie: (function(){
+		var v = 3, div = document.createElement('div');
+		while ((div.innerHTML = '<!--[if gt IE '+(++v)+']><i></i><![endif]-->')) {
+			if(!div.getElementsByTagName('i')[0]) { break; }
+		}
+		return v > 4 ? v : FALSE;
+	}()),
+ 
 	/*
 	* iOS version detection
 	*/
@@ -1736,7 +1750,7 @@ if(!$.ui) {
 }
 
 // Set global qTip properties
-QTIP.version = '2.0.1-4-g';
+QTIP.version = '2.0.1-11-';
 QTIP.nextid = 0;
 QTIP.inactiveEvents = 'click dblclick mousedown mouseup mousemove mouseleave mouseenter'.split(' ');
 QTIP.zindex = 15000;
@@ -2268,15 +2282,16 @@ function Tip(qTip, command)
 	function parseRadius(corner) {
 		var isTitleTop = elems.titlebar && corner.y === TOP,
 			elem = isTitleTop ? elems.titlebar : elems.content,
-			moz = $.browser.mozilla,
-			prefix = moz ? '-moz-' : $.browser.webkit ? '-webkit-' : '',
+			mozPrefix = '-moz-', webkitPrefix = '-webkit-',
 			nonStandard = 'border-radius-' + corner.y + corner.x,
 			standard = 'border-' + corner.y + '-' + corner.x + '-radius',
 			css = function(c) { return parseInt(elem.css(c), 10) || parseInt(tooltip.css(c), 10); },
 			val;
 
 		whileVisible(function() {
-			val = css(standard) || css(prefix + standard) || css(prefix + nonStandard) || css(nonStandard) || 0;
+			val = css(standard) || css(nonStandard) ||
+				css(mozPrefix + standard) || css(mozPrefix + nonStandard) || 
+				css(webkitPrefix + standard) || css(webkitPrefix + nonStandard) || 0;
 		});
 		return val;
 	}
@@ -2349,7 +2364,7 @@ function Tip(qTip, command)
 	$.extend(self, {
 		init: function()
 		{
-			var enabled = parseCorner() && (hasCanvas || $.browser.msie);
+			var enabled = parseCorner() && (hasCanvas || PLUGINS.ie);
 
 			// Determine tip corner and type
 			if(enabled) {
@@ -2516,8 +2531,8 @@ function Tip(qTip, command)
 					',' + coords[1][1] + ' ' + coords[2][0] + ',' + coords[2][1] + ' xe';
 
 				// Setup VML-specific offset for pixel-perfection
-				translate[2] = border && /^(r|b)/i.test(corner.string()) ?
-					parseFloat($.browser.version, 10) === 8 ? 2 : 1 : 0;
+				translate[2] = border && /^(r|b)/i.test(corner.string()) ? 
+					PLUGINS.ie === 8 ? 2 : 1 : 0;
 
 				// Set initial CSS
 				inner.css({
@@ -2633,7 +2648,7 @@ PLUGINS.tip.sanitize = function(options)
 	if(style && 'tip' in style) {
 		opts = options.style.tip;
 		if(typeof opts !== 'object'){ options.style.tip = { corner: opts }; }
-		if(!(/string|boolean/i).test(typeof opts['corner'])) { opts['corner'] = TRUE; }
+		if(!(/string|boolean/i).test(typeof opts.corner)) { opts.corner = TRUE; }
 		if(typeof opts.width !== 'number'){ delete opts.width; }
 		if(typeof opts.height !== 'number'){ delete opts.height; }
 		if(typeof opts.border !== 'number' && opts.border !== TRUE){ delete opts.border; }
@@ -3394,13 +3409,10 @@ function IE6(api)
 
 PLUGINS.ie6 = function(api)
 {
-	var browser = $.browser,
-		self = api.plugins.ie6;
+	var self = api.plugins.ie6;
 	
 	// Proceed only if the browser is IE6
-	if(!(browser.msie && (''+browser.version).charAt(0) === '6')) {
-		return FALSE;
-	}
+	if(PLUGINS.ie !== 6) { return FALSE; }
 
 	return 'object' === typeof self ? self : (api.plugins.ie6 = new IE6(api));
 };
