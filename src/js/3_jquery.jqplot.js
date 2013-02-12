@@ -5,12 +5,12 @@
  * 
  * About: Version
  * 
- * version: 1.0.4 
- * revision: 1120
+ * version: 1.0.5 
+ * revision: 1122+
  * 
  * About: Copyright & License
  * 
- * Copyright (c) 2009-2012 Chris Leonello
+ * Copyright (c) 2009-2013 Chris Leonello
  * jqPlot is currently available for use in all personal or commercial projects 
  * under both the MIT and GPL version 2.0 licenses. This means that you can 
  * choose the license that best suits your project and use it accordingly.
@@ -244,8 +244,8 @@
         }
     };
 
-    $.jqplot.version = "1.0.4";
-    $.jqplot.revision = "1120";
+    $.jqplot.version = "1.0.5";
+    $.jqplot.revision = "1122+";
 
     $.jqplot.targetCounter = 1;
 
@@ -395,7 +395,7 @@
         return $.jqplot.support_canvas_text.result;
     };
     
-    $.jqplot.use_excanvas = ($.browser.msie && !$.jqplot.support_canvas()) ? true : false;
+    $.jqplot.use_excanvas = ((!$.support.boxModel || !$.support.objectAll || !$support.leadingWhitespace) && !$.jqplot.support_canvas()) ? true : false;
     
     /**
      * 
@@ -9323,7 +9323,7 @@
      * @author Chris Leonello
      * @date #date#
      * @version #VERSION#
-     * @copyright (c) 2010 Chris Leonello
+     * @copyright (c) 2010-2013 Chris Leonello
      * jsDate is currently available for use in all personal or commercial projects 
      * under both the MIT and GPL version 2.0 licenses. This means that you can 
      * choose the license that best suits your project and use it accordingly.
@@ -9981,10 +9981,10 @@
         },
         
         'ru': {
-            monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
-            monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
-            dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
-            dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+            monthNames: ['Январь','Февраль','Март','�?прель','Май','Июнь','Июль','�?вгу�?т','Сент�?брь','Окт�?брь','�?о�?брь','Декабрь'],
+            monthNamesShort: ['Янв','Фев','Мар','�?пр','Май','Июн','Июл','�?вг','Сен','Окт','�?о�?','Дек'],
+            dayNames: ['во�?кре�?енье','понедельник','вторник','�?реда','четверг','п�?тница','�?уббота'],
+            dayNamesShort: ['в�?к','пнд','втр','�?рд','чтв','птн','�?бт'],
             formatString: '%Y-%m-%d %H:%M:%S'
         },
         
