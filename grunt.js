@@ -57,10 +57,15 @@ module.exports = function(grunt) {
 			},
 			templates: {
 				files: {
+					"<%= build.eqdkppath %>/libraries/jquery/core/images/": "src/template/jquery_default/images/*.png",
 					"<%= build.eqdkppath %>/templates/eqdkp_default/jquery_tmpl.css": "src/template/eqdkp_default/jquery-ui.min.css",
 					"<%= build.eqdkppath %>/templates/eqdkp_default/images/": "src/template/eqdkp_default/images/*.png",
 					"<%= build.eqdkppath %>/templates/eqdkp_mop/jquery_tmpl.css": "src/template/eqdkp_mop/jquery-ui.min.css",
 					"<%= build.eqdkppath %>/templates/eqdkp_mop/images/": "src/template/eqdkp_mop/images/*.png",
+					"<%= build.eqdkppath %>/templates/eqdkp_gw2/jquery_tmpl.css": "src/template/eqdkp_gw2/jquery-ui.min.css",
+					"<%= build.eqdkppath %>/templates/eqdkp_gw2/images/": "src/template/eqdkp_gw2/images/*.png",
+					"<%= build.eqdkppath %>/templates/eqdkp_swtor/jquery_tmpl.css": "src/template/eqdkp_swtor/jquery-ui.min.css",
+					"<%= build.eqdkppath %>/templates/eqdkp_swtor/images/": "src/template/eqdkp_swtor/images/*.png",
 				}
 			}
 		}
