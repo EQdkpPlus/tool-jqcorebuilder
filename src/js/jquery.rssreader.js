@@ -14,7 +14,7 @@
 		j);
 		if (!j.targeturl) return false;
 		var l = $.extend(k, j);
-		var m = ($.browser.msie);
+		var m = (/MSIE/.test(navigator.userAgent));
 
 		if (m) {
 			$(container).ajaxStart(function () {
