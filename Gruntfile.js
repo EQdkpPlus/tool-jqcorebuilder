@@ -4,13 +4,6 @@ module.exports = function(grunt) {
 	// Project configuration.
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
-		meta: {
-			banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-					'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-					'<%= pkg.homepage ? "* " + pkg.homepage + "\n" : "" %>' +
-					'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + "\n" +
-					' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */'
-		},
 		build: {
 			eqdkppath: '/Users/webmaster/Sites/eqdkp'
 		},
@@ -25,8 +18,15 @@ module.exports = function(grunt) {
 			}
 		},
 		uglify: {
+			options: {
+				banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
+						'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
+						'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
+						'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + "\n" +
+						' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n'
+			},
 			js: {
-				src: ["<banner>", '<%= concat.js.dest %>'],
+				src: ['<%= concat.js.dest %>'],
 				dest: 'dist/core.min.js'
 			},
 			calendar: {
@@ -42,24 +42,24 @@ module.exports = function(grunt) {
 		},
 		copy: {
 			dist: {
-				files: {
-					"<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/": "dist/fullcalendar.min.js",
-					"<%= build.eqdkppath %>/libraries/jquery/core/": ["dist/core.js", "dist/core.min.js", "dist/core.css", "dist/core.min.css"],
-					"<%= build.eqdkppath %>/templates/": "src/css/fullcalendar.print.css"
-			  }
+				files: [
+					{expand: true, cwd: 'dist/', src: ['fullcalendar.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/'},
+					{expand: true, cwd: 'dist/', src: ["core.js", "core.min.js", "core.css", "core.min.css"], dest: "<%= build.eqdkppath %>/libraries/jquery/core/"},
+					{expand: true, cwd: 'src/css/', src: ["fullcalendar.print.css"], dest: "<%= build.eqdkppath %>/templates/"}
+				]
 			},
 			templates: {
-				files: {
-					"<%= build.eqdkppath %>/libraries/jquery/core/images/": "src/template/jquery_default/images/*.png",
-					"<%= build.eqdkppath %>/templates/eqdkp_default/jquery_tmpl.css": "src/template/eqdkp_default/jquery-ui.min.css",
-					"<%= build.eqdkppath %>/templates/eqdkp_default/images/": "src/template/eqdkp_default/images/*.png",
-					"<%= build.eqdkppath %>/templates/eqdkp_mop/jquery_tmpl.css": "src/template/eqdkp_mop/jquery-ui.min.css",
-					"<%= build.eqdkppath %>/templates/eqdkp_mop/images/": "src/template/eqdkp_mop/images/*.png",
-					"<%= build.eqdkppath %>/templates/eqdkp_gw2/jquery_tmpl.css": "src/template/eqdkp_gw2/jquery-ui.min.css",
-					"<%= build.eqdkppath %>/templates/eqdkp_gw2/images/": "src/template/eqdkp_gw2/images/*.png",
-					"<%= build.eqdkppath %>/templates/eqdkp_swtor/jquery_tmpl.css": "src/template/eqdkp_swtor/jquery-ui.min.css",
-					"<%= build.eqdkppath %>/templates/eqdkp_swtor/images/": "src/template/eqdkp_swtor/images/*.png",
-				}
+				files: [
+					{expand: true, cwd: 'src/template/jquery_default/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/libraries/jquery/core/images/"},
+					{src: ["src/template/eqdkp_default/jquery-ui.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_default/jquery_tmpl.css"},
+					{expand: true, cwd: 'src/template/eqdkp_default/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_default/images/"},
+					{src: "src/template/eqdkp_mop/jquery-ui.min.css", dest: "<%= build.eqdkppath %>/templates/eqdkp_mop/jquery_tmpl.css"},
+					{expand: true, cwd: 'src/template/eqdkp_mop/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_mop/images/"},
+					{src: ["src/template/eqdkp_gw2/jquery-ui.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_gw2/jquery_tmpl.css"},
+					{expand: true, cwd: 'src/template/eqdkp_gw2/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_gw2/images/"},
+					{src: ["src/template/eqdkp_swtor/jquery-ui.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_swtor/jquery_tmpl.css"},
+					{expand: true, cwd: 'src/template/eqdkp_swtor/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_swtor/images/"}
+				]
 			}
 		}
 	});
@@ -69,9 +69,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
-	// build all files
-	grunt.registerTask('default', ['concat', 'uglify', 'cssmin']);
-
 	// build all files & copy to eqdkp folder
-	grunt.registerTask('build', ['concat', 'uglify', 'cssmin', 'copy']);
+	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
+
+	// build the template files
+	grunt.registerTask('template', ['copy:templates']);
 };
