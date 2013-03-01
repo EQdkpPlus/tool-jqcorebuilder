@@ -16,14 +16,8 @@ jquery.ui.framedialog			http://plugins.jquery.com/project/jquery-framedialog
 jquery.qtip2				http://craigsworks.com/projects/qtip2/
 jquery.fullcalendar			http://arshaw.com/fullcalendar/
 jquery.eqdualheight			http://www.cssnewbie.com/equalheights-jquery-plugin/
-jquery.fileinput			http://plugins.jquery.com/project/fileinput
-detectmobilebrowser			http://detectmobilebrowsers.com/
 jquery.colorbox				http://plugins.jquery.com/colorbox/
 jquery.spectrum				http://plugins.jquery.com/spectrum/
+jquery.toolbar			      http://plugins.jquery.com/toolbar/
 
 // interesting for later versions
-http://plugins.jquery.com/blueimp-file-upload-jquery-ui/
-http://plugins.jquery.com/toolbar/
-http://benpickles.github.com/peity/
-https://github.com/rendro/easy-pie-chart
-http://www.flotcharts.org/

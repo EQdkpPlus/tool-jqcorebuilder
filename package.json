@@ -1,29 +1,29 @@
 {
-	"name": "eqdkp-plus",
-	"title": "Eqdkp-Plus",
-	"description": "The gamer CMS and DKP System",
-	"version": "1.1.0pre",
-	"homepage": "http://eqdkp-plus.com",
-	"author": {
-		"name": "Eqdkp-Plus dev team",
-		"url": "http://eqdkp-plus.com"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/jquery/jquery.git"
-	},
-	"bugs": {
-		"url": "http://eqdkp-plus.eu/bugtracker"
-	},
-	"licenses": [
-		{
-			"type": "CC-BY-NC-SA-3.0",
-			"url": "http://creativecommons.org/licenses/by-nc-sa/3.0/"
-		}
-	],
-	"dependencies": {},
-	"devDependencies": {
-		"grunt": "~0.3.17"
-	},
-	"keywords": []
+  "name": "eqdkp-plus",
+  "title": "Eqdkp-Plus",
+  "description": "The gamer CMS and DKP System",
+  "version": "1.1.0pre",
+  "homepage": "http://eqdkp-plus.com",
+  "author": {
+    "name": "Eqdkp-Plus dev team",
+    "url": "http://eqdkp-plus.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jquery/jquery.git"
+  },
+  "bugs": {
+    "url": "http://eqdkp-plus.eu/bugtracker"
+  },
+  "licenses": [
+    {
+      "type": "CC-BY-NC-SA-3.0",
+      "url": "http://creativecommons.org/licenses/by-nc-sa/3.0/"
+    }
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "keywords": []
 }
