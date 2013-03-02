@@ -11,3 +11,5 @@ To build the query core, nodeJS and gruntJS is required.
 http://quickandnerdy.com/installing-node-js-on-mac-osx/
 http://www.devpatch.com/2010/02/installing-node-js-on-os-x-10-6/
 
+cd Sites/core_tools/jquery_builder/trunk/
+
