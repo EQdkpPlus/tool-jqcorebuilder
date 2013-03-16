@@ -19,5 +19,6 @@ jquery.eqdualheight			http://www.cssnewbie.com/equalheights-jquery-plugin/
 jquery.colorbox				http://plugins.jquery.com/colorbox/
 jquery.spectrum				http://plugins.jquery.com/spectrum/
 jquery.toolbar			      http://plugins.jquery.com/toolbar/
+jquery.nestedsortable			https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha
 
 // interesting for later versions

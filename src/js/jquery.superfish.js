@@ -1,6 +1,6 @@
 
 /*
- * Superfish v1.5.9 - jQuery menu widget
+ * Superfish v1.5.13 - jQuery menu widget
  * Copyright (c) 2013 Joel Birch
  *
  * Dual licensed under the MIT and GPL licenses:
@@ -15,13 +15,14 @@
 		var sf = $.fn.superfish,
 			c = sf.c,
 			$arrow = $('<span class="'+c.arrowClass+'"> &#187;</span>'),
-			over = function(e){
+			over = function(){
 				var $$ = $(this), menu = getMenu($$);
 				clearTimeout(menu.sfTimer);
 				$$.showSuperfishUl().siblings().hideSuperfishUl();
 			},
 			out = function(e){
 				var $$ = $(this), menu = getMenu($$), o = sf.op;
+
 				var close = function(){
 					o.retainPath=($.inArray($$[0],o.$path)>-1);
 					$$.hideSuperfishUl();
@@ -30,7 +31,7 @@
 						$.proxy(over,o.$path,e)();
 					}
 				};
-				if (e.type !== 'mouseleave' && e.type !== 'focusout'){
+				if (e.type === 'click'){
 					close();
 				} else {
 					clearTimeout(menu.sfTimer);
@@ -45,6 +46,10 @@
 				sf.op = sf.o[menu.serial];
 				return menu;
 			},
+			applyTouchAction = function($menu){
+       //needed by MS pointer events
+				$menu.css('ms-touch-action','none');
+			},
 			applyHandlers = function($menu){
 				var targets = 'li:has(ul)';
 				if (!sf.op.useClick){
@@ -56,29 +61,39 @@
 							.on('mouseleave', targets, out);
 					}
 				}
+				var touchstart = 'MSPointerDown';
+				//Sorry, but avoiding weird glitches with touchstart. iOS doesn't need it, anyway.
+				if ( !navigator.userAgent.toLowerCase().match(/(iphone|ipod|ipad)/) ){
+					touchstart += ' touchstart';
+				}
 				$menu
 					.on('focusin', 'li', over)
 					.on('focusout', 'li', out)
 					.on('click', 'a', clickHandler)
-					.on('touchstart', 'a', touchHandler);
+					.on(touchstart, 'a', touchHandler);
 			},
-			touchHandler = function(){
-				var $$ = $(this);
-				if (!$$.next('ul').is(':visible')){
-					$(this).data('follow', false);
-				}
-			},
+			touchHandler = function(e){
+        var $$ = $(this),
+          $ul = $$.siblings('ul');
+        if ($ul.length > 0 && !$ul.is(':visible')){
+          $$.data('follow', false);
+          if (e.type === 'MSPointerDown'){
+						$$.trigger('focus');
+						return false;
+					}
+        }
+      },
 			clickHandler = function(e){
 				var $a = $(this),
-						$submenu = $a.next('ul'),
+						$submenu = $a.siblings('ul'),
 						follow = ($a.data('follow') === false) ? false : true;
 
 				if ( $submenu.length && (sf.op.useClick || !follow) ){
 					e.preventDefault();
 					if (!$submenu.is(':visible')){
-						$.proxy(over,$a.parent(),e)();
+						$.proxy(over,$a.parent('li'))();
 					} else if (sf.op.useClick && follow) {
-						$.proxy(out,$a.parent(),e)();
+						$.proxy(out,$a.parent('li'),e)();
 					}
 				}
 			},
@@ -103,9 +118,10 @@
 			sf.o[s] = sf.op = o;
 			
 			addArrows($liHasUl,o);
+			applyTouchAction($$);
 			applyHandlers($$);
 
-			$liHasUl.not('.'+c.bcClass).hideSuperfishUl();
+			$liHasUl.not('.'+c.bcClass).children('ul').show().hide();
 			
 			o.onInit.call(this);
 			
@@ -146,24 +162,24 @@
 				$$ = this,
 				not = (o.retainPath===true) ? o.$path : '';
 			o.retainPath = false;
-			var $ul = $('li.'+o.hoverClass,this).add(this).not(not)
-					.find('>ul').stop().animate(o.animationOut,o.speedOut,function(){
-						$ul = $(this);
-						$ul.parent().removeClass(o.hoverClass);
-						o.onHide.call($ul);
-						if (sf.op.useClick){
-							$$.children('a').data('follow', false);
-						}
-					});
+			$('li.'+o.hoverClass,this).add(this).not(not)
+				.children('ul').stop(true,true).animate(o.animationOut,o.speedOut,function(){
+					$ul = $(this);
+					$ul.parent().removeClass(o.hoverClass);
+					o.onHide.call($ul);
+					if (sf.op.useClick){
+						$$.children('a').data('follow', false);
+					}
+				});
 			return this;
 		},
 		showSuperfishUl : function(){
 			var o = sf.op,
 				$$ = this,
-				$ul = this.find('>ul:hidden');
-				$ul.parent('li').addClass(o.hoverClass);
+				$ul = this.children('ul');
+			$$.addClass(o.hoverClass);
 			o.onBeforeShow.call($ul);
-			$ul.stop().animate(o.animation,o.speed,function(){
+			$ul.stop(true,true).animate(o.animation,o.speed,function(){
 				o.onShow.call($ul);
 				$$.children('a').data('follow', true);
 			});
