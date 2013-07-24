@@ -6,12 +6,10 @@ jquery.collapser			own
 jquery.rssreader			customized
 jquery.jqplot				http://www.jqplot.com
 jquery.cookie				http://plugins.jquery.com/cookie/
-jquery.superfish & jquery.supersubs	http://users.tpg.com.au/j_birch/plugins/superfish/
-jquery.notify				https://github.com/ehynds/jquery-notify
+jquery.superfish			http://users.tpg.com.au/j_birch/plugins/superfish/
 jquery.timepicker			http://trentrichardson.com/examples/timepicker/
 jquery.multiselect			http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/
 jquery.multiselect.filter		http://www.erichynds.com/examples/jquery-ui-multiselect-widget/demos/index.htm#filter
-jquery.ui.stars				http://plugins.jquery.com/project/Star_Rating_widget
 jquery.ui.framedialog			http://plugins.jquery.com/project/jquery-framedialog
 jquery.qtip2				http://craigsworks.com/projects/qtip2/
 jquery.fullcalendar			http://arshaw.com/fullcalendar/
@@ -20,5 +18,9 @@ jquery.colorbox				http://plugins.jquery.com/colorbox/
 jquery.spectrum				http://plugins.jquery.com/spectrum/
 jquery.toolbar			      http://plugins.jquery.com/toolbar/
 jquery.nestedsortable			https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha
+
+// to be replaced
+jquery.notify				https://github.com/ehynds/jquery-notify
+jquery.ui.stars				http://plugins.jquery.com/project/Star_Rating_widget
 
 // interesting for later versions
