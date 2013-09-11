@@ -28,10 +28,6 @@ module.exports = function(grunt) {
 			js: {
 				src: ['<%= concat.js.dest %>'],
 				dest: 'dist/core.min.js'
-			},
-			calendar: {
-				src: ['src/fullcalendar.js'],
-				dest: 'dist/fullcalendar.min.js'
 			}
 		},
 		cssmin: {
@@ -43,7 +39,7 @@ module.exports = function(grunt) {
 		copy: {
 			dist: {
 				files: [
-					{expand: true, cwd: 'dist/', src: ['fullcalendar.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/'},
+					{expand: true, cwd: 'src/', src: ['fullcalendar.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/'},
 					{expand: true, cwd: 'dist/', src: ["core.js", "core.min.js", "core.css", "core.min.css"], dest: "<%= build.eqdkppath %>/libraries/jquery/core/"},
 					{expand: true, cwd: 'src/css/', src: ["fullcalendar.print.css"], dest: "<%= build.eqdkppath %>/templates/"}
 				]
