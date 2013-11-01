@@ -18,6 +18,10 @@ jquery.colorbox				http://plugins.jquery.com/colorbox/
 jquery.spectrum				http://plugins.jquery.com/spectrum/
 jquery.toolbar			      http://plugins.jquery.com/toolbar/
 jquery.nestedsortable			https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha
+					https://github.com/FinalAngel/nestedSortable
+
+// only for dev versions
+jquery.migrate				http://plugins.jquery.com/migrate/
 
 // to be replaced
 jquery.notify				https://github.com/ehynds/jquery-notify

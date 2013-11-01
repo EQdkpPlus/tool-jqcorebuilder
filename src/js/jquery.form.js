@@ -1,6 +1,6 @@
 /*!
  * jQuery Form Plugin
- * version: 3.43.0-2013.09.03
+ * version: 3.45.0-2013.10.17
  * Requires jQuery v1.5 or later
  * Copyright (c) 2013 M. Alsup
  * Examples and documentation at: http://malsup.com/jquery/form/
@@ -209,7 +209,7 @@ $.fn.ajaxSubmit = function(options) {
 
     // [value] (issue #113), also see comment:
     // https://github.com/malsup/form/commit/588306aedba1de01388032d5f42a60159eea9228#commitcomment-2180219
-    var fileInputs = $('input[type=file]:enabled', this).filter(function() { return $(this).val() != ''; });
+    var fileInputs = $('input[type=file]:enabled', this).filter(function() { return $(this).val() !== ''; });
 
     var hasFileInputs = fileInputs.length > 0;
     var mp = 'multipart/form-data';
@@ -312,11 +312,15 @@ $.fn.ajaxSubmit = function(options) {
         }
 
         s.data = null;
-            var beforeSend = s.beforeSend;
-            s.beforeSend = function(xhr, o) {
+        var beforeSend = s.beforeSend;
+        s.beforeSend = function(xhr, o) {
+            //Send FormData() provided by user
+            if (options.formData)
+                o.data = options.formData;
+            else
                 o.data = formdata;
-                if(beforeSend)
-                    beforeSend.call(this, xhr, o);
+            if(beforeSend)
+                beforeSend.call(this, xhr, o);
         };
         return $.ajax(s);
     }
@@ -832,7 +836,7 @@ function doAjaxSubmit(e) {
     var options = e.data;
     if (!e.isDefaultPrevented()) { // if event has been canceled, don't proceed
         e.preventDefault();
-        $(this).ajaxSubmit(options);
+        $(e.target).ajaxSubmit(options); // #365
     }
 }
 

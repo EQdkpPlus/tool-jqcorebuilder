@@ -5,7 +5,6 @@
 			targeturl: "http://www.clashdesign.net/blog/index.php/feed/rss2",
 			items: 5,
 			Maxlength: 80,
-			loadingImg: '35-1.gif',
 			background: '#fff',
 			lang_readmore: 'Read more',
 			lang_loadingalt: 'Feed is loading ...',
@@ -23,7 +22,7 @@
 					'z-index': 90,
 					'opacity': 0.4
 				});
-				$('<img class="loading" src="' + l.loadingImg + '" alt="'+l.lang_loadingalt+'" />').css({
+				$('<i class="fa fa-spinner fa-spin fa-4x"></i>').css({
 					'opacity': 1
 				}).appendTo(container)
 			});
@@ -37,7 +36,7 @@
 				dataType: 'xml',
 				processData: false,
 				success: function (f) {
-				$(container).children('img').remove();
+				$(container).children('i').remove();
 				$(container).css({
 					backgroundColor: l.background,
 					'opacity': 1
@@ -94,7 +93,7 @@
 						'z-index': 90,
 						'opacity': 0.4
 					});
-					$('<img class="loading" src="' + l.loadingImg + '" alt="'+l.lang_loadingalt+'" />').css({
+					$('<i class="fa fa-spinner fa-spin fa-4x"></i>').css({
 						'opacity': 1
 					}).appendTo(container)
 				},
@@ -102,7 +101,7 @@
 					$(container).css({
 						'opacity': 1
 					});
-					$(container).children('img').remove();
+					$(container).children('i').remove();
 					var i = 0;
 					var g = j.items;
 					function h(e) {

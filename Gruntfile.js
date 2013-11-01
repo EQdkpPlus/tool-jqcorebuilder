@@ -46,7 +46,6 @@ module.exports = function(grunt) {
 			},
 			templates: {
 				files: [
-					{expand: true, cwd: 'src/template/jquery_default/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/libraries/jquery/core/images/"},
 					{src: ["src/template/eqdkp_default/jquery-ui.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_default/jquery_tmpl.css"},
 					{expand: true, cwd: 'src/template/eqdkp_default/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_default/images/"},
 					{src: "src/template/eqdkp_mop/jquery-ui.min.css", dest: "<%= build.eqdkppath %>/templates/eqdkp_mop/jquery_tmpl.css"},
