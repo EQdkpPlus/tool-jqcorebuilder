@@ -16,7 +16,8 @@ jquery.fullcalendar			http://arshaw.com/fullcalendar/
 jquery.eqdualheight			http://www.cssnewbie.com/equalheights-jquery-plugin/
 jquery.colorbox				http://plugins.jquery.com/colorbox/
 jquery.spectrum				http://plugins.jquery.com/spectrum/
-jquery.toolbar			      http://plugins.jquery.com/toolbar/
+jquery.toolbar				http://plugins.jquery.com/toolbar/
+jquery.raty				https://github.com/wbotelhos/raty
 jquery.nestedsortable			https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha
 					https://github.com/FinalAngel/nestedSortable
 
@@ -25,6 +26,5 @@ jquery.migrate				http://plugins.jquery.com/migrate/
 
 // to be replaced
 jquery.notify				https://github.com/ehynds/jquery-notify
-jquery.ui.stars				http://plugins.jquery.com/project/Star_Rating_widget
 
 // interesting for later versions
