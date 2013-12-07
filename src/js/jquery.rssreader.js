@@ -22,7 +22,7 @@
 					'z-index': 90,
 					'opacity': 0.4
 				});
-				$('<i class="fa fa-spinner fa-spin fa-4x"></i>').css({
+				$('<div class="rssreader_spinner"><i class="fa fa-spinner fa-spin fa-4x"></i></div>').css({
 					'opacity': 1
 				}).appendTo(container)
 			});
@@ -93,7 +93,7 @@
 						'z-index': 90,
 						'opacity': 0.4
 					});
-					$('<i class="fa fa-spinner fa-spin fa-4x"></i>').css({
+					$('<div class="rssreader_spinner"><i class="fa fa-spinner fa-spin fa-4x"></i></div>').css({
 						'opacity': 1
 					}).appendTo(container)
 				},
