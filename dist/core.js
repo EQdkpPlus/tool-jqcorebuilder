@@ -49394,7 +49394,7 @@ $.extend(TRUE, QTIP.defaults, {
 					'z-index': 90,
 					'opacity': 0.4
 				});
-				$('<div class="rssreader_spinner"><i class="fa fa-spinner fa-spin fa-4x"></i></div>').css({
+				$('<i class="fa fa-spinner fa-spin fa-4x rssreader_spinner"></i>').css({
 					'opacity': 1
 				}).appendTo(container)
 			});
@@ -49465,7 +49465,7 @@ $.extend(TRUE, QTIP.defaults, {
 						'z-index': 90,
 						'opacity': 0.4
 					});
-					$('<div class="rssreader_spinner"><i class="fa fa-spinner fa-spin fa-4x"></i></div>').css({
+					$('<i class="fa fa-spinner fa-spin fa-4x rssreader_spinner"></i>').css({
 						'opacity': 1
 					}).appendTo(container)
 				},
