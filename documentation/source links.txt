@@ -19,6 +19,8 @@ jquery.spectrum				http://plugins.jquery.com/spectrum/
 jquery.toolbar				http://plugins.jquery.com/toolbar/
 jquery.raty				https://github.com/wbotelhos/raty
 jquery.nestedsortable			https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha
+moment.js				http://momentjs.com
+livestamp.js				http://mattbradley.github.io/livestampjs/
 
 // only for dev versions
 jquery.migrate				http://plugins.jquery.com/migrate/
