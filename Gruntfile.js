@@ -39,21 +39,18 @@ module.exports = function(grunt) {
 		copy: {
 			dist: {
 				files: [
-					{expand: true, cwd: 'src/', src: ['fullcalendar.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/'},
+					{expand: true, cwd: 'src/fullcalendar/', src: ['fullcalendar.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/'},
 					{expand: true, cwd: 'dist/', src: ["core.js", "core.min.js", "core.css", "core.min.css"], dest: "<%= build.eqdkppath %>/libraries/jquery/core/"},
-					{expand: true, cwd: 'src/css/', src: ["fullcalendar.print.css"], dest: "<%= build.eqdkppath %>/templates/"}
+					{expand: true, cwd: 'src/fullcalendar/', src: ["fullcalendar.print.css"], dest: "<%= build.eqdkppath %>/templates/"},
+					{expand: true, cwd: 'src/fullcalendar/', src: ["fullcalendar.css"], dest: "<%= build.eqdkppath %>/templates/base_template/"}
 				]
 			},
 			templates: {
 				files: [
-					{src: ["src/template/eqdkp_default/jquery-ui.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_default/jquery_tmpl.css"},
-					{expand: true, cwd: 'src/template/eqdkp_default/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_default/images/"},
-					{src: "src/template/eqdkp_mop/jquery-ui.min.css", dest: "<%= build.eqdkppath %>/templates/eqdkp_mop/jquery_tmpl.css"},
-					{expand: true, cwd: 'src/template/eqdkp_mop/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_mop/images/"},
-					{src: ["src/template/eqdkp_gw2/jquery-ui.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_gw2/jquery_tmpl.css"},
-					{expand: true, cwd: 'src/template/eqdkp_gw2/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_gw2/images/"},
-					{src: ["src/template/eqdkp_swtor/jquery-ui.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_swtor/jquery_tmpl.css"},
-					{expand: true, cwd: 'src/template/eqdkp_swtor/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_swtor/images/"}
+					{src: ["src/template/eqdkp_modern/jquery-ui.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_modern/jquery_tmpl.css"},
+					{expand: true, cwd: 'src/template/eqdkp_modern/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_modern/images/"}
+					//{src: ["src/template/eqdkp_default/jquery-ui.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_default/jquery_tmpl.css"},
+					//{expand: true, cwd: 'src/template/eqdkp_default/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_default/images/"},
 				]
 			}
 		}
