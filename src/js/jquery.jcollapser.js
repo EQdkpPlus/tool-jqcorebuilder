@@ -1,7 +1,7 @@
 /*!
- * jQuery Collapser 1.0.0
+ * jQuery Collapser 2.0.0
  *
- * Copyright (c) 2010 Simon "Wallenium" Wallmann
+ * Copyright (c) 2010 - 2014 Simon "Wallenium" Wallmann
  * Licensed under the LGPL license.
  * http://docs.jquery.com/License
  *
@@ -19,15 +19,13 @@
 			var defaults = {
 				state			: 'active',
 				persistence		: true,
-				cookiepath		: '/',
-				cookieexpires	: 365
 			}
 			
 			var debug			= true;
 			var options 		= $.extend(defaults, options);
 			var o				= options;
-			var cookie_name		= 'jcollapser_' + this.attr("id");
-			var state			= $.cookie(cookie_name);
+			var n_persistence	= 'jcollapser.' + this.attr("id");
+			var state			= localStorage.getItem(n_persistence);
 			var container		= this;
 			state				= (state) ? state : options.state;
 			
@@ -47,10 +45,10 @@
 				$('.toggle_container', container).slideToggle("slow", function() {
 				if(options.persistence){
 					if($('.toggle_container', container).is(":visible")){
-							$.cookie(cookie_name, 'active', { expires: options.cookieexpires, path: options.cookiepath });
+							localStorage.setItem(n_persistence, 'active');
 					}else{
-						$.cookie(cookie_name, null, { expires: options.cookieexpires, path: options.cookiepath});
-						$.cookie(cookie_name, 'inactive', { expires: options.cookieexpires, path: options.cookiepath });
+						//localStorage.setItem(n_persistence, null);
+						localStorage.setItem(n_persistence, 'inactive');
 					}
 				}
 			  });

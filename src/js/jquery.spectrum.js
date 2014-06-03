@@ -1,4 +1,4 @@
-// Spectrum Colorpicker v1.3.1
+// Spectrum Colorpicker v1.3.4
 // https://github.com/bgrins/spectrum
 // Author: Brian Grinstead
 // License: MIT
@@ -31,10 +31,12 @@
         chooseText: "choose",
         clearText: "Clear Color Selection",
         preferredFormat: false,
-        className: "",
+        className: "", // Deprecated - use containerClassName and replacerClassName instead.
+        containerClassName: "",
+        replacerClassName: "",
         showAlpha: false,
         theme: "sp-light",
-        palette: ['fff', '000'],
+        palette: [["#ffffff", "#000000", "#ff0000", "#ff8000", "#ffff00", "#008000", "#0000ff", "#4b0082", "#9400d3"]],
         selectionPalette: [],
         disabled: false
     },
@@ -102,14 +104,14 @@
                     "<div class='sp-initial sp-thumb sp-cf'></div>",
                     "<div class='sp-button-container sp-cf'>",
                         "<a class='sp-cancel' href='#'></a>",
-                        "<button class='sp-choose'></button>",
+                        "<button type='button' class='sp-choose'></button>",
                     "</div>",
                 "</div>",
             "</div>"
         ].join("");
     })();
 
-    function paletteTemplate (p, color, className) {
+    function paletteTemplate (p, color, className, tooltipFormat) {
         var html = [];
         for (var i = 0; i < p.length; i++) {
             var current = p[i];
@@ -118,8 +120,9 @@
                 var c = tiny.toHsl().l < 0.5 ? "sp-thumb-el sp-thumb-dark" : "sp-thumb-el sp-thumb-light";
                 c += (tinycolor.equals(color, current)) ? " sp-thumb-active" : "";
 
+                var formattedString = tiny.toString(tooltipFormat || "rgb");
                 var swatchStyle = rgbaSupport ? ("background-color:" + tiny.toRgbString()) : "filter:" + tiny.toFilter();
-                html.push('<span title="' + tiny.toRgbString() + '" data-color="' + tiny.toRgbString() + '" class="' + c + '"><span class="sp-thumb-inner" style="' + swatchStyle + ';" /></span>');
+                html.push('<span title="' + formattedString + '" data-color="' + tiny.toRgbString() + '" class="' + c + '"><span class="sp-thumb-inner" style="' + swatchStyle + ';" /></span>');
             } else {
                 var cls = 'sp-clear-display';
                 html.push('<span title="No Color Selected" data-color="" style="background-color:transparent;" class="' + cls + '"></span>');
@@ -173,6 +176,7 @@
             currentAlpha = 1,
             palette = [],
             paletteArray = [],
+            paletteLookup = {},
             selectionPalette = opts.selectionPalette.slice(0),
             maxSelectionSize = opts.maxSelectionSize,
             draggingClass = "sp-dragging",
@@ -199,7 +203,7 @@
             isInput = boundElement.is("input"),
             isInputTypeColor = isInput && inputTypeColorSupport && boundElement.attr("type") === "color",
             shouldReplace = isInput && !flat,
-            replacer = (shouldReplace) ? $(replaceInput).addClass(theme).addClass(opts.className) : $([]),
+            replacer = (shouldReplace) ? $(replaceInput).addClass(theme).addClass(opts.className).addClass(opts.replacerClassName) : $([]),
             offsetElement = (shouldReplace) ? replacer : boundElement,
             previewElement = replacer.find(".sp-preview-inner"),
             initialColor = opts.color || (isInput && boundElement.val()),
@@ -219,6 +223,13 @@
             if (opts.palette) {
                 palette = opts.palette.slice(0);
                 paletteArray = $.isArray(palette[0]) ? palette : [palette];
+                paletteLookup = {};
+                for (var i = 0; i < paletteArray.length; i++) {
+                    for (var j = 0; j < paletteArray[i].length; j++) {
+                        var rgb = tinycolor(paletteArray[i][j]).toRgbString();
+                        paletteLookup[rgb] = true;
+                    }
+                }
             }
 
             container.toggleClass("sp-flat", flat);
@@ -229,7 +240,7 @@
             container.toggleClass("sp-palette-disabled", !opts.showPalette);
             container.toggleClass("sp-palette-only", opts.showPaletteOnly);
             container.toggleClass("sp-initial-disabled", !opts.showInitial);
-            container.addClass(opts.className);
+            container.addClass(opts.className).addClass(opts.containerClassName);
 
             reflow();
         }
@@ -263,25 +274,7 @@
                 appendTo.append(container);
             }
 
-            if (localStorageKey && window.localStorage) {
-
-                // Migrate old palettes over to new format.  May want to remove this eventually.
-                try {
-                    var oldPalette = window.localStorage[localStorageKey].split(",#");
-                    if (oldPalette.length > 1) {
-                        delete window.localStorage[localStorageKey];
-                        $.each(oldPalette, function(i, c) {
-                             addColorToSelectionPalette(c);
-                        });
-                    }
-                }
-                catch(e) { }
-
-                try {
-                    selectionPalette = window.localStorage[localStorageKey].split(";");
-                }
-                catch (e) { }
-            }
+            updateSelectionPaletteFromStorage();
 
             offsetElement.bind("click.spectrum touchstart.spectrum", function (e) {
                 if (!disabled) {
@@ -417,8 +410,8 @@
                 }
                 else {
                     set($(this).data("color"));
-                    updateOriginalInput(true);
                     move();
+                    updateOriginalInput(true);
                     hide();
                 }
 
@@ -430,11 +423,34 @@
             initialColorContainer.delegate(".sp-thumb-el:nth-child(1)", paletteEvent, { ignore: true }, palletElementClick);
         }
 
+        function updateSelectionPaletteFromStorage() {
+
+            if (localStorageKey && window.localStorage) {
+
+                // Migrate old palettes over to new format.  May want to remove this eventually.
+                try {
+                    var oldPalette = window.localStorage[localStorageKey].split(",#");
+                    if (oldPalette.length > 1) {
+                        delete window.localStorage[localStorageKey];
+                        $.each(oldPalette, function(i, c) {
+                             addColorToSelectionPalette(c);
+                        });
+                    }
+                }
+                catch(e) { }
+
+                try {
+                    selectionPalette = window.localStorage[localStorageKey].split(";");
+                }
+                catch (e) { }
+            }
+        }
+
         function addColorToSelectionPalette(color) {
             if (showSelectionPalette) {
-                var colorRgb = tinycolor(color).toRgbString();
-                if ($.inArray(colorRgb, selectionPalette) === -1) {
-                    selectionPalette.push(colorRgb);
+                var rgb = tinycolor(color).toRgbString();
+                if (!paletteLookup[rgb] && $.inArray(rgb, selectionPalette) === -1) {
+                    selectionPalette.push(rgb);
                     while(selectionPalette.length > maxSelectionSize) {
                         selectionPalette.shift();
                     }
@@ -451,25 +467,12 @@
 
         function getUniqueSelectionPalette() {
             var unique = [];
-            var p = selectionPalette;
-            var paletteLookup = {};
-            var rgb;
-
             if (opts.showPalette) {
+                for (i = 0; i < selectionPalette.length; i++) {
+                    var rgb = tinycolor(selectionPalette[i]).toRgbString();
 
-                for (var i = 0; i < paletteArray.length; i++) {
-                    for (var j = 0; j < paletteArray[i].length; j++) {
-                        rgb = tinycolor(paletteArray[i][j]).toRgbString();
-                        paletteLookup[rgb] = true;
-                    }
-                }
-
-                for (i = 0; i < p.length; i++) {
-                    rgb = tinycolor(p[i]).toRgbString();
-
-                    if (!paletteLookup.hasOwnProperty(rgb)) {
-                        unique.push(p[i]);
-                        paletteLookup[rgb] = true;
+                    if (!paletteLookup[rgb]) {
+                        unique.push(selectionPalette[i]);
                     }
                 }
             }
@@ -482,11 +485,13 @@
             var currentColor = get();
 
             var html = $.map(paletteArray, function (palette, i) {
-                return paletteTemplate(palette, currentColor, "sp-palette-row sp-palette-row-" + i);
+                return paletteTemplate(palette, currentColor, "sp-palette-row sp-palette-row-" + i, opts.preferredFormat);
             });
 
+            updateSelectionPaletteFromStorage();
+
             if (selectionPalette) {
-                html.push(paletteTemplate(getUniqueSelectionPalette(), currentColor, "sp-palette-row sp-palette-row-selection"));
+                html.push(paletteTemplate(getUniqueSelectionPalette(), currentColor, "sp-palette-row sp-palette-row-selection", opts.preferredFormat));
             }
 
             paletteContainer.html(html.join(""));
@@ -496,7 +501,7 @@
             if (opts.showInitial) {
                 var initial = colorOnShow;
                 var current = get();
-                initialColorContainer.html(paletteTemplate([initial, current], current, "sp-palette-row-initial"));
+                initialColorContainer.html(paletteTemplate([initial, current], current, "sp-palette-row-initial", opts.preferredFormat));
             }
         }
 
@@ -718,7 +723,9 @@
                         alphaSliderInner.css("background", "-webkit-" + gradient);
                         alphaSliderInner.css("background", "-moz-" + gradient);
                         alphaSliderInner.css("background", "-ms-" + gradient);
-                        alphaSliderInner.css("background", gradient);
+                        // Use current syntax gradient on unprefixed property.
+                        alphaSliderInner.css("background",
+                            "linear-gradient(to right, " + realAlpha + ", " + realHex + ")");
                     }
                 }
 
