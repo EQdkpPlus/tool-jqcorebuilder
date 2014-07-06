@@ -20,7 +20,7 @@
     ordered & tabbed in a way that represents the nesting of the generated HTML.
 */
 #cboxOverlay{
-	background: #000000 url(images/ui-bg_flat_0_000000_40x100.png) 50% 50% repeat-x;
+	background: #000000;
 	opacity: .6 !important;
 	filter: Alpha(Opacity=60) !important;
 }

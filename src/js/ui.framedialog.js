@@ -76,7 +76,10 @@
     $.FrameDialog._defaultOptions = {
         modal: true,
         closeOnEscape: false,
-        position: 'center',
+        position: {
+        	my: "center",
+        	at: "center"
+    	},
         buttons: buttons,        
         // TDR: class used to style the loading pane container
         loadingClass: null
@@ -267,13 +270,6 @@
             //reset the center position, if needed
             if (opts.position == 'center' || (opts.position && (opts.position[0] == 'center' || opts.position[1] == 'center'))) {
                 var pos = parseInt(parseFloat(winw - ww) / 2);
-                if (pos < 0) pos = 0;
-                wrap.css('left', pos + 'px');
-            }
-
-            //reset right position, as needed
-            if (opts.position == 'right' || (opts.position && (opts.position[0] == 'right' || opts.position[1] == 'right'))) {
-                var pos = winw - ww - 5; //set to rightmost, - 5 px
                 if (pos < 0) pos = 0;
                 wrap.css('left', pos + 'px');
             }

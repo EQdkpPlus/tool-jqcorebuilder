@@ -1,7 +1,6 @@
 jquery					http://www.jquery.com
 jquery.ui				http://www.jqueryui.com
 moment.js				http://momentjs.com
-jquery.validate				http://bassistance.de/jquery-plugins/jquery-plugin-validation/
 jquery.form				http://jquery.malsup.com/form/
 jquery.collapser			own
 jquery.rssreader			customized
@@ -22,7 +21,7 @@ jquery.nestedsortable			https://github.com/mjsarfatti/nestedSortable/tree/2.0alp
 
 
 // deprecated
-jquery.cookie				http://plugins.jquery.com/cookie/
+jquery.validate				http://bassistance.de/jquery-plugins/jquery-plugin-validation/
 
 // only for dev versions
 jquery.migrate				http://plugins.jquery.com/migrate/
