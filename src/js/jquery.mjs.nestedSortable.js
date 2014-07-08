@@ -20,6 +20,7 @@
 	$.widget("mjs.nestedSortable", $.extend({}, $.ui.sortable.prototype, {
 
 		options: {
+			disableParentChange: false,
 			doNotClear: false,
 			expandOnHover: 700,
 			isAllowed: function(placeholder, placeholderParent, originalItem) { return true; },
@@ -38,7 +39,8 @@
 			errorClass: 'mjs-nestedSortable-error',
 			expandedClass: 'mjs-nestedSortable-expanded',
 			hoveringClass: 'mjs-nestedSortable-hovering',
-			leafClass: 'mjs-nestedSortable-leaf'
+			leafClass: 'mjs-nestedSortable-leaf',
+			disabledClass: 'mjs-nestedSortable-disabled'
 		},
 
 		_create: function() {
@@ -63,12 +65,14 @@
 					if ($li.children(self.options.listType).length) {
 						$li.addClass(self.options.branchClass);
 						// expand/collapse class only if they have children
-						if (self.options.startCollapsed) $li.addClass(self.options.collapsedClass);
-						else $li.addClass(self.options.expandedClass);
+						if ( ! $li.hasClass( self.options.collapsedClass ) && ( ! $li.hasClass( self.options.expandedClass ) ) ) {
+							if (self.options.startCollapsed) $li.addClass(self.options.collapsedClass);
+							else $li.addClass(self.options.expandedClass);
+						}
 					} else {
 						$li.addClass(self.options.leafClass);
 					}
-				})
+				});
 			}
 		},
 
@@ -178,6 +182,27 @@
 					continue;
 				}
 
+				// No action if intersected item is disabled 
+				// and the element above or below in the direction we're going is also disabled
+				if (itemElement.className.indexOf(o.disabledClass) !== -1) {
+					// Note: intersection hardcoded direction values from jquery.ui.sortable.js:_intersectsWithPointer
+					if (intersection === 2) {
+						// Going down
+						var itemAfter = this.items[i + 1];
+						if (itemAfter && itemAfter.item[0].className.indexOf(o.disabledClass) !== -1){
+							continue;
+						}
+						
+					}
+					else if (intersection === 1) {
+						// Going up
+						var itemBefore = this.items[i - 1];
+						if (itemBefore && itemBefore.item[0].className.indexOf(o.disabledClass) !== -1){
+							continue;
+						}
+					}
+				}
+
 				// cannot intersect with itself
 				// no useless actions that have been done before
 				// no action if the item moved is the parent of the item checked
@@ -257,7 +282,7 @@
 			// mjs - to find the previous sibling in the list, keep backtracking until we hit a valid list item.
 			var previousItem = this.placeholder[0].previousSibling ? $(this.placeholder[0].previousSibling) : null;
 			if (previousItem != null) {
-				while (previousItem[0].nodeName.toLowerCase() != 'li' || previousItem[0] == this.currentItem[0] || previousItem[0] == this.helper[0]) {
+				while (previousItem[0].nodeName.toLowerCase() != 'li' || previousItem[0].className.indexOf(o.disabledClass) !== -1 || previousItem[0] == this.currentItem[0] || previousItem[0] == this.helper[0]) {
 					if (previousItem[0].previousSibling) {
 						previousItem = $(previousItem[0].previousSibling);
 					} else {
@@ -270,7 +295,7 @@
 			// mjs - to find the next sibling in the list, keep stepping forward until we hit a valid list item.
 			var nextItem = this.placeholder[0].nextSibling ? $(this.placeholder[0].nextSibling) : null;
 			if (nextItem != null) {
-				while (nextItem[0].nodeName.toLowerCase() != 'li' || nextItem[0] == this.currentItem[0] || nextItem[0] == this.helper[0]) {
+				while (nextItem[0].nodeName.toLowerCase() != 'li' || nextItem[0].className.indexOf(o.disabledClass) !== -1 || nextItem[0] == this.currentItem[0] || nextItem[0] == this.helper[0]) {
 					if (nextItem[0].nextSibling) {
 						nextItem = $(nextItem[0].nextSibling);
 					} else {
@@ -374,6 +399,14 @@
 			this.hovering = null;
 
 			$.ui.sortable.prototype._mouseStop.apply(this, arguments);
+			
+			var pid = $(this.domPosition.parent).parent().attr("id");
+			var sort = this.domPosition.prev ? $(this.domPosition.prev).next().index() : 0;
+			
+			if(!(pid == this._uiHash().item.parent().parent().attr("id") && 
+				sort == this._uiHash().item.index())) {
+				this._trigger("relocate", event, this._uiHash());
+			}
 
 		},
 
@@ -587,9 +620,15 @@
 			var o = this.options,
 				maxLevels = this.placeholder.closest('.ui-sortable').nestedSortable('option', 'maxLevels'); // this takes into account the maxLevels set to the recipient list
 
+			 // Check if the parent has changed to prevent it, when o.disableParentChange is true
+			var oldParent = this.currentItem.parent().parent();
+			var disabledByParentchange = o.disableParentChange && (
+				parentItem !== null && !oldParent.is(parentItem)//From somewhere to somewhere else, except the root
+			||	parentItem === null && oldParent.is('li')	//From somewhere to the root
+			);
 			// mjs - is the root protected?
 			// mjs - are we nesting too deep?
-			if ( ! o.isAllowed(this.placeholder, parentItem, this.currentItem)) {
+			if (disabledByParentchange || ! o.isAllowed(this.placeholder, parentItem, this.currentItem)) {
 					this.placeholder.addClass(o.errorClass);
 					if (maxLevels < levels && maxLevels != 0) {
 						this.beyondMaxLevels = levels - maxLevels;

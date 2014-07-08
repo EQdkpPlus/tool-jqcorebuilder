@@ -5,24 +5,28 @@
  *
  * @author  : Washington Botelho
  * @doc     : http://wbotelhos.com/raty
- * @version : 2.6.0
+ * @version : 2.7.0
  *
  */
 
-;(function($) {
+;
+(function($) {
+  'use strict';
 
   var methods = {
     init: function(options) {
       return this.each(function() {
-        methods.destroy.call(this);
-
-        this.opt  = $.extend(true, {}, $.fn.raty.defaults, options);
         this.self = $(this);
 
-        methods._adjustCallback.call(this);
+        methods.destroy.call(this.self);
 
+        this.opt = $.extend(true, {}, $.fn.raty.defaults, options);
+
+        methods._adjustCallback.call(this);
         methods._adjustNumber.call(this);
-        methods._adjustWidth.call(this);
+        methods._adjustHints.call(this);
+
+        this.opt.score = methods._adjustedScore.call(this, this.opt.score);
 
         if (this.opt.starType !== 'img') {
           methods._adjustStarType.call(this);
@@ -41,6 +45,7 @@
 
         methods._createScore.call(this);
         methods._apply.call(this, this.opt.score);
+        methods._setTitle.call(this, this.opt.score);
         methods._target.call(this, this.opt.score);
 
         if (this.opt.readOnly) {
@@ -50,13 +55,11 @@
 
           methods._binds.call(this);
         }
-
-        this.self.data('options', this.opt);
       });
     },
 
     _adjustCallback: function() {
-      var options = ['number', 'readOnly', 'score', 'scoreName'];
+      var options = ['number', 'readOnly', 'score', 'scoreName', 'target'];
 
       for (var i = 0; i < options.length; i++) {
         if (typeof this.opt[options[i]] === 'function') {
@@ -65,8 +68,50 @@
       }
     },
 
+    _adjustedScore: function(score) {
+      if (!score) {
+        return score;
+      }
+
+      return methods._between(score, 0, this.opt.number);
+    },
+
+    _adjustHints: function() {
+      if (!this.opt.hints) {
+        this.opt.hints = [];
+      }
+
+      if (!this.opt.halfShow && !this.opt.half) {
+        return;
+      }
+
+      var steps = this.opt.precision ? 10 : 2;
+
+      for (var i = 0; i < this.opt.number; i++) {
+        var group = this.opt.hints[i];
+
+        if (Object.prototype.toString.call(group) !== '[object Array]') {
+          group = [group];
+        }
+
+        this.opt.hints[i] = [];
+
+        for (var j = 0; j < steps; j++) {
+          var
+            hint = group[j],
+            last = group[group.length - 1];
+
+          if (last === undefined) {
+            last = null;
+          }
+
+          this.opt.hints[i][j] = hint === undefined ? last : hint;
+        }
+      }
+    },
+
     _adjustNumber: function() {
-      this.opt.number = methods._between(this.opt.number, 0, this.opt.numberMax);
+      this.opt.number = methods._between(this.opt.number, 1, this.opt.numberMax);
     },
 
     _adjustPath: function() {
@@ -78,31 +123,16 @@
     },
 
     _adjustPrecision: function() {
-      this.opt.half       = true;
-      this.opt.targetType = 'score';
+      this.opt.half = true;
     },
 
     _adjustStarType: function() {
-      this.opt.path = '';
-
       var replaces = ['cancelOff', 'cancelOn', 'starHalf', 'starOff', 'starOn'];
+
+      this.opt.path = '';
 
       for (var i = 0; i < replaces.length; i++) {
         this.opt[replaces[i]] = this.opt[replaces[i]].replace('.', '-');
-      }
-    },
-
-    _adjustWidth: function() {
-      if (this.opt.width !== false && this.opt.starType === 'img') {
-        var
-          space = this.opt.space ? 4 : 0,
-          width = this.opt.width || (this.opt.number * this.opt.size + this.opt.number * space)
-
-        if (this.opt.cancel) {
-          width += this.opt.size + space;
-        }
-
-        this.style.width = width + 'px';
       }
     },
 
@@ -111,7 +141,7 @@
 
       if (score) {
         if (score > 0) {
-          this.score.val(methods._between(score, 0, this.opt.number));
+          this.score.val(score);
         }
 
         methods._roundStars.call(this, score);
@@ -138,12 +168,20 @@
       var that = this;
 
       that.stars.on('click.raty', function(evt) {
-        var star = $(this);
-
-        that.score.val((that.opt.half || that.opt.precision) ? that.self.data('score') : (this.alt || star.data('alt')));
+        var
+          execute = true,
+          score   = (that.opt.half || that.opt.precision) ? that.self.data('score') : (this.alt || $(this).data('alt'));
 
         if (that.opt.click) {
-          that.opt.click.call(that, +that.score.val(), evt);
+          execute = that.opt.click.call(that, +score, evt);
+        }
+
+        if (execute || execute === undefined) {
+          if (that.opt.half && !that.opt.precision) {
+            score = methods._roundHalfScore.call(that, score);
+          }
+
+          methods._apply.call(that, score);
         }
       });
     },
@@ -168,6 +206,7 @@
 
         methods._apply.call(that, score);
         methods._target.call(that, score, evt);
+        methods._resetTitle.call(that);
 
         if (that.opt.mouseout) {
           that.opt.mouseout.call(that, score, evt);
@@ -179,17 +218,13 @@
       var that = this;
 
       that.cancel.on('mouseleave.raty', function(evt) {
-        var
-          cancel    = $(this),
-          cancelOff = that.opt.path + that.opt.cancelOff;
+        var icon = that.opt.cancelOff;
 
-        if (that.opt.starType === 'img') {
-          cancel.attr('src', cancelOff);
-        } else {
-          var cancelOn = that.opt.path + that.opt.cancelOn;
-
-          cancel.removeClass(cancelOn).addClass(cancelOff);
+        if (that.opt.starType !== 'img') {
+          icon = that.opt.cancelClass + ' ' + icon;
         }
+
+        methods._setIcon.call(that, this, icon);
 
         if (that.opt.mouseout) {
           var score = +that.score.val() || undefined;
@@ -204,25 +239,15 @@
           action = that.opt.half ? 'mousemove.raty' : 'mouseover.raty';
 
       that.stars.on(action, function(evt) {
-        var
-          star  = $(this),
-          score = parseInt(this.alt || star.data('alt'), 10);
+        var score = methods._getScoreByPosition.call(that, evt, this);
+
+        methods._fill.call(that, score);
 
         if (that.opt.half) {
-          var percent = parseFloat((evt.pageX - star.offset().left) / that.opt.size);
-
-          if (that.opt.precision) {
-            score = score - 1 + percent;
-          } else {
-            score = score - 1 + (percent > 0.5 ? 1 : 0.5);
-          }
-
-          methods._fill.call(that, score);
-          methods._roundStars.call(that, score);
+          methods._roundStars.call(that, score, evt);
+          methods._setTitle.call(that, score, evt);
 
           that.self.data('score', score);
-        } else {
-          methods._fill.call(that, score);
         }
 
         methods._target.call(that, score, evt);
@@ -238,21 +263,18 @@
 
       that.cancel.on('mouseover.raty', function(evt) {
         var
-          cancelOn  = that.opt.path + that.opt.cancelOn,
-          star      = $(this),
-          starOff   = that.opt.path + that.opt.starOff;
+          starOff = that.opt.path + that.opt.starOff,
+          icon    = that.opt.cancelOn;
 
         if (that.opt.starType === 'img') {
-          star.attr('src', cancelOn);
           that.stars.attr('src', starOff);
         } else {
+          icon = that.opt.cancelClass + ' ' + icon;
+
           that.stars.attr('class', starOff);
-
-          var cancelOff = that.opt.path + that.opt.cancelOff;
-
-          star.removeClass(cancelOff).addClass(cancelOn);
         }
 
+        methods._setIcon.call(that, this, icon);
         methods._target.call(that, null, evt);
 
         if (that.opt.mouseover) {
@@ -267,7 +289,7 @@
 
     _createCancel: function() {
       var icon   = this.opt.path + this.opt.cancelOff,
-          cancel = $('<' + this.opt.starType + ' />', { title: this.opt.cancelHint, 'class': 'raty-cancel' });
+          cancel = $('<' + this.opt.starType + ' />', { title: this.opt.cancelHint, 'class': this.opt.cancelClass });
 
       if (this.opt.starType === 'img') {
         cancel.attr({ src: icon, alt: 'x' });
@@ -294,21 +316,14 @@
     _createStars: function() {
       for (var i = 1; i <= this.opt.number; i++) {
         var
-          attrs ,
-          icon  = (this.opt.score && this.opt.score >= i) ? 'starOn' : 'starOff',
-          title = methods._getHint.call(this, i);
-
-        // TODO: extract as icon: && alt:
-        icon = this.opt.path + this.opt[icon];
+          name  = methods._nameForIndex.call(this, i),
+          attrs = { alt: i, src: this.opt.path + this.opt[name] };
 
         if (this.opt.starType !== 'img') {
-          // TODO: use $.data.
-          attrs = { 'data-alt': i, 'class': icon };
-        } else {
-          attrs = { src: icon, alt: i };
+          attrs = { 'data-alt': i, 'class': attrs.src }; // TODO: use $.data.
         }
 
-        attrs.title = title;
+        attrs.title = methods._getHint.call(this, i);
 
         $('<' + this.opt.starType + ' />', attrs).appendTo(this);
 
@@ -330,58 +345,107 @@
       var hash = 0;
 
       for (var i = 1; i <= this.stars.length; i++) {
-        var star   = this.stars.eq(i - 1),
-            turnOn = methods._turnOn.call(this, i, score);
+        var
+          icon,
+          star   = this.stars[i - 1],
+          turnOn = methods._turnOn.call(this, i, score);
 
         if (this.opt.iconRange && this.opt.iconRange.length > hash) {
-          var irange = this.opt.iconRange[hash],
-              icon   = methods._getIconRange.call(this, irange, turnOn);
+          var irange = this.opt.iconRange[hash];
+
+          icon = methods._getRangeIcon.call(this, irange, turnOn);
 
           if (i <= irange.range) {
-            // TODO: extract.
-            if (this.opt.starType === 'img') {
-              star.attr('src', icon);
-            } else {
-              star.attr('class', icon);
-            }
+            methods._setIcon.call(this, star, icon);
           }
 
           if (i === irange.range) {
             hash++;
           }
         } else {
-          var icon = this.opt.path + this.opt[turnOn ? 'starOn' : 'starOff'];
+          icon = this.opt[turnOn ? 'starOn' : 'starOff'];
 
-          // TODO: extract.
-          if (this.opt.starType === 'img') {
-            star.attr('src', icon);
-          } else {
-            star.attr('class', icon);
-          }
+          methods._setIcon.call(this, star, icon);
         }
       }
     },
 
-    _getIconRange: function(irange, turnOn) {
-      return this.opt.path + (turnOn ? irange.on || this.opt.starOn : irange.off || this.opt.starOff);
+    _getFirstDecimal: function(number) {
+      var
+        decimal = number.toString().split('.')[1],
+        result  = 0;
+
+      if (decimal) {
+        result = parseInt(decimal.charAt(0), 10);
+
+        if (decimal.slice(1, 5) === '9999') {
+          result++;
+        }
+      }
+
+      return result;
     },
 
-    _turnOn: function(i, score) {
-      return this.opt.single ? (i === score) : (i <= score);
+    _getRangeIcon: function(irange, turnOn) {
+      return turnOn ? irange.on || this.opt.starOn : irange.off || this.opt.starOff;
     },
 
-    _getHint: function(score) {
-      var hint = this.opt.hints[score - 1];
+    _getScoreByPosition: function(evt, icon) {
+      var score = parseInt(icon.alt || icon.getAttribute('data-alt'), 10);
+
+      if (this.opt.half) {
+        var
+          size    = methods._getWidth.call(this),
+          percent = parseFloat((evt.pageX - $(icon).offset().left) / size);
+
+        score = score - 1 + percent;
+      }
+
+      return score;
+    },
+
+    _getHint: function(score, evt) {
+      if (score !== 0 && !score) {
+        return this.opt.noRatedMsg;
+      }
+
+      var
+        decimal = methods._getFirstDecimal.call(this, score),
+        integer = Math.ceil(score),
+        group   = this.opt.hints[(integer || 1) - 1],
+        hint    = group,
+        set     = !evt || this.move;
+
+      if (this.opt.precision) {
+        if (set) {
+          decimal = decimal === 0 ? 9 : decimal - 1;
+        }
+
+        hint = group[decimal];
+      } else if (this.opt.halfShow || this.opt.half) {
+        decimal = set && decimal === 0 ? 1 : decimal > 5 ? 1 : 0;
+
+        hint = group[decimal];
+      }
 
       return hint === '' ? '' : hint || score;
     },
 
-    _lock: function() {
-      var score = parseInt(this.score.val(), 10), // TODO: 3.1 >> [['1'], ['2'], ['3', '.1', '.2']]
-          hint  = score ? methods._getHint.call(this, score) : this.opt.noRatedMsg;
+    _getWidth: function() {
+      var width = this.stars[0].width || parseFloat(this.stars.eq(0).css('font-size'));
 
-      this.style.cursor   = '';
-      this.title          = hint;
+      if (!width) {
+        methods._error.call(this, 'Could not get the icon width!');
+      }
+
+      return width;
+    },
+
+    _lock: function() {
+      var hint = methods._getHint.call(this, this.score.val());
+
+      this.style.cursor = '';
+      this.title        = hint;
 
       this.score.prop('readonly', true);
       this.stars.prop('title', hint);
@@ -393,24 +457,77 @@
       this.self.data('readonly', true);
     },
 
-    _roundStars: function(score) {
-      var rest = (score - Math.floor(score)).toFixed(2);
+    _nameForIndex: function(i) {
+      return this.opt.score && this.opt.score >= i ? 'starOn' : 'starOff';
+    },
 
-      if (rest > this.opt.round.down) {
-        var icon = 'starOn';                                 // Up:   [x.76 .. x.99]
+    _resetTitle: function(star) {
+      for (var i = 0; i < this.opt.number; i++) {
+        this.stars[i].title = methods._getHint.call(this, i + 1);
+      }
+    },
 
-        if (this.opt.halfShow && rest < this.opt.round.up) { // Half: [x.26 .. x.75]
-          icon = 'starHalf';
-        } else if (rest < this.opt.round.full) {             // Down: [x.00 .. x.5]
-          icon = 'starOff';
+     _roundHalfScore: function(score) {
+      var integer = parseInt(score, 10),
+          decimal = methods._getFirstDecimal.call(this, score);
+
+      if (decimal !== 0) {
+        decimal = decimal > 5 ? 1 : 0.5;
+      }
+
+      return integer + decimal;
+    },
+
+    _roundStars: function(score, evt) {
+      var
+        decimal = (score % 1).toFixed(2),
+        name    ;
+
+      if (evt || this.move) {
+        name = decimal > 0.5 ? 'starOn' : 'starHalf';
+      } else if (decimal > this.opt.round.down) {               // Up:   [x.76 .. x.99]
+        name = 'starOn';
+
+        if (this.opt.halfShow && decimal < this.opt.round.up) { // Half: [x.26 .. x.75]
+          name = 'starHalf';
+        } else if (decimal < this.opt.round.full) {             // Down: [x.00 .. x.5]
+          name = 'starOff';
         }
-        if (this.opt.starType === 'img') {
-          this.stars.eq(Math.ceil(score) - 1).attr('src', this.opt.path + this.opt[icon]);
-        } else {
-          this.stars.eq(Math.ceil(score) - 1).attr('class', '');
-          this.stars.eq(Math.ceil(score) - 1).addClass(this.opt[icon]);
-        }
-      }                              // Full down: [x.00 .. x.25]
+      }
+
+      if (name) {
+        var
+          icon = this.opt[name],
+          star = this.stars[Math.ceil(score) - 1];
+
+        methods._setIcon.call(this, star, icon);
+      }                                                         // Full down: [x.00 .. x.25]
+    },
+
+    _setIcon: function(star, icon) {
+      star[this.opt.starType === 'img' ? 'src' : 'className'] = this.opt.path + icon;
+    },
+
+    _setTarget: function(target, score) {
+      if (score) {
+        score = this.opt.targetFormat.toString().replace('{score}', score);
+      }
+
+      if (target.is(':input')) {
+        target.val(score);
+      } else {
+        target.html(score);
+      }
+    },
+
+    _setTitle: function(score, evt) {
+      if (score) {
+        var
+          integer = parseInt(Math.ceil(score), 10),
+          star    = this.stars[integer - 1];
+
+        star.title = methods._getHint.call(this, score, evt);
+      }
     },
 
     _target: function(score, evt) {
@@ -421,11 +538,6 @@
           methods._error.call(this, 'Target selector invalid or missing!');
         }
 
-        // TODO: remove this check.
-        if (this.opt.targetFormat.indexOf('{score}') < 0) {
-          methods._error.call(this, 'Template "{score}" missing!');
-        }
-
         var mouseover = evt && evt.type === 'mouseover';
 
         if (score === undefined) {
@@ -434,7 +546,7 @@
           score = mouseover ? this.opt.cancelHint : this.opt.targetText;
         } else {
           if (this.opt.targetType === 'hint') {
-            score = methods._getHint.call(this, Math.ceil(score));
+            score = methods._getHint.call(this, score, evt);
           } else if (this.opt.precision) {
             score = parseFloat(score).toFixed(1);
           }
@@ -446,105 +558,118 @@
           }
         }
 
-        if (score) {
-          score = this.opt.targetFormat.toString().replace('{score}', score);
-        }
-
-        if (target.is(':input')) {
-          target.val(score);
-        } else {
-          target.html(score);
-        }
+        methods._setTarget.call(this, target, score);
       }
     },
 
-    _unlock: function() {
-      $(this).data('readonly', false).css('cursor', 'pointer').removeAttr('title');
+    _turnOn: function(i, score) {
+      return this.opt.single ? (i === score) : (i <= score);
+    },
 
-      this.score.removeAttr('readonly', 'readonly');
+    _unlock: function() {
+      this.style.cursor = 'pointer';
+      this.removeAttribute('title');
+
+      this.score.removeAttr('readonly');
+
+      this.self.data('readonly', false);
 
       for (var i = 0; i < this.opt.number; i++) {
-        this.stars.eq(i).attr('title', methods._getHint.call(this, i + 1));
+        this.stars[i].title = methods._getHint.call(this, i + 1);
       }
 
       if (this.cancel) {
         this.cancel.css('display', '');
       }
-    }, cancel: function(click) {
+    },
+
+    cancel: function(click) {
       return this.each(function() {
-        if ($(this).data('readonly') !== true) {
-          methods[click ? 'click' : 'score'].call(this, null);
+        var self = $(this);
+
+        if (self.data('readonly') !== true) {
+          methods[click ? 'click' : 'score'].call(self, null);
+
           this.score.removeAttr('value');
         }
       });
-    }, click: function(score) {
-      return $(this).each(function() {
+    },
+
+    click: function(score) {
+      return this.each(function() {
         if ($(this).data('readonly') !== true) {
+          score = methods._adjustedScore.call(this, score);
+
           methods._apply.call(this, score);
 
-          if (!this.opt.click) {
-            methods._error.call(this, 'You must add the "click: function(score, evt) { }" callback.');
+          if (this.opt.click) {
+            this.opt.click.call(this, score, $.Event('click'));
           }
-
-
-          this.opt.click.call(this, score, $.Event('click'));
 
           methods._target.call(this, score);
         }
       });
-    }, destroy: function() {
-      return $(this).each(function() {
-        var that = $(this),
-            raw  = that.data('raw');
+    },
+
+    destroy: function() {
+      return this.each(function() {
+        var self = $(this),
+            raw  = self.data('raw');
 
         if (raw) {
-          that.off('.raty').empty().css({ cursor: raw.style.cursor, width: raw.style.width }).removeData('readonly');
+          self.off('.raty').empty().css({ cursor: raw.style.cursor }).removeData('readonly');
         } else {
-          that.data('raw', that.clone()[0]);
+          self.data('raw', self.clone()[0]);
         }
       });
-    }, getScore: function() {
+    },
+
+    getScore: function() {
       var score = [],
           value ;
 
-      $(this).each(function() {
+      this.each(function() {
         value = this.score.val();
 
-        score.push(value ? parseFloat(value) : undefined);
+        score.push(value ? +value : undefined);
       });
 
       return (score.length > 1) ? score : score[0];
     },
 
     move: function(score) {
-      return $(this).each(function() {
+      return this.each(function() {
         var
           integer  = parseInt(score, 10),
-          opt      = $(this).data('options'),
-          decimal  = Number(score).toFixed(1).split('.')[1];
+          decimal  = methods._getFirstDecimal.call(this, score);
 
-        if (integer > opt.number) {
-          integer = opt.number - 1;
+        if (integer >= this.opt.number) {
+          integer = this.opt.number - 1;
           decimal = 10;
         }
 
         var
-          point    = opt.size / 10,
-          star     = $(this.stars[integer]),
-          percent = star.offset().left + point * parseInt(decimal, 10),
-          evt      = $.Event('mousemove', { pageX: percent });
+          width   = methods._getWidth.call(this),
+          steps   = width / 10,
+          star    = $(this.stars[integer]),
+          percent = star.offset().left + steps * decimal,
+          evt     = $.Event('mousemove', { pageX: percent });
+
+        this.move = true;
 
         star.trigger(evt);
+
+        this.move = false;
       });
     },
 
     readOnly: function(readonly) {
       return this.each(function() {
-        var that = $(this);
+        var self = $(this);
 
-        if (that.data('readonly') !== readonly) {
+        if (self.data('readonly') !== readonly) {
           if (readonly) {
-            that.off('.raty').children('img').off('.raty');
+            self.off('.raty').children('img').off('.raty');
 
             methods._lock.call(this);
           } else {
@@ -552,24 +677,32 @@
             methods._unlock.call(this);
           }
 
-          that.data('readonly', readonly);
+          self.data('readonly', readonly);
         }
       });
-    }, reload: function() {
-      return methods.set.call(this, {});
-    }, score: function() {
-      return arguments.length ? methods.setScore.apply(this, arguments) : methods.getScore.call(this);
-    }, set: function(options) {
-      return this.each(function() {
-        var that   = $(this),
-            actual = that.data('options'),
-            news   = $.extend({}, actual, options);
+    },
 
-        that.raty(news);
+    reload: function() {
+      return methods.set.call(this, {});
+    },
+
+    score: function() {
+      var self = $(this);
+
+      return arguments.length ? methods.setScore.apply(self, arguments) : methods.getScore.call(self);
+    },
+
+    set: function(options) {
+      return this.each(function() {
+        $(this).raty($.extend({}, this.opt, options));
       });
-    }, setScore: function(score) {
-      return $(this).each(function() {
+    },
+
+    setScore: function(score) {
+      return this.each(function() {
         if ($(this).data('readonly') !== true) {
+          score = methods._adjustedScore.call(this, score);
+
           methods._apply.call(this, score);
           methods._target.call(this, score);
         }
@@ -589,6 +722,7 @@
 
   $.fn.raty.defaults = {
     cancel       : false,
+    cancelClass  : 'raty-cancel',
     cancelHint   : 'Cancel this rating!',
     cancelOff    : 'cancel-off.png',
     cancelOn     : 'cancel-on.png',
@@ -606,11 +740,10 @@
     path         : undefined,
     precision    : false,
     readOnly     : false,
-    round        : { down: .25, full: .6, up: .76 },
+    round        : { down: 0.25, full: 0.6, up: 0.76 },
     score        : undefined,
     scoreName    : 'score',
     single       : false,
-    size         : 16,
     space        : true,
     starHalf     : 'star-half.png',
     starOff      : 'star-off.png',
@@ -621,8 +754,7 @@
     targetKeep   : false,
     targetScore  : undefined,
     targetText   : '',
-    targetType   : 'hint',
-    width        : undefined
+    targetType   : 'hint'
   };
 
 })(jQuery);
