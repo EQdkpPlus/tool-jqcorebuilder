@@ -2,7 +2,7 @@
   "name": "eqdkp-plus",
   "title": "Eqdkp-Plus",
   "description": "The gamer CMS and DKP System",
-  "version": "1.1.0pre",
+  "version": "2.0.0",
   "homepage": "http://eqdkp-plus.com",
   "author": {
     "name": "Eqdkp-Plus dev team",
@@ -23,7 +23,11 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.4.0"
+    "grunt": "~0.4.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-css": "^0.5.4"
   },
   "keywords": []
 }
