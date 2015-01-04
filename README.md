@@ -24,7 +24,6 @@ jquery.spectrum  | http://plugins.jquery.com/spectrum/
 jquery.toolbar  | http://plugins.jquery.com/toolbar/
 jquery.raty  | https://github.com/wbotelhos/raty
 jquery.nestedsortable  | https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha, 	https://github.com/ilikenwf/nestedSortable
-jquery.stackable  | https://github.com/johnpolacek/stacktable.js
 
 compile core
 ------------------
