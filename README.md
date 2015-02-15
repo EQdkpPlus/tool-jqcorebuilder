@@ -14,14 +14,14 @@ jquery.collapser  | own
 jquery.rssreader  | customized
 jquery.superfish  | http://users.tpg.com.au/j_birch/plugins/superfish/
 jquery.timepicker  | http://trentrichardson.com/examples/timepicker/
-jquery.multiselect  | http://www.erichynds.com/jquery/jquery-ui-multiselect-wizget/
+jquery.multiselect  | http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/
 jquery.multiselect.filter  | http://www.erichynds.com/examples/jquery-ui-multiselect-widget/demos/index.htm#filter
 jquery.ui.framedialog  | http://plugins.jquery.com/project/jquery-framedialog
 jquery.qtip2  | http://craigsworks.com/projects/qtip2/
 jquery.eqdualheight  | http://www.cssnewbie.com/equalheights-jquery-plugin/
-jquery.colorbox  | http://plugins.jquery.com/colorbox/
-jquery.spectrum  | http://plugins.jquery.com/spectrum/
-jquery.toolbar  | http://plugins.jquery.com/toolbar/
+jquery.colorbox  | https://github.com/jackmoore/colorbox
+jquery.spectrum  | https://github.com/bgrins/spectrum
+jquery.toolbar  | https://github.com/paulkinzett/toolbar
 jquery.raty  | https://github.com/wbotelhos/raty
 jquery.nestedsortable  | https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha, 	https://github.com/ilikenwf/nestedSortable
 
