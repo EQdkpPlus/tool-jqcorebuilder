@@ -35879,7 +35879,7 @@ function log() {
 				parentItem.after(this.placeholder[0]);
 				helperIsNotSibling = !parentItem
 											.children(o.listItem)
-											.children("li:visible:not(.ui-sortable-helper")
+											.children("li:visible:not(.ui-sortable-helper)")
 											.length;
 				if (o.isTree && helperIsNotSibling) {
 					parentItem
@@ -41647,7 +41647,7 @@ $.extend(TRUE, QTIP.defaults, {
 		return d
 	}
 })(jQuery);
-// Spectrum Colorpicker v1.6.0
+// Spectrum Colorpicker v1.6.1
 // https://github.com/bgrins/spectrum
 // Author: Brian Grinstead
 // License: MIT
@@ -42008,6 +42008,10 @@ $.extend(TRUE, QTIP.defaults, {
             chooseButton.bind("click.spectrum", function (e) {
                 e.stopPropagation();
                 e.preventDefault();
+
+                if (IE && textInput.is(":focus")) {
+                    textInput.trigger('change');
+                }
 
                 if (isValid()) {
                     updateOriginalInput(true);
@@ -42821,7 +42825,7 @@ $.extend(TRUE, QTIP.defaults, {
         }
     };
 
-    // TinyColor v1.1.1
+    // TinyColor v1.1.2
     // https://github.com/bgrins/TinyColor
     // Brian Grinstead, MIT License
 
@@ -42836,7 +42840,7 @@ $.extend(TRUE, QTIP.defaults, {
         mathMax = math.max,
         mathRandom = math.random;
 
-    var tinycolor = function tinycolor (color, opts) {
+    var tinycolor = function(color, opts) {
 
         color = (color) ? color : '';
         opts = opts || { };
@@ -43925,7 +43929,6 @@ $.extend(TRUE, QTIP.defaults, {
 
     window.tinycolor = tinycolor;
     })();
-
 
     $(function () {
         if ($.fn.spectrum.load) {
