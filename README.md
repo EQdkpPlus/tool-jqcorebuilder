@@ -14,7 +14,7 @@ jquery.collapser  | own
 jquery.rssreader  | customized
 jquery.superfish  | http://users.tpg.com.au/j_birch/plugins/superfish/
 jquery.timepicker  | http://trentrichardson.com/examples/timepicker/
-jquery.multiselect  | http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/
+jquery.multiselect  | http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/, https://github.com/gs-akhan/jquery-ui-multiselect-widget
 jquery.multiselect.filter  | http://www.erichynds.com/examples/jquery-ui-multiselect-widget/demos/index.htm#filter
 jquery.ui.framedialog  | http://plugins.jquery.com/project/jquery-framedialog
 jquery.qtip2  | http://craigsworks.com/projects/qtip2/
