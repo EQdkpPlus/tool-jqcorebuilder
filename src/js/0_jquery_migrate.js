@@ -1,7 +1,6 @@
 /*!
- * jQuery Migrate - v1.2.1 - 2013-05-08
- * https://github.com/jquery/jquery-migrate
- * Copyright 2005, 2013 jQuery Foundation, Inc. and other contributors; Licensed MIT
+ * jQuery Migrate - v1.2.2-pre - 2015-08-10
+ * Copyright jQuery Foundation and other contributors
  */
 (function( jQuery, window, undefined ) {
 // See http://bugs.jquery.com/ticket/13335
@@ -190,22 +189,24 @@ jQuery.attrHooks.value = {
 var matched, browser,
 	oldInit = jQuery.fn.init,
 	oldParseJSON = jQuery.parseJSON,
+	rspaceAngle = /^\s*</,
 	// Note: XSS check is done below after string is trimmed
 	rquickExpr = /^([^<]*)(<[\w\W]+>)([^>]*)$/;
 
 // $(html) "looks like html" rule change
 jQuery.fn.init = function( selector, context, rootjQuery ) {
-	var match;
+	var match, ret;
 
 	if ( selector && typeof selector === "string" && !jQuery.isPlainObject( context ) &&
 			(match = rquickExpr.exec( jQuery.trim( selector ) )) && match[ 0 ] ) {
 		// This is an HTML string according to the "old" rules; is it still?
-		if ( selector.charAt( 0 ) !== "<" ) {
+		if ( !rspaceAngle.test( selector ) ) {
 			migrateWarn("$(html) HTML strings must start with '<' character");
 		}
 		if ( match[ 3 ] ) {
 			migrateWarn("$(html) HTML text after last tag is ignored");
 		}
+
 		// Consistently reject any HTML-like string starting with a hash (#9521)
 		// Note that this may break jQuery 1.6.x code that otherwise would work.
 		if ( match[ 0 ].charAt( 0 ) === "#" ) {
@@ -218,17 +219,40 @@ jQuery.fn.init = function( selector, context, rootjQuery ) {
 			context = context.context;
 		}
 		if ( jQuery.parseHTML ) {
-			return oldInit.call( this, jQuery.parseHTML( match[ 2 ], context, true ),
+			return oldInit.call( this,
+					jQuery.parseHTML( match[ 2 ], context && context.ownerDocument || context, true ),
 					context, rootjQuery );
 		}
 	}
-	return oldInit.apply( this, arguments );
+
+	// jQuery( "#" ) is a bogus ID selector, but it returned an empty set before jQuery 3.0
+	if ( selector === "#" ) {
+		migrateWarn( "jQuery( '#' ) is not a valid selector" );
+		selector = [];
+	}
+
+	ret = oldInit.apply( this, arguments );
+
+	// Fill in selector and context properties so .live() works
+	if ( selector && selector.selector !== undefined ) {
+		// A jQuery object, copy its properties
+		ret.selector = selector.selector;
+		ret.context = selector.context;
+
+	} else {
+		ret.selector = typeof selector === "string" ? selector : "";
+		if ( selector ) {
+			ret.context = selector.nodeType? selector : context || document;
+		}
+	}
+
+	return ret;
 };
 jQuery.fn.init.prototype = jQuery.fn;
 
 // Let $.parseJSON(falsy_value) return null
 jQuery.parseJSON = function( json ) {
-	if ( !json && json !== null ) {
+	if ( !json ) {
 		migrateWarn("jQuery.parseJSON requires a valid JSON string");
 		return null;
 	}
@@ -274,6 +298,11 @@ if ( !jQuery.browser ) {
 // Warn if the code tries to get jQuery.browser
 migrateWarnProp( jQuery, "browser", jQuery.browser, "jQuery.browser is deprecated" );
 
+// jQuery.boxModel deprecated in 1.3, jQuery.support.boxModel deprecated in 1.7
+jQuery.boxModel = jQuery.support.boxModel = (document.compatMode === "CSS1Compat");
+migrateWarnProp( jQuery, "boxModel", jQuery.boxModel, "jQuery.boxModel is deprecated" );
+migrateWarnProp( jQuery.support, "boxModel", jQuery.support.boxModel, "jQuery.support.boxModel is deprecated" );
+
 jQuery.sub = function() {
 	function jQuerySub( selector, context ) {
 		return new jQuerySub.fn.init( selector, context );
@@ -284,16 +313,66 @@ jQuery.sub = function() {
 	jQuerySub.fn.constructor = jQuerySub;
 	jQuerySub.sub = this.sub;
 	jQuerySub.fn.init = function init( selector, context ) {
-		if ( context && context instanceof jQuery && !(context instanceof jQuerySub) ) {
-			context = jQuerySub( context );
-		}
-
-		return jQuery.fn.init.call( this, selector, context, rootjQuerySub );
+		var instance = jQuery.fn.init.call( this, selector, context, rootjQuerySub );
+		return instance instanceof jQuerySub ?
+			instance :
+			jQuerySub( instance );
 	};
 	jQuerySub.fn.init.prototype = jQuerySub.fn;
 	var rootjQuerySub = jQuerySub(document);
 	migrateWarn( "jQuery.sub() is deprecated" );
 	return jQuerySub;
+};
+
+// The number of elements contained in the matched element set
+jQuery.fn.size = function() {
+	migrateWarn( "jQuery.fn.size() is deprecated; use the .length property" );
+	return this.length;
+};
+
+
+var internalSwapCall = false;
+
+// If this version of jQuery has .swap(), don't false-alarm on internal uses
+if ( jQuery.swap ) {
+	jQuery.each( [ "height", "width", "reliableMarginRight" ], function( _, name ) {
+		var oldHook = jQuery.cssHooks[ name ] && jQuery.cssHooks[ name ].get;
+
+		if ( oldHook ) {
+			jQuery.cssHooks[ name ].get = function() {
+				var ret;
+
+				internalSwapCall = true;
+				ret = oldHook.apply( this, arguments );
+				internalSwapCall = false;
+				return ret;
+			};
+		}
+	});
+}
+
+jQuery.swap = function( elem, options, callback, args ) {
+	var ret, name,
+		old = {};
+
+	if ( !internalSwapCall ) {
+		migrateWarn( "jQuery.swap() is undocumented and deprecated" );
+	}
+
+	// Remember the old values, and insert the new ones
+	for ( name in options ) {
+		old[ name ] = elem.style[ name ];
+		elem.style[ name ] = options[ name ];
+	}
+
+	ret = callback.apply( elem, args || [] );
+
+	// Revert the old values
+	for ( name in options ) {
+		elem.style[ name ] = old[ name ];
+	}
+
+	return ret;
 };
 
 
@@ -324,13 +403,7 @@ jQuery.fn.data = function( name ) {
 };
 
 
-var rscriptType = /\/(java|ecma)script/i,
-	oldSelf = jQuery.fn.andSelf || jQuery.fn.addBack;
-
-jQuery.fn.andSelf = function() {
-	migrateWarn("jQuery.fn.andSelf() replaced by jQuery.fn.addBack()");
-	return oldSelf.apply( this, arguments );
-};
+var rscriptType = /\/(java|ecma)script/i;
 
 // Since jQuery.clean is used internally on older versions, we only shim if it's missing
 if ( !jQuery.clean ) {
@@ -517,5 +590,88 @@ jQuery.each( ajaxEvents.split("|"),
 	}
 );
 
+var oldSelf = jQuery.fn.andSelf || jQuery.fn.addBack,
+	oldFind = jQuery.fn.find;
+
+jQuery.fn.andSelf = function() {
+	migrateWarn("jQuery.fn.andSelf() replaced by jQuery.fn.addBack()");
+	return oldSelf.apply( this, arguments );
+};
+
+jQuery.fn.find = function( selector ) {
+	var ret = oldFind.apply( this, arguments );
+	ret.context = this.context;
+	ret.selector = this.selector ? this.selector + " " + selector : selector;
+	return ret;
+};
+
+
+// jQuery 1.6 did not support Callbacks, do not warn there
+if ( jQuery.Callbacks ) {
+
+	var oldDeferred = jQuery.Deferred,
+		tuples = [
+			// action, add listener, callbacks, .then handlers, final state
+			[ "resolve", "done", jQuery.Callbacks("once memory"),
+				jQuery.Callbacks("once memory"), "resolved" ],
+			[ "reject", "fail", jQuery.Callbacks("once memory"),
+				jQuery.Callbacks("once memory"), "rejected" ],
+			[ "notify", "progress", jQuery.Callbacks("memory"),
+				jQuery.Callbacks("memory") ]
+		];
+
+	jQuery.Deferred = function( func ) {
+		var deferred = oldDeferred(),
+			promise = deferred.promise();
+
+		deferred.pipe = promise.pipe = function( /* fnDone, fnFail, fnProgress */ ) {
+			var fns = arguments;
+
+			migrateWarn( "deferred.pipe() is deprecated" );
+
+			return jQuery.Deferred(function( newDefer ) {
+				jQuery.each( tuples, function( i, tuple ) {
+					var fn = jQuery.isFunction( fns[ i ] ) && fns[ i ];
+					// deferred.done(function() { bind to newDefer or newDefer.resolve })
+					// deferred.fail(function() { bind to newDefer or newDefer.reject })
+					// deferred.progress(function() { bind to newDefer or newDefer.notify })
+					deferred[ tuple[1] ](function() {
+						var returned = fn && fn.apply( this, arguments );
+						if ( returned && jQuery.isFunction( returned.promise ) ) {
+							returned.promise()
+								.done( newDefer.resolve )
+								.fail( newDefer.reject )
+								.progress( newDefer.notify );
+						} else {
+							newDefer[ tuple[ 0 ] + "With" ](
+								this === promise ? newDefer.promise() : this,
+								fn ? [ returned ] : arguments
+							);
+						}
+					});
+				});
+				fns = null;
+			}).promise();
+
+		};
+
+		deferred.isResolved = function() {
+			migrateWarn( "deferred.isResolved is deprecated" );
+			return deferred.state() === "resolved";
+		};
+
+		deferred.isRejected = function() {
+			migrateWarn( "deferred.isRejected is deprecated" );
+			return deferred.state() === "rejected";
+		};
+
+		if ( func ) {
+			func.call( deferred, deferred );
+		}
+
+		return deferred;
+	};
+
+}
 
 })( jQuery, window );
