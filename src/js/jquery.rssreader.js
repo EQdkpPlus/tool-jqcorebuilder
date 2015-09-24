@@ -14,6 +14,7 @@
 		if (!j.targeturl) return false;
 		var l = $.extend(k, j);
 		var m = (/MSIE/.test(navigator.userAgent));
+		var df = mmocms_user_dateformat_long + ', '+mmocms_user_timeformat;
 
 		if (m) {
 			$(container).ajaxStart(function () {
@@ -48,6 +49,8 @@
 						if (i > e - 1) return;
 						var a = $(this).find('title').text();
 						var b = $(this).find('pubDate').text();
+						var mymo = moment(new Date(b)).utcOffset(mmocms_user_timezone);
+						b = mymo.format(df);
 						var c = $(this).find('link').text();
 						var d = $(this).find('description').text();
 						$('<a href="' + c + '">' + a + '</a>').html(a).appendTo(container);
@@ -63,6 +66,8 @@
 						if (i > e - 1) return;
 						var a = $(this).find('title').text();
 						var b = $(this).find('published').text();
+						var mymo = moment(new Date(b)).utcOffset(mmocms_user_timezone);
+						b = mymo.format(df);
 						var c = $(this).find('link').attr('href');
 						var d = $(this).find('summary').text();
 						$('<a href="' + c + '">' + a + '</a>').html(a).appendTo(container);
@@ -109,6 +114,8 @@
 							if (i > e - 1) return;
 							var a = $(this).find('title').text();
 							var b = $(this).find('pubDate').text();
+							var mymo = moment(new Date(b)).utcOffset(mmocms_user_timezone);
+							b = mymo.format(df);
 							var c = $(this).find('link').text();
 							var d = $(this).find('description').text();
 							$('<a class="targetblank" href="' + c + '">' + a + '</a>').html(a).appendTo(container);
@@ -124,6 +131,8 @@
 							if (i > e - 1) return;
 							var a = $(this).find('title').text();
 							var b = $(this).find('published').text();
+							var mymo = moment(new Date(b)).utcOffset(mmocms_user_timezone);
+							b = mymo.format(df);
 							var c = $(this).find('link').attr('href');
 							var d = $(this).find('summary').text();
 							$('<a href="' + c + '">' + a + '</a>').html(a).appendTo(container);
