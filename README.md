@@ -24,6 +24,7 @@ jquery.spectrum  | https://github.com/bgrins/spectrum
 jquery.toolbar  | https://github.com/paulkinzett/toolbar
 jquery.raty  | https://github.com/wbotelhos/raty
 jquery.nestedsortable  | https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha, 	https://github.com/ilikenwf/nestedSortable
+jquery.easydropdown  | https://github.com/patrickkunka/easydropdown
 
 compile core
 ------------------
@@ -56,7 +57,6 @@ Plugins are loaded in the dev version of eqdkp-pkus only (uncompressed core, deb
 Plugin name  | URL
 ------------- | -------------
 jquery.migrate  | http://plugins.jquery.com/migrate/
-jquery.easydropdown  | https://github.com/patrickkunka/easydropdown
 
 to be replaced
 ------------------
