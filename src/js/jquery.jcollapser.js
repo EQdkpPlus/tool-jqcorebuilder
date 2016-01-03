@@ -1,7 +1,7 @@
 /*!
  * jQuery Collapser 2.0.0
  *
- * Copyright (c) 2010 - 2014 Simon "Wallenium" Wallmann
+ * Copyright (c) 2010 - 2016 Simon "Wallenium" Wallmann
  * Licensed under the LGPL license.
  * http://docs.jquery.com/License
  *
@@ -21,11 +21,19 @@
 				persistence		: true,
 			}
 			
+			var hasLocalstorage = function(){
+				try {
+					return ('localStorage' in window) && window[localstorage] !== null;
+				} catch(e) {
+					return false;
+				}
+			}
+			
 			var debug			= true;
 			var options 		= $.extend(defaults, options);
 			var o				= options;
 			var n_persistence	= 'jcollapser.' + this.attr("id");
-			var state			= localStorage.getItem(n_persistence);
+			var state			= (hasLocalstorage()) ? localStorage.getItem(n_persistence) : false;
 			var container		= this;
 			state				= (state) ? state : options.state;
 			
@@ -45,10 +53,10 @@
 				$('.toggle_container', container).slideToggle("slow", function() {
 				if(options.persistence){
 					if($('.toggle_container', container).is(":visible")){
-							localStorage.setItem(n_persistence, 'active');
+						if(hasLocalstorage()) localStorage.setItem(n_persistence, 'active');
 					}else{
 						//localStorage.setItem(n_persistence, null);
-						localStorage.setItem(n_persistence, 'inactive');
+						if(hasLocalstorage()) localStorage.setItem(n_persistence, 'inactive');
 					}
 				}
 			  });
