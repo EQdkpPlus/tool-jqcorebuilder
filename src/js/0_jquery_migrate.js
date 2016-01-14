@@ -1,10 +1,13 @@
 /*!
- * jQuery Migrate - v1.2.2-pre - 2015-08-10
+ * jQuery Migrate - v1.3.0 - 2016-01-13
  * Copyright jQuery Foundation and other contributors
  */
 (function( jQuery, window, undefined ) {
 // See http://bugs.jquery.com/ticket/13335
 // "use strict";
+
+
+jQuery.migrateVersion = "1.3.0";
 
 
 var warnedAbout = {};
@@ -151,7 +154,7 @@ jQuery.attr = function( elem, name, value, pass ) {
 
 		// Warn only for attributes that can remain distinct from their properties post-1.9
 		if ( ruseDefault.test( lowerName ) ) {
-			migrateWarn( "jQuery.fn.attr('" + lowerName + "') may use property instead of attribute" );
+			migrateWarn( "jQuery.fn.attr('" + lowerName + "') might use property instead of attribute" );
 		}
 	}
 
@@ -220,8 +223,8 @@ jQuery.fn.init = function( selector, context, rootjQuery ) {
 		}
 		if ( jQuery.parseHTML ) {
 			return oldInit.call( this,
-					jQuery.parseHTML( match[ 2 ], context && context.ownerDocument || context, true ),
-					context, rootjQuery );
+					jQuery.parseHTML( match[ 2 ], context && context.ownerDocument ||
+						context || document, true ), context, rootjQuery );
 		}
 	}
 
@@ -461,6 +464,7 @@ var eventAdd = jQuery.event.add,
 	oldToggle = jQuery.fn.toggle,
 	oldLive = jQuery.fn.live,
 	oldDie = jQuery.fn.die,
+	oldLoad = jQuery.fn.load,
 	ajaxEvents = "ajaxStart|ajaxStop|ajaxSend|ajaxComplete|ajaxError|ajaxSuccess",
 	rajaxEvent = new RegExp( "\\b(?:" + ajaxEvents + ")\\b" ),
 	rhoverHack = /(?:^|\s)hover(\.\S+|)\b/,
@@ -495,17 +499,34 @@ jQuery.event.remove = function( elem, types, handler, selector, mappedTypes ){
 	eventRemove.call( this, elem, hoverHack( types ) || "", handler, selector, mappedTypes );
 };
 
-jQuery.fn.error = function() {
-	var args = Array.prototype.slice.call( arguments, 0);
-	migrateWarn("jQuery.fn.error() is deprecated");
-	args.splice( 0, 0, "error" );
-	if ( arguments.length ) {
-		return this.bind.apply( this, args );
-	}
-	// error event should not bubble to window, although it does pre-1.7
-	this.triggerHandler.apply( this, args );
-	return this;
-};
+jQuery.each( [ "load", "unload", "error" ], function( _, name ) {
+
+	jQuery.fn[ name ] = function() {
+		var args = Array.prototype.slice.call( arguments, 0 );
+		migrateWarn( "jQuery.fn." + name + "() is deprecated" );
+
+		// If this is an ajax load() the first arg should be the string URL;
+		// technically this could also be the "Anything" arg of the event .load()
+		// which just goes to show why this dumb signature has been deprecated!
+		// jQuery custom builds that exclude the Ajax module justifiably die here.
+		if ( name === "load" && typeof arguments[ 0 ] === "string" ) {
+			return oldLoad.apply( this, arguments );
+		}
+
+		args.splice( 0, 0, name );
+		if ( arguments.length ) {
+			return this.bind.apply( this, args );
+		}
+
+		// Use .triggerHandler here because:
+		// - load and unload events don't need to bubble, only applied to window or image
+		// - error event should not bubble to window, although it does pre-1.7
+		// See http://bugs.jquery.com/ticket/11820
+		this.triggerHandler.apply( this, args );
+		return this;
+	};
+
+});
 
 jQuery.fn.toggle = function( fn, fn2 ) {
 
@@ -574,7 +595,7 @@ jQuery.each( ajaxEvents.split("|"),
 				// The document needs no shimming; must be !== for oldIE
 				if ( elem !== document ) {
 					jQuery.event.add( document, name + "." + jQuery.guid, function() {
-						jQuery.event.trigger( name, null, elem, true );
+						jQuery.event.trigger( name, Array.prototype.slice.call( arguments, 1 ), elem, true );
 					});
 					jQuery._data( this, name, jQuery.guid++ );
 				}
@@ -589,6 +610,10 @@ jQuery.each( ajaxEvents.split("|"),
 		};
 	}
 );
+
+jQuery.event.special.ready = {
+	setup: function() { migrateWarn( "'ready' event is deprecated" ); }
+};
 
 var oldSelf = jQuery.fn.andSelf || jQuery.fn.addBack,
 	oldFind = jQuery.fn.find;
