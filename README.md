@@ -51,6 +51,7 @@ jquery.jqplot  | http://www.jqplot.com
 jquery.fullcalendar  | http://arshaw.com/fullcalendar/
 jquery.placepicker  | https://github.com/benignware/jquery-placepicker
 gmaps  | https://github.com/hpneo/gmaps
+jquery.circles  | https://github.com/lugolabs/circles
 
 only for dev versions
 ------------------

@@ -7,6 +7,12 @@ module.exports = function(grunt) {
 		build: {
 			eqdkppath: '/Users/swallmann/Sites/eqdkp'
 		},
+		curl: {
+			'src/plugins/circles/circles.min.js': 'https://github.com/lugolabs/circles/raw/master/circles.min.js',
+			'src/plugins/gmaps/gmaps.min.js': 'https://github.com/hpneo/gmaps/raw/master/gmaps.min.js',
+			'src/plugins/gmaps/gmaps.min.js.map': 'https://github.com/hpneo/gmaps/raw/master/gmaps.min.js.map',
+			'src/plugins/placepicker/jquery.placepicker.min.js': 'https://github.com/benignware/jquery-placepicker/raw/master/dist/js/jquery.placepicker.min.js'
+		}
 		concat: {
 			js: {
 				src: 'src/js/*.js',
@@ -42,6 +48,7 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'src/plugins/fullcalendar/', src: ['fullcalendar.min.js', 'lang-all.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/'},
 					{expand: true, cwd: 'src/plugins/gmaps/', src: ['gmaps.min.js', 'gmaps.min.js.map'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/gmaps/'},
 					{expand: true, cwd: 'src/plugins/placepicker/', src: ['jquery.placepicker.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/placepicker/'},
+					{expand: true, cwd: 'src/plugins/circles/', src: ['jquery.circles.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/circles/'},
 					{expand: true, cwd: 'src/plugins/jqplot/', src: ['jjqplot.canvasAxisTickRenderer.min.js','jqplot.canvasTextRenderer.min.js','jqplot.categoryAxisRenderer.min.js','jqplot.dateAxisRenderer.min.js','jqplot.highlighter.min.js','jqplot.mobile.min.js','jqplot.pieRenderer.min.js','jquery.jqplot.min.js','jquery.jqplot.css'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/jqplot/'},
 					{expand: true, cwd: 'dist/', src: ["core.js", "core.min.js", "core.css", "core.min.css"], dest: "<%= build.eqdkppath %>/libraries/jquery/core/"},
 					{expand: true, cwd: 'src/fullcalendar/', src: ["fullcalendar.print.css"], dest: "<%= build.eqdkppath %>/templates/"},
@@ -69,4 +76,7 @@ module.exports = function(grunt) {
 
 	// build the template files
 	grunt.registerTask('template', ['copy:templates']);
+	
+	// build the template files
+	grunt.registerTask('pluginupdate', ['curl']);
 };
