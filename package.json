@@ -1,34 +1,31 @@
 {
-	"name": "eqdkp-plus",
-	"title": "Eqdkp-Plus",
-	"description": "The gamer CMS and DKP System",
-	"version": "3.0.0",
-	"homepage": "http://eqdkp-plus.com",
-	"author": {
-		"name": "Eqdkp-Plus dev team",
-		"url": "http://eqdkp-plus.com"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/jquery/jquery.git"
-	},
-	"bugs": {
-		"url": "http://eqdkp-plus.eu/bugtracker"
-	},
-	"licenses": [
-		{
-			"type": "NU Affero General Public License",
-			"url": "http://www.gnu.org/licenses/agpl-3.0.html"
-		}
-	],
-	"dependencies": {},
-	"devDependencies": {
-		"grunt": "~0.4.0",
-		"grunt-contrib-concat": "^0.5.0",
-		"grunt-contrib-copy": "^0.5.0",
-		"grunt-contrib-uglify": "^0.5.1",
-		"grunt-css": "^0.5.4",
-		"grunt-curl": "^2.1.0"
-	},
-	"keywords": []
+  "name": "eqdkp-plus",
+  "title": "Eqdkp-Plus",
+  "description": "The gamer CMS and DKP System",
+  "version": "3.0.0",
+  "homepage": "http://eqdkp-plus.com",
+  "author": {
+    "name": "Eqdkp-Plus dev team",
+    "url": "http://eqdkp-plus.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jquery/jquery.git"
+  },
+  "bugs": {
+    "url": "http://eqdkp-plus.eu/bugtracker"
+  },
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "lodash": "^4.3.0"
+  },
+  "devDependencies": {
+    "grunt": "~0.4.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.5.0",
+    "grunt-contrib-uglify": "^0.5.1",
+    "grunt-css": "^0.5.4",
+    "grunt-curl": "^2.1.0"
+  },
+  "keywords": []
 }
