@@ -12,7 +12,7 @@ module.exports = function(grunt) {
 			'src/plugins/gmaps/gmaps.min.js': 'https://github.com/hpneo/gmaps/raw/master/gmaps.min.js',
 			'src/plugins/gmaps/gmaps.min.js.map': 'https://github.com/hpneo/gmaps/raw/master/gmaps.min.js.map',
 			'src/plugins/placepicker/jquery.placepicker.min.js': 'https://github.com/benignware/jquery-placepicker/raw/master/dist/js/jquery.placepicker.min.js'
-		}
+		},
 		concat: {
 			js: {
 				src: 'src/js/*.js',
