@@ -6,7 +6,7 @@ core.js content
 ------------------
 The following plugins are compiled to the core.js file
 Plugin name  | Version | URL
-------------- | -------------
+------------- | ----- | -------------
 jquery | 2.2.0 | http://www.jquery.com
 jquery.ui | 1.12.0 Beta 1 | http://www.jqueryui.com
 moment.js | 2.11.2 | http://momentjs.com
@@ -47,7 +47,7 @@ own plugins in core
 These pugins are not compiled into the core.js, they are moved to single folders and included on the pages using the plugin. If the plugin should be available globally, it must be compiled in the core.
 
 Plugin name  | plugin | URL
-------------- | -------------
+------------- | ----- | -------------
 jquery.jqplot | core | http://www.jqplot.com
 jquery.fullcalendar | core/calendar | http://arshaw.com/fullcalendar/
 jquery.placepicker | core/calendar | https://github.com/benignware/jquery-placepicker
@@ -60,7 +60,7 @@ modules with dependency to jquery or jqueryUI
 The following independent javascript programmes/modules have dependencies with jQuery or jQueryUI and needs to be tested before upgrading one of these two.
 
 Plugin name  | Version | URL
-------------- | -------------
+------------- | ----- | -------------
 elFinder  | 2.1 tree | https://github.com/Studio-42/elFinder
 tinyMCE | 4.3.x | https://www.tinymce.com
 openid-selector | 1.3 | https://code.google.com/archive/p/openid-selector/
@@ -70,7 +70,7 @@ only for dev versions
 Plugins are loaded in the dev version of eqdkp-pkus only (uncompressed core, debug mode enabled)
 
 Plugin name | Version | URL
-------------- | -------------
+------------- | ----- | -------------
 jquery.migrate | 1.3.0 | http://plugins.jquery.com/migrate/
 
 to be replaced
@@ -78,5 +78,5 @@ to be replaced
 These plugins are currently used, but will be substituted in a future version of Eqdkp-Plus
 
 Plugin name | Version | URL
-------------- | -------------
+------------- | ----- | -------------
 jquery.notify | 1.5 | https://github.com/ehynds/jquery-notify
