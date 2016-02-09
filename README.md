@@ -25,7 +25,7 @@ jquery | 2.2.0 | http://www.jquery.com
 jquery.ui | 1.12.0 Beta 1 | http://www.jqueryui.com
 moment.js | 2.11.2 | http://momentjs.com
 jquery.form	| 3.51.0 | http://jquery.malsup.com/form/
-jquery.collapser | 2.0.0 | own
+jquery.collapser | 2.0.0 | https://github.com/EQdkpPlus/jquery.jcollapser
 jquery.rssreader | 1.0.0 | customized
 jquery.superfish | 1.7.7 | http://users.tpg.com.au/j_birch/plugins/superfish/
 jquery.timepicker | 1.6.1 | http://trentrichardson.com/examples/timepicker/
