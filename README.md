@@ -4,9 +4,14 @@ The single jQuery plugins and the jQuery core and the grunt combination & minifi
 
 Contents
 --------
-* [core.js](#branches)
-* [compile](#features)
-* [Plugins](#requirements)
+* [core.js](#corejs)
+* [Standalone jQuery Plugins](#standalone-plugins)
+* [Modules with dependency to core](#modules-with-dependency-to-jquery)
+* [jQuery Plugins in debug mode](#only-for-dev-versions)
+
+* [jQuery Plugins TBR](#to-be-replaced)
+* [compile JS core](#compilation-of-js-core)
+* [Compile templates](#compilation-of-jqueryui-templates)
 * [Authors](#authors)
 
 Javascript core
@@ -37,7 +42,7 @@ jquery.raty | 2.7.0 | https://github.com/wbotelhos/raty
 jquery.nestedsortable | nightly | https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha, 	https://github.com/ilikenwf/nestedSortable
 jquery.easydropdown | nightly | https://github.com/patrickkunka/easydropdown
 
-### own plugins in core
+### standalone plugins
 These pugins are not compiled into the core.js, they are moved to single folders and included on the pages using the plugin. If the plugin should be available globally, it must be compiled in the core.
 
 Plugin name  | plugin | URL
