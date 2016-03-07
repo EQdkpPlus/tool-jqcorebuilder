@@ -21,9 +21,9 @@ The following plugins are compiled to the core.js file
 
 Plugin name  | Version | URL
 ------------- | ----- | -------------
-jquery | 2.2.0 | http://www.jquery.com
+jquery | 2.2.1 | http://www.jquery.com
 jquery.ui | 1.12.0 Beta 1 | http://www.jqueryui.com
-moment.js | 2.11.2 | http://momentjs.com
+moment.js | 2.12.0 | http://momentjs.com
 jquery.form	| 3.51.0 | http://jquery.malsup.com/form/
 jquery.collapser | 2.0.0 | https://github.com/EQdkpPlus/jquery.jcollapser
 jquery.rssreader | 1.0.0 | customized
@@ -44,14 +44,14 @@ jquery.easydropdown | nightly | https://github.com/patrickkunka/easydropdown
 ### standalone plugins
 These pugins are not compiled into the core.js, they are moved to single folders and included on the pages using the plugin. If the plugin should be available globally, it must be compiled in the core.
 
-Plugin name  | plugin | URL
+Plugin name  | plugin | version | URL
 ------------- | ----- | -------------
-jquery.jqplot | core | http://www.jqplot.com
-jquery.fullcalendar | core/calendar | http://arshaw.com/fullcalendar/
-jquery.placepicker | core/calendar | https://github.com/benignware/jquery-placepicker
-gmaps | core/calendar | https://github.com/hpneo/gmaps
-jquery.circles | core/admin | https://github.com/lugolabs/circles
-jquery.jcrop | plugin/mediacenter | https://github.com/tapmodo/Jcrop
+jquery.jqplot | core | 1.0.8 | http://www.jqplot.com
+jquery.fullcalendar | core/calendar | 2.6.1 | http://arshaw.com/fullcalendar/
+jquery.placepicker | core/calendar | 0.0.2 | https://github.com/benignware/jquery-placepicker
+gmaps | core/calendar | 0.4.22 | https://github.com/hpneo/gmaps
+jquery.circles | core/admin | 0.0.6 | https://github.com/lugolabs/circles
+jquery.jcrop | plugin/mediacenter | 2.0.4 | https://github.com/tapmodo/Jcrop
 
 ### modules with dependency to jquery or jqueryUI
 The following independent javascript programmes/modules have dependencies with jQuery or jQueryUI and needs to be tested before upgrading one of these two.
@@ -67,7 +67,7 @@ Plugins are loaded in the dev version of eqdkp-pkus only (uncompressed core, deb
 
 Plugin name | Version | URL
 ------------- | ----- | -------------
-jquery.migrate | 1.3.0 | http://plugins.jquery.com/migrate/
+jquery.migrate | 1.4.0 | https://github.com/jquery/jquery-migrate
 
 ### to be replaced
 These plugins are currently used, but will be substituted in a future version of Eqdkp-Plus
