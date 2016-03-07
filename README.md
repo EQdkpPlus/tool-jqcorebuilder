@@ -45,7 +45,7 @@ jquery.easydropdown | nightly | https://github.com/patrickkunka/easydropdown
 These pugins are not compiled into the core.js, they are moved to single folders and included on the pages using the plugin. If the plugin should be available globally, it must be compiled in the core.
 
 Plugin name  | plugin | version | URL
-------------- | ----- | -------------
+------------- | ----- | ----- | -------------
 jquery.jqplot | core | 1.0.8 | http://www.jqplot.com
 jquery.fullcalendar | core/calendar | 2.6.1 | http://arshaw.com/fullcalendar/
 jquery.placepicker | core/calendar | 0.0.2 | https://github.com/benignware/jquery-placepicker
