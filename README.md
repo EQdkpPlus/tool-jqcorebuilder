@@ -76,6 +76,15 @@ Plugin name | Version | URL
 ------------- | ----- | -------------
 jquery.notify | 1.5 | https://github.com/ehynds/jquery-notify
 
+jqueryUI themes
+------------------
+All templates use the jqueryUI theme for styles. The following table contains the links to the themeroller settings for the specific eqdkp-plus template
+
+ Style name | Author | URL
+------------- | ----- | -------------
+eqdkp_modern | Dev team | [Link](http://jqueryui.com/themeroller/#!zThemeParams=5d00000100f705000000000000003d8888d844329a8dfe02723de3e5701fa198449035fc0613ff729a37dd818cf92b1f6938fefa90282d04ae436bb72367f5909357c629e832248af2c086db4ab730aa4cced933a88449eca61db9f7f3b23d47f58a712d809b6088edfb34ad39fdc365386d0fa05a1ac3ecd320d2c989729f79ebdc6c6c1efbdad4c8411d498f009ffe98fe129da7602fb950113abdae4a76a6c41a4b54b4f82bb8821d6d431cd3fdd76b9d621596a2728b93385f2e7aaf8ea6603553343d43829941536e2bdd3ed7d7d3207364bf3516ccea9e4eebfef31b497e9e274a39195797c0ed8e3eebf1418b2e5bfee4e0b3786e6d3e78ec88d79ec74ac3ffb39a81eba9f0efd183c7a130299d99c30a141c9c8f906b4b2bb95ebfc70b1ff50b7cb02d5d9029153d759f9e712c462d02bfc88c1be9cfc0ff9c31caea83a8b1e9f18395ee53e17061b71b50e160876e036c17d8d7f09a37f4f278a18bba187086f141860caf6e7215a4c77b8c4c4c712844bd12d4ce3382dded2270839033d0441522c343361bc636851ed4bc4f87bb430b550d76923f6812361be9fe2e75df0c8f8f466a4d09d887d5c976d61a8043537417a87905939bf5744efee677153c1ce78dd2693bd889b3f468bee09aac3d74e22798ffaab4e880)
+eqdkp_default | Dev team | [Link](http://jqueryui.com/themeroller/?ffDefault=Verdana%2C%20Arial%2C%20sans-serif&fwDefault=normal&fsDefault=1.1em&cornerRadius=6px&bgColorHeader=444444&bgTextureHeader=highlight_soft&bgImgOpacityHeader=44&borderColorHeader=333333&fcHeader=ffffff&iconColorHeader=ffffff&bgColorContent=000000&bgTextureContent=flat&bgImgOpacityContent=0&borderColorContent=555555&fcContent=ffffff&iconColorContent=cccccc&bgColorDefault=222222&bgTextureDefault=highlight_soft&bgImgOpacityDefault=35&borderColorDefault=444444&fcDefault=eeeeee&iconColorDefault=cccccc&bgColorHover=19456b&bgTextureHover=highlight_soft&bgImgOpacityHover=33&borderColorHover=31628e&fcHover=ffffff&iconColorHover=ffffff&bgColorActive=2b6ba1&bgTextureActive=highlight_hard&bgImgOpacityActive=20&borderColorActive=31628e&fcActive=ffffff&iconColorActive=222222&bgColorHighlight=d69038&bgTextureHighlight=highlight_soft&bgImgOpacityHighlight=100&borderColorHighlight=ea1028&fcHighlight=000000&iconColorHighlight=4b8e0b&bgColorError=ffc73d&bgTextureError=glass&bgImgOpacityError=40&borderColorError=ffb73d&fcError=111111&iconColorError=a83300&bgColorOverlay=5c5c5c&bgTextureOverlay=flat&bgImgOpacityOverlay=50&opacityOverlay=80&bgColorShadow=cccccc&bgTextureShadow=flat&bgImgOpacityShadow=30&opacityShadow=60&thicknessShadow=7px&offsetTopShadow=-7px&offsetLeftShadow=-7px&cornerRadiusShadow=8px&ctl=themeroller)
+
 compile core
 ------------------
 To build the query core, [nodeJS](https://nodejs.org) and the javascript task runner [grunt](http://gruntjs.com) is required.
