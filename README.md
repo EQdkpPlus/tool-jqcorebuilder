@@ -23,7 +23,7 @@ The following plugins are compiled to the core.js file
 Plugin name  | Version | URL
 ------------- | ----- | -------------
 jquery | 2.2.1 | http://www.jquery.com
-jquery.ui | 1.12.0 Beta 1 | http://www.jqueryui.com
+jquery.ui | 1.12.0 RC 1 | http://www.jqueryui.com
 moment.js | 2.12.0 | http://momentjs.com
 jquery.form	| 3.51.0 | http://jquery.malsup.com/form/
 jquery.collapser | 2.0.0 | https://github.com/EQdkpPlus/jquery.jcollapser
