@@ -30,7 +30,7 @@ jquery.collapser | 2.0.0 | https://github.com/EQdkpPlus/jquery.jcollapser
 jquery.rssreader | 1.0.0 | customized
 jquery.superfish | 1.7.7 | http://users.tpg.com.au/j_birch/plugins/superfish/
 jquery.timepicker | 1.6.1 | http://trentrichardson.com/examples/timepicker/
-jquery.multiselect | nightly | http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/, https://github.com/gs-akhan/jquery-ui-multiselect-widget
+jquery.multiselect | 1.14 | http://www.erichynds.com/jquery/jquery-ui-multiselect-widget
 jquery.multiselect.filter | nightly | http://www.erichynds.com/examples/jquery-ui-multiselect-widget/demos/index.htm#filter
 jquery.ui.framedialog | custom | http://plugins.jquery.com/project/jquery-framedialog
 jquery.qtip2 | 2.2.1 | http://craigsworks.com/projects/qtip2/

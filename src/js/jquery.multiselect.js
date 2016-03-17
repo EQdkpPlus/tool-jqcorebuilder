@@ -36,17 +36,17 @@
       noneSelectedText: 'Select options',
       selectedText: '# selected',
       selectedList: 0,
-      closeIcon: 'ui-icon ui-icon-circle-close',
       show: null,
       hide: null,
       autoOpen: false,
       multiple: true,
       position: {},
-      appendTo: "body"
+      appendTo: "body",
+      menuWidth:null
     },
 
     _create: function() {
-      var el = this.element.hide();
+      var el = this.element;
       var o = this.options;
 
       this.speed = $.fx.speeds._default; // default speed for effects
@@ -87,7 +87,7 @@
               return '';
             }
           })
-          .append('<li class="ui-multiselect-close"><a href="#" class="ui-multiselect-close"><span class="'+o.closeIcon+'"></span></a></li>')
+          .append('<li class="ui-multiselect-close"><a href="#" class="ui-multiselect-close"><span class="ui-icon ui-icon-circle-close"></span></a></li>')
           .appendTo(header),
 
         checkboxContainer = (this.checkboxContainer = $('<ul />'))
@@ -107,6 +107,7 @@
 
         // bump unique ID
         multiselectID++;
+        el.hide();
     },
 
     _init: function() {
@@ -138,9 +139,9 @@
         var $this = $(this);
         var parent = this.parentNode;
         var description = this.innerHTML;
-        var title = this.title;
+        var title = this.title === "" ? this.textContent : this.title;
         var value = this.value;
-        var inputID = 'ui-multiselect-' + (this.id || id + '-option-' + i);
+        var inputID = 'ui-multiselect-' + multiselectID + '-' + (this.id || id + '-option-' + i);
         var isDisabled = this.disabled;
         var isSelected = this.selected;
         var labelClasses = [ 'ui-corner-all' ];
@@ -153,7 +154,13 @@
 
           // has this optgroup been added already?
           if($.inArray(optLabel, optgroups) === -1) {
-            html += '<li class="ui-multiselect-optgroup-label ' + parent.className + '"><a href="#">' + optLabel + '</a></li>';
+            var optLabelEscaped = optLabel.replace(/&/g, '&amp;')
+              .replace(/>/g, '&gt;')
+              .replace(/</g, '&lt;')
+              .replace(/'/g, '&#39;')
+              .replace(/\//g, '&#x2F;')
+              .replace(/"/g, '&quot;');
+            html += '<li class="ui-multiselect-optgroup-label ' + parent.className + '"><a href="#">' + optLabelEscaped + '</a></li>';
             optgroups.push(optLabel);
           }
         }
@@ -224,7 +231,7 @@
         if($.isFunction(o.selectedText)) {
           value = o.selectedText.call(this, numChecked, $inputs.length, $checked.get());
         } else if(/\d/.test(o.selectedList) && o.selectedList > 0 && numChecked <= o.selectedList) {
-          value = $checked.map(function() { return $(this).next().html(); }).get().join(', ');
+          value = $checked.map(function() { return $(this).next().text(); }).get().join(', ');
         } else {
           value = o.selectedText.replace('#', numChecked).replace('#', $inputs.length);
         }
@@ -401,7 +408,7 @@
       });
 
       // close each widget when clicking on any other element/anywhere else on the page
-      $doc.bind('mousedown.' + this._namespaceID, function(event) {
+      $doc.bind('mousedown.' + self._namespaceID, function(event) {
         var target = event.target;
 
         if(self._isOpen
@@ -418,7 +425,7 @@
       // restored to their defaultValue prop on form reset, and the reset
       // handler fires before the form is actually reset.  delaying it a bit
       // gives the form inputs time to clear.
-      $(this.element[0].form).bind('reset.' + this._namespaceID, function() {
+      $(this.element[0].form).bind('reset.multiselect', function() {
         setTimeout($.proxy(self.refresh, self), 10);
       });
     },
@@ -440,7 +447,7 @@
     _setMenuWidth: function() {
       var m = this.menu;
       var width = (this.button.outerWidth() <= 0) ? this.options.minWidth : this.button.outerWidth();
-      m.outerWidth(width);
+      m.outerWidth(this.options.menuWidth || width);
     },
 
     // move up or down within the menu
@@ -639,6 +646,10 @@
     getChecked: function() {
       return this.menu.find('input').filter(':checked');
     },
+    
+    getUnchecked: function() {
+      return this.menu.find('input').not(':checked'); 
+    },
 
     destroy: function() {
       // remove classes + data
@@ -646,7 +657,6 @@
 
       // unbind events
       $doc.unbind(this._namespaceID);
-      $(this.element[0].form).unbind(this._namespaceID);
 
       this.button.remove();
       this.menu.remove();
