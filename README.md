@@ -9,6 +9,7 @@ Contents
 * [Modules with dependency to core](#modules-with-dependency-to-jquery)
 * [jQuery Plugins in debug mode](#only-for-dev-versions)
 * [jQuery Plugins TBR](#to-be-replaced)
+* [jQueryUI themes](#jqueryui-themes)
 * [compile JS core](#compilation-of-js-core)
 * [Compile templates](#compilation-of-jqueryui-templates)
 * [Authors](#authors)
