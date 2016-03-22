@@ -9,6 +9,7 @@ Contents
 * [Modules with dependency to core](#modules-with-dependency-to-jquery)
 * [jQuery Plugins in debug mode](#only-for-dev-versions)
 * [jQuery Plugins TBR](#to-be-replaced)
+* [Deprecated jQuery Plugins](#deprecated)
 * [jQueryUI themes](#jqueryui-themes)
 * [compile JS core](#compilation-of-js-core)
 * [Compile templates](#compilation-of-jqueryui-templates)
@@ -22,60 +23,67 @@ The following plugins are compiled to the core.js file
 
 Plugin name  | Version | URL
 ------------- | ----- | -------------
-jquery | 2.2.1 | http://www.jquery.com
-jquery.ui | 1.12.0 RC 1 | http://www.jqueryui.com
-moment.js | 2.12.0 | http://momentjs.com
-jquery.form	| 3.51.0 | http://jquery.malsup.com/form/
-jquery.collapser | 2.0.0 | https://github.com/EQdkpPlus/jquery.jcollapser
-jquery.rssreader | 1.0.0 | customized
-jquery.superfish | 1.7.7 | http://users.tpg.com.au/j_birch/plugins/superfish/
-jquery.timepicker | 1.6.1 | http://trentrichardson.com/examples/timepicker/
-jquery.multiselect | 1.14 | http://www.erichynds.com/jquery/jquery-ui-multiselect-widget
-jquery.multiselect.filter | nightly | http://www.erichynds.com/examples/jquery-ui-multiselect-widget/demos/index.htm#filter
-jquery.ui.framedialog | custom | http://plugins.jquery.com/project/jquery-framedialog
-jquery.qtip2 | 2.2.1 | http://craigsworks.com/projects/qtip2/
-jquery.eqdualheight | unknown | http://www.cssnewbie.com/equalheights-jquery-plugin/
-jquery.colorbox | 1.6.3 | https://github.com/jackmoore/colorbox
-jquery.spectrum | 1.7.0  | https://github.com/bgrins/spectrum
-jquery.toolbar | 1.0.4 | https://github.com/paulkinzett/toolbar
-jquery.raty | 2.7.0 | https://github.com/wbotelhos/raty
-jquery.nestedsortable | nightly | https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha, 	https://github.com/ilikenwf/nestedSortable
-jquery.easydropdown | nightly | https://github.com/patrickkunka/easydropdown
+jquery | 2.2.1 | [jquery.com](http://www.jquery.com)
+jquery.ui | 1.12.0 RC 1 | [jqueryui.com](http://www.jqueryui.com)
+moment.js | 2.12.0 | [momentJS.com](http://momentjs.com)
+jquery.form	| 3.51.0 | [jquery.form](http://jquery.malsup.com/form/)
+jquery.collapser | 2.0.0 | [jquery.collapser](https://github.com/EQdkpPlus/jquery.jcollapser)
+jquery.rssreader | 1.0.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
+jquery.timepicker | 1.6.1 | [jquery.timepicker](http://trentrichardson.com/examples/timepicker/)
+jquery.multiselect | 1.14 | [jquery.multiselect](https://github.com/ehynds/jquery-ui-multiselect-widget)
+jquery.ui.framedialog | custom | [old homepage](http://plugins.jquery.com/project/jquery-framedialog)
+jquery.qtip2 | 2.2.1 | [jquery.qtip2](http://craigsworks.com/projects/qtip2/)
+jquery.colorbox | 1.6.3 | [jquery.colorbox](https://github.com/jackmoore/colorbox)
+jquery.spectrum | 1.7.0  | [jquery.spectrum](https://github.com/bgrins/spectrum)
+jquery.toolbar | 1.0.4 | [jquery.toolbar](https://github.com/paulkinzett/toolbar)
+jquery.raty | 2.7.0 | [jquery.raty](https://github.com/wbotelhos/raty)
+jquery.nestedsortable | nightly | [original](https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha) [current](https://github.com/ilikenwf/nestedSortable)
+jquery.easydropdown | nightly | [jquery.easydropdown](https://github.com/patrickkunka/easydropdown)
+jquery.relativeTime | 1.0.0 | custom
+favico.js | 0.3.10 | [favicon.js](https://github.com/ejci/favico.js)
 
 ### standalone plugins
 These pugins are not compiled into the core.js, they are moved to single folders and included on the pages using the plugin. If the plugin should be available globally, it must be compiled in the core.
 
 Plugin name  | plugin | version | URL
 ------------- | ----- | ----- | -------------
-jquery.jqplot | core | 1.0.8 | http://www.jqplot.com
-jquery.fullcalendar | core/calendar | 2.6.1 | http://arshaw.com/fullcalendar/
-jquery.placepicker | core/calendar | 0.0.2 | https://github.com/benignware/jquery-placepicker
-gmaps | core/calendar | 0.4.22 | https://github.com/hpneo/gmaps
-jquery.circles | core/admin | 0.0.6 | https://github.com/lugolabs/circles
-jquery.jcrop | plugin/mediacenter | 2.0.4 | https://github.com/tapmodo/Jcrop
+jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
+jquery.fullcalendar | core/calendar | 2.6.1 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
+jquery.placepicker | core/calendar | 0.0.2 | [jquery.placepicker](https://github.com/benignware/jquery-placepicker)
+gmaps | core/calendar | 0.4.22 | [gmaps](https://github.com/hpneo/gmaps)
+jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
+jquery.jcrop | plugin/mediacenter | 2.0.4 | [jquery.jcrop](https://github.com/tapmodo/Jcrop)
 
 ### modules with dependency to jquery or jqueryUI
 The following independent javascript programmes/modules have dependencies with jQuery or jQueryUI and needs to be tested before upgrading one of these two.
 
 Plugin name  | Version | URL
 ------------- | ----- | -------------
-elFinder  | 2.1 tree | https://github.com/Studio-42/elFinder
-tinyMCE | 4.3.x | https://www.tinymce.com
-openid-selector | 1.3 | https://code.google.com/archive/p/openid-selector/
+elFinder  | 2.1 tree | [elFinder](https://github.com/Studio-42/elFinder)
+tinyMCE | 4.3.x | [tinyMCE](https://www.tinymce.com)
+openid-selector | 1.3 | [OpenID Selector](https://code.google.com/archive/p/openid-selector/)
 
 ### only for dev versions
 Plugins are loaded in the dev version of eqdkp-pkus only (uncompressed core, debug mode enabled)
 
 Plugin name | Version | URL
 ------------- | ----- | -------------
-jquery.migrate | 1.4.0 | https://github.com/jquery/jquery-migrate
+jquery.migrate | 1.4.0 | [jquery.migrate](https://github.com/jquery/jquery-migrate)
 
 ### to be replaced
 These plugins are currently used, but will be substituted in a future version of Eqdkp-Plus
 
 Plugin name | Version | URL
 ------------- | ----- | -------------
-jquery.notify | 1.5 | https://github.com/ehynds/jquery-notify
+jquery.notify | 1.5 | [jquery.notify](https://github.com/ehynds/jquery-notify)
+
+### deprecated
+These plugins are deprecated and will be removed in the defined target version
+
+ Plugin name | Version | Removed in | URL
+------------- | ----- | ----- | -------------
+jquery.superfish | 1.7.7 | 2.3.0 | [jquery.superfish](http://users.tpg.com.au/j_birch/plugins/superfish/)
+jquery.eqdualheight | unknown | 2.3.0 | [jquery.equalheight](http://www.cssnewbie.com/equalheights-jquery-plugin/)
 
 jqueryUI themes
 ------------------
