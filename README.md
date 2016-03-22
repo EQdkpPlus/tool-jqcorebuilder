@@ -35,7 +35,7 @@ jquery.ui.framedialog | custom | [old homepage](http://plugins.jquery.com/projec
 jquery.qtip2 | 2.2.1 | [jquery.qtip2](http://craigsworks.com/projects/qtip2/)
 jquery.colorbox | 1.6.3 | [jquery.colorbox](https://github.com/jackmoore/colorbox)
 jquery.spectrum | 1.7.0  | [jquery.spectrum](https://github.com/bgrins/spectrum)
-jquery.toolbar | 1.0.4 | [jquery.toolbar](https://github.com/paulkinzett/toolbar)
+jquery.toolbar | 1.1.0 | [jquery.toolbar](https://github.com/paulkinzett/toolbar)
 jquery.raty | 2.7.0 | [jquery.raty](https://github.com/wbotelhos/raty)
 jquery.nestedsortable | nightly | [original](https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha) [current](https://github.com/ilikenwf/nestedSortable)
 jquery.easydropdown | nightly | [jquery.easydropdown](https://github.com/patrickkunka/easydropdown)
