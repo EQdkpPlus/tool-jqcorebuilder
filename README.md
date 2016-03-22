@@ -50,7 +50,7 @@ Plugin name  | plugin | version | URL
 jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
 jquery.fullcalendar | core/calendar | 2.6.1 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
 jquery.placepicker | core/calendar | 0.0.2 | [jquery.placepicker](https://github.com/benignware/jquery-placepicker)
-gmaps | core/calendar | 0.4.22 | [gmaps](https://github.com/hpneo/gmaps)
+gmaps | core/calendar | 0.4.23 | [gmaps](https://github.com/hpneo/gmaps)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
 jquery.jcrop | plugin/mediacenter | 2.0.4 | [jquery.jcrop](https://github.com/tapmodo/Jcrop)
 
