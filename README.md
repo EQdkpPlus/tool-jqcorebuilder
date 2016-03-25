@@ -38,7 +38,6 @@ jquery.spectrum | 1.7.0  | [jquery.spectrum](https://github.com/bgrins/spectrum)
 jquery.toolbar | 1.1.0 | [jquery.toolbar](https://github.com/paulkinzett/toolbar)
 jquery.raty | 2.7.0 | [jquery.raty](https://github.com/wbotelhos/raty)
 jquery.nestedsortable | nightly | [original](https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha) [current](https://github.com/ilikenwf/nestedSortable)
-jquery.easydropdown | nightly | [jquery.easydropdown](https://github.com/patrickkunka/easydropdown)
 jquery.relativeTime | 1.0.0 | custom
 favico.js | 0.3.10 | [favicon.js](https://github.com/ejci/favico.js)
 
@@ -84,6 +83,7 @@ These plugins are deprecated and will be removed in the defined target version
 ------------- | ----- | ----- | -------------
 jquery.superfish | 1.7.7 | 2.3.0 | [jquery.superfish](http://users.tpg.com.au/j_birch/plugins/superfish/)
 jquery.eqdualheight | unknown | 2.3.0 | [jquery.equalheight](http://www.cssnewbie.com/equalheights-jquery-plugin/)
+jquery.easydropdown | nightly | 2.3.0 | [jquery.easydropdown](https://github.com/patrickkunka/easydropdown)
 
 jqueryUI themes
 ------------------
