@@ -81,7 +81,7 @@ These plugins are deprecated and will be removed in the defined target version
 
  Plugin name | Version | Removed in | URL
 ------------- | ----- | ----- | -------------
-jquery.superfish | 1.7.7 | 2.3.0 | [jquery.superfish](http://users.tpg.com.au/j_birch/plugins/superfish/)
+jquery.superfish | 1.7.7 | 2.4.0/3.0.0 | [jquery.superfish](http://users.tpg.com.au/j_birch/plugins/superfish/)
 jquery.eqdualheight | unknown | 2.3.0 | [jquery.equalheight](http://www.cssnewbie.com/equalheights-jquery-plugin/)
 jquery.easydropdown | nightly | 2.3.0 | [jquery.easydropdown](https://github.com/patrickkunka/easydropdown)
 
