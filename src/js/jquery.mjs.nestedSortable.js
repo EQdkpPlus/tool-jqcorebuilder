@@ -1,19 +1,17 @@
 /*
  * jQuery UI Nested Sortable
- * v 2.0 / 29 oct 2012
- * http://mjsarfatti.com/sandbox/nestedSortable
+ * v 2.0.0 / 2016-03-30 "Not April Fools"
+ * https://github.com/ilikenwf/nestedSortable
  *
  * Depends on:
  *	 jquery.ui.sortable.js 1.10+
  *
- * Copyright (c) 2010-2013 Manuele J Sarfatti
+ * Copyright (c) 2010-2016 Manuele J Sarfatti and contributors
  * Licensed under the MIT License
  * http://www.opensource.org/licenses/mit-license.php
  */
 (function( factory ) {
 	"use strict";
-
-	var define = window.define;
 
 	if ( typeof define === "function" && define.amd ) {
 
@@ -245,7 +243,7 @@
 				this.helper[0].style.left = this.position.left + "px";
 			}
 			if (!this.options.axis || this.options.axis !== "x") {
-				this.helper[0].style.top = this.position.top + "px";
+				this.helper[0].style.top = (this.position.top) + "px";
 			}
 
 			// mjs - check and reset hovering state at each cycle
@@ -491,8 +489,8 @@
 						.removeClass(this.options.branchClass + " " + this.options.expandedClass)
 						.addClass(this.options.leafClass);
 				}
-
-				this._clearEmpty(parentItem[0]);
+                if(typeof parentItem !== 'undefined')
+				    this._clearEmpty(parentItem[0]);
 				this._trigger("change", event, this._uiHash());
 				// mjs - if the item is below a sibling and is moved to the right,
 				// make it a child of that sibling
@@ -536,7 +534,8 @@
 					// mjs - otherwise, add it to the bottom of the list.
 					previousItem.children(o.listType)[0].appendChild(this.placeholder[0]);
 				}
-
+                if(typeof parentItem !== 'undefined')
+				    this._clearEmpty(parentItem[0]);
 				this._trigger("change", event, this._uiHash());
 			} else {
 				this._isAllowed(parentItem, level, level + childLevels);
@@ -649,7 +648,7 @@
 				this._sort_current === this._uiHash().item.index())) {
 				this._trigger("relocate", this._relocate_event, this._uiHash());
 			}
-			
+
 			// mjs - clean last empty ul/ol
 			for (i = this.items.length - 1; i >= 0; i--) {
 				item = this.items[i].item[0];
@@ -707,10 +706,18 @@
 			function _recursiveItems(item) {
 				var id = ($(item).attr(o.attribute || "id") || "").match(o.expression || (/(.+)[-=_](.+)/)),
 					currentItem;
+
+				var data = $(item).data();
+				if (data.nestedSortableItem) {
+					delete data.nestedSortableItem; // Remove the nestedSortableItem object from the data
+				}
+
 				if (id) {
 					currentItem = {
 						"id": id[2]
 					};
+
+					currentItem = $.extend({}, currentItem, data); // Combine the two objects
 
 					if ($(item).children(o.listType).children(o.items).length > 0) {
 						currentItem.children = [];
@@ -743,7 +750,7 @@
 			}
 
 			$(this.element).children(o.items).each(function() {
-				left = _recursiveArray(this, sDepth + 1, left);
+				left = _recursiveArray(this, sDepth, left);
 			});
 
 			ret = ret.sort(function(a, b) { return (a.left - b.left); });
@@ -767,7 +774,7 @@
 
 				id = ($(item).attr(o.attribute || "id")).match(o.expression || (/(.+)[-=_](.+)/));
 
-				if (depth === sDepth + 1) {
+				if (depth === sDepth) {
 					pid = o.rootID;
 				} else {
 					parentItem = ($(item).parent(o.listType)
@@ -778,12 +785,14 @@
 				}
 
 				if (id) {
+					        var name = $(item).data("name");
 						ret.push({
-							"item_id": id[2],
+							"id": id[2],
 							"parent_id": pid,
 							"depth": depth,
 							"left": _left,
-							"right": right
+							"right": right,
+							"name":name
 						});
 				}
 
@@ -793,38 +802,35 @@
 
 		},
 
-		_clearEmpty: function(item) {
-			var o = this.options,
-				emptyList = $(item).children(o.listType);
-
-			if (emptyList.length && !emptyList.children().length && !o.doNotClear) {
-				if (o.isTree) {
-					$(item)
-						.removeClass(o.branchClass + " " + o.expandedClass)
-						.addClass(o.leafClass);
+		_clearEmpty: function (item) {
+			function replaceClass(elem, search, replace, swap) {
+				if (swap) {
+					search = [replace, replace = search][0];
 				}
 
-				emptyList.remove();
-			} else if (
-				o.isTree &&
-				emptyList.length &&
-				emptyList.children().length &&
-				emptyList.is(":visible")
-			) {
-				$(item)
-					.removeClass(o.leafClass)
-					.addClass(o.branchClass + " " + o.expandedClass);
-			} else if (
-				o.isTree &&
-				emptyList.length &&
-				emptyList.children().length &&
-				!emptyList.is(":visible")
-			) {
-				$(item)
-					.removeClass(o.leafClass)
-					.addClass(o.branchClass + " " + o.collapsedClass);
+				$(elem).removeClass(search).addClass(replace);
 			}
 
+			var o = this.options,
+				childrenList = $(item).children(o.listType),
+				hasChildren = childrenList.is(':not(:empty)');
+
+			var doNotClear =
+				o.doNotClear ||
+				hasChildren ||
+				o.protectRoot && $(item)[0] === this.element[0];
+
+			if (o.isTree) {
+				replaceClass(item, o.branchClass, o.leafClass, doNotClear);
+
+				if (doNotClear && hasChildren) {
+					replaceClass(item, o.collapsedClass, o.expandedClass);
+				}
+			}
+
+			if (!doNotClear) {
+				childrenList.remove();
+			}
 		},
 
 		_getLevel: function(item) {
@@ -868,8 +874,8 @@
 				oldParent = this.currentItem.parent().parent(),
 				disabledByParentchange = o.disableParentChange && (
 					//From somewhere to somewhere else, except the root
-					parentItem !== null && !oldParent.is(parentItem) ||
-					parentItem === null && oldParent.is("li")	//From somewhere to the root
+					typeof parentItem !== 'undefined' && !oldParent.is(parentItem) ||
+					typeof parentItem === 'undefined' && oldParent.is("li")	//From somewhere to the root
 				);
 			// mjs - is the root protected?
 			// mjs - are we nesting too deep?

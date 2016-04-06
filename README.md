@@ -23,7 +23,7 @@ The following plugins are compiled to the core.js file
 
 Plugin name  | Version | URL
 ------------- | ----- | -------------
-jquery | 2.2.1 | [jquery.com](http://www.jquery.com)
+jquery | 2.2.3 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.0 RC 1 | [jqueryui.com](http://www.jqueryui.com)
 moment.js | 2.12.0 | [momentJS.com](http://momentjs.com)
 jquery.form	| 3.51.0 | [jquery.form](http://jquery.malsup.com/form/)
@@ -34,10 +34,10 @@ jquery.multiselect | 1.14 | [jquery.multiselect](https://github.com/ehynds/jquer
 jquery.ui.framedialog | custom | [old homepage](http://plugins.jquery.com/project/jquery-framedialog)
 jquery.qtip2 | 2.2.1 | [jquery.qtip2](http://craigsworks.com/projects/qtip2/)
 jquery.colorbox | 1.6.3 | [jquery.colorbox](https://github.com/jackmoore/colorbox)
-jquery.spectrum | 1.7.0  | [jquery.spectrum](https://github.com/bgrins/spectrum)
+jquery.spectrum | 1.8.0  | [jquery.spectrum](https://github.com/bgrins/spectrum)
 jquery.toolbar | 1.1.0 | [jquery.toolbar](https://github.com/paulkinzett/toolbar)
 jquery.raty | 2.7.0 | [jquery.raty](https://github.com/wbotelhos/raty)
-jquery.nestedsortable | nightly | [original](https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha) [current](https://github.com/ilikenwf/nestedSortable)
+jquery.nestedsortable | 2.0.0 | [original](https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha) [current](https://github.com/ilikenwf/nestedSortable)
 jquery.relativeTime | 1.0.0 | custom
 favico.js | 0.3.10 | [favicon.js](https://github.com/ejci/favico.js)
 
@@ -49,7 +49,7 @@ Plugin name  | plugin | version | URL
 jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
 jquery.fullcalendar | core/calendar | 2.6.1 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
 jquery.placepicker | core/calendar | 0.0.2 | [jquery.placepicker](https://github.com/benignware/jquery-placepicker)
-gmaps | core/calendar | 0.4.23 | [gmaps](https://github.com/hpneo/gmaps)
+gmaps | core/calendar | 0.4.24 | [gmaps](https://github.com/hpneo/gmaps)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
 jquery.jcrop | plugin/mediacenter | 2.0.4 | [jquery.jcrop](https://github.com/tapmodo/Jcrop)
 
