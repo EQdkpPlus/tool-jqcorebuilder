@@ -14,6 +14,9 @@ module.exports = function(grunt) {
 			'src/plugins/placepicker/jquery.placepicker.min.js': 'https://github.com/benignware/jquery-placepicker/raw/master/dist/js/jquery.placepicker.min.js'
 		},
 		concat: {
+			options: {
+				sourceMap :true
+			},
 			js: {
 				src: 'src/js/*.js',
 				dest: 'dist/core.js'
@@ -25,6 +28,9 @@ module.exports = function(grunt) {
 		},
 		uglify: {
 			options: {
+				sourceMap : true,
+				sourceMapIncludeSources : true,
+				sourceMapIn : 'dist/core.js.map',
 				banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
 						'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
 						'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
@@ -37,10 +43,11 @@ module.exports = function(grunt) {
 			}
 		},
 		cssmin: {
-			css:{
-				src: ['<%= concat.css.dest %>'],
-				dest: 'dist/core.min.css'
-			}
+			options: {
+				sourceMap: true,
+			},
+			src: ['<%= concat.css.dest %>'],
+			dest: 'dist/core.min.css'
 		},
 		copy: {
 			dist: {
@@ -67,10 +74,10 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-css');
+	grunt.loadNpmTasks('grunt-contrib-css');
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-    grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 
 	// build all files & copy to eqdkp folder
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
