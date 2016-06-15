@@ -1,12 +1,12 @@
 /*
- * qTip2 - Pretty powerful tooltips - v2.2.1
+ * qTip2 - Pretty powerful tooltips - v3.0.3
  * http://qtip2.com
  *
- * Copyright (c) 2014 
+ * Copyright (c) 2016 
  * Released under the MIT licenses
  * http://jquery.org/license
  *
- * Date: Sun Sep 7 2014 09:48 EDT-0400
+ * Date: Thu May 12 2016 09:07 EDT-0400
  * Plugins: tips viewport svg modal
  * Styles: core basic css3
  */
@@ -16,7 +16,7 @@
 	top: -28000px;
 	display: none;
 
-	max-width: 400px;
+	max-width: 280px;
 	min-width: 50px;
 
 	font-size: 10.5px;

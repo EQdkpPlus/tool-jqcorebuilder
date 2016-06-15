@@ -14,9 +14,6 @@ module.exports = function(grunt) {
 			'src/plugins/placepicker/jquery.placepicker.min.js': 'https://github.com/benignware/jquery-placepicker/raw/master/dist/js/jquery.placepicker.min.js'
 		},
 		concat: {
-			options: {
-				sourceMap :true
-			},
 			js: {
 				src: 'src/js/*.js',
 				dest: 'dist/core.js'
@@ -28,9 +25,6 @@ module.exports = function(grunt) {
 		},
 		uglify: {
 			options: {
-				sourceMap : true,
-				sourceMapIncludeSources : true,
-				sourceMapIn : 'dist/core.js.map',
 				banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
 						'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
 						'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
@@ -43,9 +37,6 @@ module.exports = function(grunt) {
 			}
 		},
 		cssmin: {
-			options: {
-				sourceMap: true,
-			},
 			src: ['<%= concat.css.dest %>'],
 			dest: 'dist/core.min.css'
 		},
