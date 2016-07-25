@@ -1,6 +1,6 @@
 /* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, boss:true, undef:true, curly:true, browser:true, jquery:true */
 /*
- * jQuery MultiSelect UI Widget Filtering Plugin 1.5pre
+ * jQuery MultiSelect UI Widget Filtering Plugin 1.15
  * Copyright (c) 2012 Eric Hynds
  *
  * http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/
@@ -63,7 +63,7 @@
         var _self = this;
 
         // do not include hidden elems if the menu isn't open.
-        var selector = instance._isOpen ?  ':disabled, :hidden' : ':disabled';
+        var selector = _self._isOpen ?  ':disabled, :hidden' : ':disabled';
 
         $inputs = $inputs
           .not(selector)
@@ -91,14 +91,14 @@
       };
 
       // rebuild cache when multiselect is updated
-      var doc = $(document).bind('multiselectrefresh', $.proxy(function() {
+      var doc = $(document).bind('multiselectrefresh.'+ instance._namespaceID, $.proxy(function() {
         this.updateCache();
         this._handler();
       }, this));
 
       // automatically reset the widget on close?
       if(this.options.autoReset) {
-        doc.bind('multiselectclose', $.proxy(this._reset, this));
+        doc.bind('multiselectclose.'+ instance._namespaceID, $.proxy(this._reset, this));
       }
     },
 
