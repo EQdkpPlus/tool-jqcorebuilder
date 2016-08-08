@@ -33,7 +33,7 @@ jquery.timepicker | 1.6.3 | [jquery.timepicker](http://trentrichardson.com/examp
 jquery.multiselect | 1.15 | [jquery.multiselect](https://github.com/ehynds/jquery-ui-multiselect-widget)
 jquery.ui.framedialog | custom | [old homepage](http://plugins.jquery.com/project/jquery-framedialog)
 jquery.qtip2 | 3.0.3 | [jquery.qtip2](http://craigsworks.com/projects/qtip2/)
-jquery.colorbox | 1.6.3 | [jquery.colorbox](https://github.com/jackmoore/colorbox)
+jquery.colorbox | 1.6.4 | [jquery.colorbox](https://github.com/jackmoore/colorbox)
 jquery.spectrum | 1.8.0  | [jquery.spectrum](https://github.com/bgrins/spectrum)
 jquery.toolbar | 1.1.0 | [jquery.toolbar](https://github.com/paulkinzett/toolbar)
 jquery.raty | 2.7.0 | [jquery.raty](https://github.com/wbotelhos/raty)
@@ -59,7 +59,7 @@ The following independent javascript programmes/modules have dependencies with j
 Plugin name  | Version | URL
 ------------- | ----- | -------------
 elFinder  | 2.1 tree | [elFinder](https://github.com/Studio-42/elFinder)
-tinyMCE | 4.3.x | [tinyMCE](https://www.tinymce.com)
+tinyMCE | 4.4.x | [tinyMCE](https://www.tinymce.com)
 openid-selector | 1.3 | [OpenID Selector](https://code.google.com/archive/p/openid-selector/)
 
 ### only for dev versions
