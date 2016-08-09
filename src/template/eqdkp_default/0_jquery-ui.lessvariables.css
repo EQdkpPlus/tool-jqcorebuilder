@@ -53,3 +53,6 @@
 @jQueryUiStateErrorColor:#cd0a0a;
 
 @jQueryUiBorderRadius:4px;
+
+@_path: replace(@eqdkpTemplateImagePath, '(\.\./)|(images/)', '');
+@import (once, optional, less) './../@{_path}jquery.less';
