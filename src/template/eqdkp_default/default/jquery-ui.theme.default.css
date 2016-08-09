@@ -1,5 +1,5 @@
 /*!
- * jQuery UI CSS Framework 1.12.0-rc.1
+ * jQuery UI CSS Framework 1.12.0
  * http://jqueryui.com
  *
  * Copyright jQuery Foundation and other contributors
@@ -8,7 +8,7 @@
  *
  * http://api.jqueryui.com/category/theming/
  *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/?scope=&folderName=custom-theme&ctl=themeroller&bgImgOpacityError=40&bgImgOpacityHighlight=100&bgImgOpacityActive=20&bgImgOpacityHover=33&bgImgOpacityDefault=35&bgImgOpacityContent=0&bgImgOpacityHeader=44&cornerRadiusShadow=8px&offsetLeftShadow=-7px&offsetTopShadow=-7px&thicknessShadow=7px&opacityShadow=60&bgImgOpacityShadow=30&bgTextureShadow=flat&bgColorShadow=cccccc&opacityOverlay=80&bgImgOpacityOverlay=50&bgTextureOverlay=flat&bgColorOverlay=5c5c5c&iconColorError=a83300&fcError=111111&borderColorError=ffb73d&bgTextureError=glass&bgColorError=ffc73d&iconColorHighlight=4b8e0b&fcHighlight=000000&borderColorHighlight=ea1028&bgTextureHighlight=highlight_soft&bgColorHighlight=d69038&iconColorActive=222222&fcActive=ffffff&borderColorActive=31628e&bgTextureActive=highlight_hard&bgColorActive=2b6ba1&iconColorHover=ffffff&fcHover=ffffff&borderColorHover=31628e&bgTextureHover=highlight_soft&bgColorHover=19456b&iconColorDefault=cccccc&fcDefault=eeeeee&borderColorDefault=444444&bgTextureDefault=highlight_soft&bgColorDefault=222222&iconColorContent=cccccc&fcContent=ffffff&borderColorContent=555555&bgTextureContent=flat&bgColorContent=000000&iconColorHeader=ffffff&fcHeader=ffffff&borderColorHeader=333333&bgTextureHeader=highlight_soft&bgColorHeader=444444&cornerRadius=6px&fwDefault=normal&fsDefault=1.1em&ffDefault=Verdana%2C%20Arial%2C%20sans-serif
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?scope=&folderName=custom-theme&bgImgOpacityHeader=44&bgImgOpacityContent=0&bgImgOpacityDefault=35&bgImgOpacityHover=33&bgImgOpacityActive=20&bgImgOpacityHighlight=100&bgImgOpacityError=40&ctl=themeroller&cornerRadiusShadow=8px&offsetLeftShadow=-7px&offsetTopShadow=-7px&thicknessShadow=7px&opacityShadow=60&bgImgOpacityShadow=30&bgTextureShadow=flat&bgColorShadow=cccccc&opacityOverlay=80&bgImgOpacityOverlay=50&bgTextureOverlay=flat&bgColorOverlay=5c5c5c&iconColorError=a83300&fcError=111111&borderColorError=ffb73d&bgTextureError=glass&bgColorError=ffc73d&iconColorHighlight=4b8e0b&fcHighlight=000000&borderColorHighlight=ea1028&bgTextureHighlight=highlight_soft&bgColorHighlight=d69038&iconColorActive=222222&fcActive=ffffff&borderColorActive=31628e&bgTextureActive=highlight_hard&bgColorActive=2b6ba1&iconColorHover=ffffff&fcHover=ffffff&borderColorHover=31628e&bgTextureHover=highlight_soft&bgColorHover=19456b&iconColorDefault=cccccc&fcDefault=eeeeee&borderColorDefault=444444&bgTextureDefault=highlight_soft&bgColorDefault=222222&iconColorContent=cccccc&fcContent=ffffff&borderColorContent=555555&bgTextureContent=flat&bgColorContent=000000&iconColorHeader=ffffff&fcHeader=ffffff&borderColorHeader=333333&bgTextureHeader=highlight_soft&bgColorHeader=444444&cornerRadius=6px&fwDefault=normal&fsDefault=1.1em&ffDefault=Verdana%2C%20Arial%2C%20sans-serif
  */
 
 
@@ -136,6 +136,10 @@ a.ui-button:active,
 	border: 1px solid #ea1028;
 	background: #d69038 url("images/ui-bg_highlight-soft_100_d69038_1x100.png") 50% top repeat-x;
 	color: #000000;
+}
+.ui-state-checked {
+	border: 1px solid #ea1028;
+	background: #d69038;
 }
 .ui-state-highlight a,
 .ui-widget-content .ui-state-highlight a,

@@ -1,0 +1,50 @@
+.ui-dialog .ui-icon,
+.ui-datepicker .ui-icon,
+.ui-multiselect .ui-icon,
+.ui-multiselect-menu .ui-icon,
+.ui-spinner .ui-icon{
+	background: none repeat scroll 0 0 transparent !important;
+	text-indent: 0;
+	vertical-align: middle;
+	font-family: FontAwesome !important;
+	font-weight: normal;
+	font-style: normal;
+	text-decoration: none !important;
+	display: inline-block !important;
+	-webkit-font-smoothing: antialiased;
+	float: none;
+	display: inline !important;
+	font-size: 0;
+}
+.ui-dialog .ui-icon:before,
+.ui-datepicker .ui-icon:before,
+.ui-multiselect .ui-icon:before,
+.ui-multiselect-menu .ui-icon:before,
+.ui-spinner .ui-icon:before{
+	text-decoration: inherit;
+	text-indent: 0 !important; 
+	speak: none;
+	font-size: 14px;
+}
+
+.ui-datepicker .ui-icon:before {
+	font-size: 16px;
+}
+
+/* Icons */
+.ui-icon-carat-1-s:before { content: "\f0d7"; }
+.ui-icon-closethick:before { content: "\f00d"; }
+.ui-icon-circle-triangle-e:before,
+.ui-icon-carat-1-e:before{ content: "\f138"; }
+.ui-icon-carat-1-n:before { content: "\f0d8"; }
+.ui-icon-circle-triangle-w:before,
+.ui-icon-carat-1-w:before{ content: "\f137"; }
+.ui-icon-trash:before { content: "\f014"; }
+.ui-icon-arrowthickstop-1-n:before { content: "\f148"; }
+.ui-icon-arrowthickstop-1-s:before { content: "\f149"; }
+.ui-icon-arrowthick-2-n-s:before { content: "\f0dc"; }
+.ui-icon-triangle-1-n:before { content:"\f0d8"; }
+.ui-icon-triangle-1-s:before { content:"\f0d7"; }
+.ui-icon-check:before { content: '\f00c'; }
+.ui-icon-circle-close:before { content: '\f057'; }
+.ui-icon-closethick:before { content: '\f00d'; font-weight: bold; }
