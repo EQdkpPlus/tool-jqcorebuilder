@@ -87,7 +87,7 @@ jquery.easydropdown | nightly | 2.3.0 | [jquery.easydropdown](https://github.com
 
 jqueryUI themes
 ------------------
-All templates use the jqueryUI theme for styles. The following table contains the links to the themeroller settings for the specific eqdkp-plus template
+The jqueryUI template is build into the core by default. It uses less to reduce the overhead of files. The templates could inherit and change the less colour settings by adding a jquery.less file to the template root. This file contains the changed variables, the original variables are overwritten by this rule. The following table contains the links to the themeroller profiles for each template.
 
  Style name | Author | URL
 ------------- | ----- | -------------
@@ -113,12 +113,6 @@ To build the query core, [nodeJS](https://nodejs.org) and the javascript task ru
 3. run the command "grunt" on unix and "grunt.cmd" on windows
 4. wait and look if there is an error
 5. the generated files are in the dist folder
-
-### compilation of jqueryUI templates
-1. open the console / command prompt
-2. Go to the "Sites/tools/tool-jqcorebuilder/"
-3. run the command "grunt templates" on unix
-4. wait and look if there is an error, the files are directly moved to the core folder
 
 Authors
 ------------------

@@ -58,14 +58,6 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'src/plugins/superfish/', src: ['superfish.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/superfish/'},
 				]
 			},
-			templates: {
-				files: [
-					{src: ["src/template/eqdkp_modern/jquery-ui.theme.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_modern/jquery_tmpl.css"},
-					{expand: true, cwd: 'src/template/eqdkp_modern/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_modern/images/"}
-					//{src: ["src/template/eqdkp_default/jquery-ui.min.css"], dest: "<%= build.eqdkppath %>/templates/eqdkp_default/jquery_tmpl.css"},
-					//{expand: true, cwd: 'src/template/eqdkp_default/images/', src: ["*.png"], dest: "<%= build.eqdkppath %>/templates/eqdkp_default/images/"},
-				]
-			}
 		}
 	});
 
@@ -76,7 +68,4 @@ module.exports = function(grunt) {
 
 	// build all files & copy to eqdkp folder
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
-
-	// build the template files
-	grunt.registerTask('template', ['copy:templates']);
 };
