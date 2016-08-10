@@ -8,16 +8,15 @@
  *
  * http://api.jqueryui.com/category/theming/
  *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/?scope=&folderName=custom-theme&bgImgOpacityHeader=44&bgImgOpacityContent=0&bgImgOpacityDefault=35&bgImgOpacityHover=33&bgImgOpacityActive=20&bgImgOpacityHighlight=100&bgImgOpacityError=40&ctl=themeroller&cornerRadiusShadow=8px&offsetLeftShadow=-7px&offsetTopShadow=-7px&thicknessShadow=7px&opacityShadow=60&bgImgOpacityShadow=30&bgTextureShadow=flat&bgColorShadow=cccccc&opacityOverlay=80&bgImgOpacityOverlay=50&bgTextureOverlay=flat&bgColorOverlay=5c5c5c&iconColorError=a83300&fcError=111111&borderColorError=ffb73d&bgTextureError=glass&bgColorError=ffc73d&iconColorHighlight=4b8e0b&fcHighlight=000000&borderColorHighlight=ea1028&bgTextureHighlight=highlight_soft&bgColorHighlight=d69038&iconColorActive=222222&fcActive=ffffff&borderColorActive=31628e&bgTextureActive=highlight_hard&bgColorActive=2b6ba1&iconColorHover=ffffff&fcHover=ffffff&borderColorHover=31628e&bgTextureHover=highlight_soft&bgColorHover=19456b&iconColorDefault=cccccc&fcDefault=eeeeee&borderColorDefault=444444&bgTextureDefault=highlight_soft&bgColorDefault=222222&iconColorContent=cccccc&fcContent=ffffff&borderColorContent=555555&bgTextureContent=flat&bgColorContent=000000&iconColorHeader=ffffff&fcHeader=ffffff&borderColorHeader=333333&bgTextureHeader=highlight_soft&bgColorHeader=444444&cornerRadius=6px&fwDefault=normal&fsDefault=1.1em&ffDefault=Verdana%2C%20Arial%2C%20sans-serif
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?dynamicImage=true&dynamicImageHost=&ffDefault=%40jqueryUIFontFamily&fsDefault=%40jqueryUIFontSize&fwDefault=%40jqueryUIFontWeight&cornerRadius=%40jqueryUIBorderRadius&bgColorHeader=%40jqueryUIHeaderBackgroundColor&bgTextureHeader=flat&borderColorHeader=%40jqueryUIHeaderBorderColor&fcHeader=%40jqueryUIHeaderFontColor&iconColorHeader=F00001&bgColorContent=%40jqueryUIContentBackgroundColor&bgTextureContent=flat&borderColorContent=%40jqueryUIContentBorderColor&fcContent=%40jqueryUIContentFontColor&iconColorContent=F00002&bgColorDefault=%40jqueryUIStateDefaultBackgroundColor&bgTextureDefault=flat&borderColorDefault=%40jqueryUIStateDefaultBorderColor&fcDefault=%40jqueryUIStateDefaultFontColor&iconColorDefault=F00003&bgColorHover=%40jqueryUIStateHoverBackgroundColor&bgTextureHover=flat&borderColorHover=%40jqueryUIStateHoverBorderColor&fcHover=%40jqueryUIStateHoverFontColor&iconColorHover=F00004&bgColorActive=%40jqueryUIStateActiveBackgroundColor&bgTextureActive=flat&borderColorActive=%40jqueryUIStateActiveBorderColor&fcActive=%40jqueryUIStateActiveFontColor&iconColorActive=F00005&bgColorHighlight=%40jqueryUIHighlightBackgroundColor&bgTextureHighlight=flat&borderColorHighlight=%40jqueryUIHighlightBorderColor&fcHighlight=%40jqueryUIHighlightFontColor&iconColorHighlight=F00006&bgColorError=%40jqueryUIErrorBackgroundColor&bgTextureError=flat&borderColorError=%40jqueryUIErrorBorderColor&fcError=%40jqueryUIErrorFontColor&iconColorError=F00007&bgColorOverlay=%40jqueryUIOverlayBackgroundColor&bgTextureOverlay=flat&bgImgOpacityOverlay=flat&opacityOverlay=%40jqueryUIOverlayOpacity&bgColorShadow=%40jqueryUIShadowColor&bgTextureShadow=flat&bgImgOpacityShadow=flat&opacityShadow=flat&thicknessShadow=%40jqueryUIShadowThickness&offsetTopShadow=%40jqueryUIShadowTop&offsetLeftShadow=%40jqueryUIShadowLeft&cornerRadiusShadow=flat
  */
 
 
 /* Component containers
 ----------------------------------*/
-
 .ui-widget {
-	font-family: Verdana, Arial, sans-serif;
-	font-size: 1.1em;
+	font-family: @jqueryUIFontFamily;
+	font-size: @jqueryUIFontSize;
 }
 .ui-widget .ui-widget {
 	font-size: 1em;
@@ -26,27 +25,28 @@
 .ui-widget select,
 .ui-widget textarea,
 .ui-widget button {
-	font-family: Verdana, Arial, sans-serif;
+	font-family: @jqueryUIFontFamily;
 	font-size: 1em;
 }
-.ui-widget.ui-widget-content{
-	border:1px solid darken(@jQueryUiWidgetBorder,5);
+.ui-widget.ui-widget-content {
+	border: 1px solid @jqueryUIStateDefaultBorderColor;
 }
-.ui-widget-content{
-	border:1px solid @jQueryUiWidgetBorder;
-	background:@jQueryUiWidgetBackgroundColor;
-	color:@jQueryUiWidgetFontColor;
+.ui-widget-content {
+	border: 1px solid @jqueryUIContentBorderColor;
+	background: @jqueryUIContentBackgroundColor;
+	color: @jqueryUIContentFontColor;
 }
 .ui-widget-content a {
-	color:@jQueryUiWidgetFontColor;
+	color: @jqueryUIContentFontColor;
 }
 .ui-widget-header {
-	border:1px solid @jQueryUiWidgetBorder;
-	background:darken(@jQueryUiWidgetBackgroundColor,40) url("images/ui-bg_highlight-soft_75_cccccc_1x100.png") 50% 50% repeat-x;
-	color:@jQueryUiWidgetFontColor; font-weight:bold;
+	border: 1px solid @jqueryUIHeaderBorderColor;
+	background: @jqueryUIHeaderBackgroundColor;
+	color: @jqueryUIHeaderFontColor;
+	font-weight: bold;
 }
 .ui-widget-header a {
-	color:@jQueryUiWidgetFontColor;
+	color: @jqueryUIHeaderFontColor;
 }
 
 /* Interaction states
@@ -60,10 +60,10 @@
 works properly when clicked or hovered */
 html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
-	border:1px solid @jQueryUiStateBorder;
-	background:@jQueryUiStateBackground url("images/ui-bg_glass_75_e6e6e6_1x400.png") 50% 50% repeat-x;
-	font-weight:normal;
-	color:@jQueryUiStateFontColor;
+	border: 1px solid @jqueryUIStateDefaultBorderColor;
+	background: @jqueryUIStateDefaultBackgroundColor;
+	font-weight: @jqueryUIFontWeight;
+	color: @jqueryUIStateDefaultFontColor;
 }
 .ui-state-default a,
 .ui-state-default a:link,
@@ -72,8 +72,8 @@ a.ui-button,
 a:link.ui-button,
 a:visited.ui-button,
 .ui-button {
-	color:@jQueryUiStateFontColor;
-	text-decoration:none;
+	color: @jqueryUIStateDefaultFontColor;
+	text-decoration: none;
 }
 .ui-state-hover,
 .ui-widget-content .ui-state-hover,
@@ -83,10 +83,10 @@ a:visited.ui-button,
 .ui-widget-header .ui-state-focus,
 .ui-button:hover,
 .ui-button:focus {
-	border:1px solid darken(@jQueryUiStateBorder,50);
-	background:darken(@jQueryUiStateBackground,10) url("images/ui-bg_highlight-soft_33_19456b_1x100.png") 50% 50% repeat-x;
-	font-weight:normal;
-	color:@jQueryUiStateFontColorHover;
+	border: 1px solid @jqueryUIStateHoverBorderColor;
+	background: @jqueryUIStateHoverBackgroundColor;
+	font-weight: @jqueryUIFontWeight;
+	color: @jqueryUIStateHoverFontColor;
 }
 .ui-state-hover a,
 .ui-state-hover a:hover,
@@ -98,12 +98,12 @@ a:visited.ui-button,
 .ui-state-focus a:visited,
 a.ui-button:hover,
 a.ui-button:focus {
-	color:@jQueryUiStateFontColorHover;
-	text-decoration:none;
+	color: @jqueryUIStateHoverFontColor;
+	text-decoration: none;
 }
 
 .ui-visual-focus {
-	box-shadow:0 0 3px 1px rgb(94,158,214);
+	box-shadow: 0 0 3px 1px rgb(94, 158, 214);
 }
 .ui-state-active,
 .ui-widget-content .ui-state-active,
@@ -111,21 +111,21 @@ a.ui-button:focus {
 a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
-	border:1px solid @jQueryUiWidgetBorder;
-	background:lighten(@jQueryUiStateBackground,10) url("images/ui-bg_highlight-hard_20_2b6ba1_1x100.png") 50% 50% repeat-x;
-	font-weight:normal;
-	color:@jQueryUiStateFontColorHover;
+	border: 1px solid @jqueryUIStateActiveBorderColor;
+	background: @jqueryUIStateActiveBackgroundColor;
+	font-weight: @jqueryUIFontWeight;
+	color: @jqueryUIStateActiveFontColor;
 }
 .ui-icon-background,
 .ui-state-active .ui-icon-background {
-	border:@jQueryUiWidgetBorder;
-	background-color:darken(@jQueryUiStateBackground,70);
+	border: @jqueryUIStateActiveBorderColor;
+	background-color: @jqueryUIStateActiveFontColor;
 }
 .ui-state-active a,
 .ui-state-active a:link,
 .ui-state-active a:visited {
-	color:@jQueryUiStateFontColorHover;
-	text-decoration:none;
+	color: @jqueryUIStateActiveFontColor;
+	text-decoration: none;
 }
 
 /* Interaction Cues
@@ -133,54 +133,54 @@ a.ui-button:active,
 .ui-state-highlight,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
-	border:1px solid @jQueryUiStateHighlightBorder;
-	background:@jQueryUiStateHighlightBackground url("images/ui-bg_highlight-soft_100_d69038_1x100.png") 50% 50% repeat-x;
-	color:@jQueryUiStateHighlightFontColor;
+	border: 1px solid @jqueryUIHighlightBorderColor;
+	background: @jqueryUIHighlightBackgroundColor;
+	color: @jqueryUIHighlightFontColor;
 }
 .ui-state-checked {
-	border: 1px solid @jQueryUiStateHighlightBorder;
-	background: @jQueryUiStateHighlightBackground;
+	border: 1px solid @jqueryUIHighlightBorderColor;
+	background: @jqueryUIHighlightBackgroundColor;
 }
 .ui-state-highlight a,
 .ui-widget-content .ui-state-highlight a,
 .ui-widget-header .ui-state-highlight a {
-	color:@jQueryUiStateHighlightFontColor;
+	color: @jqueryUIHighlightFontColor;
 }
 .ui-state-error,
 .ui-widget-content .ui-state-error,
 .ui-widget-header .ui-state-error {
-	border:1px solid @jQueryUiStateErrorColor;
-	background:lighten(@jQueryUiStateHighlightBackground,10) url("images/ui-bg_glass_40_ffc73d_1x400.png") 50% 50% repeat-x;
-	color:@jQueryUiStateErrorColor;
+	border: 1px solid @jqueryUIErrorBorderColor;
+	background: @jqueryUIErrorBackgroundColor;
+	color: @jqueryUIErrorFontColor;
 }
 .ui-state-error a,
 .ui-widget-content .ui-state-error a,
 .ui-widget-header .ui-state-error a {
-	color:@jQueryUiStateErrorColor;
+	color: @jqueryUIErrorFontColor;
 }
 .ui-state-error-text,
 .ui-widget-content .ui-state-error-text,
 .ui-widget-header .ui-state-error-text {
-	color:@jQueryUiStateErrorColor;
+	color: @jqueryUIErrorFontColor;
 }
 .ui-priority-primary,
 .ui-widget-content .ui-priority-primary,
 .ui-widget-header .ui-priority-primary {
-	font-weight:bold;
+	font-weight: bold;
 }
 .ui-priority-secondary,
 .ui-widget-content .ui-priority-secondary,
 .ui-widget-header .ui-priority-secondary {
-	opacity:.7;
+	opacity: .7;
 	filter:Alpha(Opacity=70); /* support: IE8 */
-	font-weight:normal;
+	font-weight: normal;
 }
 .ui-state-disabled,
 .ui-widget-content .ui-state-disabled,
 .ui-widget-header .ui-state-disabled {
-	opacity:.35;
+	opacity: .35;
 	filter:Alpha(Opacity=35); /* support: IE8 */
-	background-image:none;
+	background-image: none;
 }
 .ui-state-disabled .ui-icon {
 	filter:Alpha(Opacity=35); /* support: IE8 - See #6059 */
@@ -196,32 +196,32 @@ a.ui-button:active,
 }
 .ui-icon,
 .ui-widget-content .ui-icon {
-	background-image: url("images/ui-icons_cccccc_256x240.png");
+	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIContentIconColor}_256x240.png")
 }
 .ui-widget-header .ui-icon {
-	background-image: url("images/ui-icons_ffffff_256x240.png");
+	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIHeaderIconColor}_256x240.png")
 }
 .ui-button .ui-icon {
-	background-image: url("images/ui-icons_cccccc_256x240.png");
+	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIStateDefaultIconColor}_256x240.png")
 }
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon,
 .ui-button:hover .ui-icon,
 .ui-button:focus .ui-icon,
 .ui-state-default .ui-icon {
-	background-image: url("images/ui-icons_ffffff_256x240.png");
+	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIStateHoverIconColor}_256x240.png")
 }
 .ui-state-active .ui-icon,
 .ui-button:active .ui-icon {
-	background-image: url("images/ui-icons_222222_256x240.png");
+	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIStateActiveIconColor}_256x240.png")
 }
 .ui-state-highlight .ui-icon,
 .ui-button .ui-state-highlight.ui-icon {
-	background-image: url("images/ui-icons_4b8e0b_256x240.png");
+	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIHighlightIconColor}_256x240.png")
 }
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
-	background-image: url("images/ui-icons_a83300_256x240.png");
+	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIErrorIconColor}_256x240.png")
 }
 
 /* positioning */
@@ -411,34 +411,34 @@ a.ui-button:active,
 .ui-corner-top,
 .ui-corner-left,
 .ui-corner-tl {
-	border-top-left-radius:@jQueryUiBorderRadius;
+	border-top-left-radius: @jqueryUIBorderRadius;
 }
 .ui-corner-all,
 .ui-corner-top,
 .ui-corner-right,
 .ui-corner-tr {
-	border-top-right-radius:@jQueryUiBorderRadius;
+	border-top-right-radius: @jqueryUIBorderRadius;
 }
 .ui-corner-all,
 .ui-corner-bottom,
 .ui-corner-left,
 .ui-corner-bl {
-	border-bottom-left-radius:@jQueryUiBorderRadius;
+	border-bottom-left-radius: @jqueryUIBorderRadius;
 }
 .ui-corner-all,
 .ui-corner-bottom,
 .ui-corner-right,
 .ui-corner-br {
-	border-bottom-right-radius:@jQueryUiBorderRadius;
+	border-bottom-right-radius: @jqueryUIBorderRadius;
 }
 
 /* Overlays */
 .ui-widget-overlay {
-	background:darken(@jQueryUiWidgetBackgroundColor,80);
-	opacity:.5;
-	filter:Alpha(Opacity=50);
+	background: @jqueryUIOverlayBackgroundColor;
+	opacity: @jqueryUIOverlayOpacity;
+	filter: Alpha(Opacity=percentage(@jqueryUIOverlayOpacity)); /* support: IE8 */
 }
 .ui-widget-shadow {
-	-webkit-box-shadow:-8px -8px 8px @jQueryUiWidgetBorder;
-	box-shadow:-8px -8px 8px @jQueryUiWidgetBorder;
+	-webkit-box-shadow: @jqueryUIShadowLeft @jqueryUIShadowTop @jqueryUIShadowThickness @jqueryUIShadowColor;
+	box-shadow: @jqueryUIShadowLeft @jqueryUIShadowTop @jqueryUIShadowThickness @jqueryUIShadowColor;
 }
