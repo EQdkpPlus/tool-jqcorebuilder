@@ -7,6 +7,14 @@ module.exports = function(grunt) {
 		build: {
 			eqdkppath: '/Users/swallmann/Sites/eqdkp'
 		},
+		shell: {
+			themerollerconvert: {
+				command: 'php -f src/less-jquibuilder/perform_themeroller_convert.php',
+				options: { 
+					stdout: true 
+				} 
+			}
+		},
 		concat: {
 			options: {
 				sourceMap :false
@@ -65,7 +73,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-concat');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
+	grunt.loadNpmTasks('grunt-shell');
 
 	// build all files & copy to eqdkp folder
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
+	grunt.registerTask('buildUItemplate', ['shell:themerollerconvert']);
 };
