@@ -47,7 +47,7 @@ These pugins are not compiled into the core.js, they are moved to single folders
 Plugin name  | plugin | version | URL
 ------------- | ----- | ----- | -------------
 jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
-jquery.fullcalendar | core/calendar | 2.9.1 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
+jquery.fullcalendar | core/calendar | 3.0.0 beta 1 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
 jquery.placepicker | core/calendar | 0.0.3 | [jquery.placepicker](https://github.com/benignware/jquery-placepicker)
 gmaps | core/calendar | 0.4.24 | [gmaps](https://github.com/hpneo/gmaps)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
