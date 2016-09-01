@@ -40,63 +40,63 @@ class jquery_themeroller {
 		'cornerRadius'			=> ['name'=>'BorderRadius', 'value'=>'4px'],
 		
 		// Header/Toolbar
-		'bgColorHeader'			=> ['name'=>'HeaderBackgroundColor', 'value'=>'#999999'],
+		'bgColorHeader'			=> ['name'=>'HeaderBackground', 'value'=>'#999999'],
 		'bgTextureHeader'		=> ['use'=>'jquery_value', 'jquery_value'=>'flat'],// "flat" to disable image
 		'bgImgOpacityHeader'	=> ['use'=>false],
 		'borderColorHeader'		=> ['name'=>'HeaderBorderColor', 'value'=>'#ccc'],
 		'fcHeader'				=> ['name'=>'HeaderFontColor', 'value'=>'#000'],
-		'iconColorHeader'		=> ['use'=>'jquery_value', 'name'=>'HeaderIconColor', 'value'=>'#fff', 'jquery_value'=>'#F00001'],// unique color to better identify on $this->parse_costum
+		'iconColorHeader'		=> ['use'=>'jquery_value', 'name'=>'HeaderIconColor', 'value'=>'\'ffffff\'', 'jquery_value'=>'#F00001'],// unique color to better identify on $this->parse_costum
 		
 		// Content
-		'bgColorContent'		=> ['name'=>'ContentBackgroundColor', 'value'=>'#fff'],
+		'bgColorContent'		=> ['name'=>'ContentBackground', 'value'=>'#fff'],
 		'bgTextureContent'		=> ['use'=>'jquery_value', 'jquery_value'=>'flat'],// "flat" to disable image
 		'bgImgOpacityContent'	=> ['use'=>false],
 		'borderColorContent'	=> ['name'=>'ContentBorderColor', 'value'=>'#ccc'],
 		'fcContent'				=> ['name'=>'ContentFontColor', 'value'=>'#000'],
-		'iconColorContent'		=> ['use'=>'jquery_value', 'name'=>'ContentIconColor', 'value'=>'#ccc', 'jquery_value'=>'F00002'],// unique color to better identify on $this->parse_costum
+		'iconColorContent'		=> ['use'=>'jquery_value', 'name'=>'ContentIconColor', 'value'=>'\'cccccc\'', 'jquery_value'=>'F00002'],// unique color to better identify on $this->parse_costum
 		
 		// Clickable: default state
-		'bgColorDefault'		=> ['name'=>'StateDefaultBackgroundColor', 'value'=>'#e6e6e6'],
+		'bgColorDefault'		=> ['name'=>'StateDefaultBackground', 'value'=>'#e6e6e6'],
 		'bgTextureDefault'		=> ['use'=>'jquery_value', 'jquery_value'=>'flat'],// "flat" to disable image
 		'bgImgOpacityDefault'	=> ['use'=>false],
 		'borderColorDefault'	=> ['name'=>'StateDefaultBorderColor', 'value'=>'#ccc'],
 		'fcDefault'				=> ['name'=>'StateDefaultFontColor', 'value'=>'#000'],
-		'iconColorDefault'		=> ['use'=>'jquery_value', 'name'=>'StateDefaultIconColor', 'value'=>'#fff', 'jquery_value'=>'F00003'],//$1 unique color to better identify on $this->parse_costum
+		'iconColorDefault'		=> ['use'=>'jquery_value', 'name'=>'StateDefaultIconColor', 'value'=>'\'ffffff\'', 'jquery_value'=>'F00003'],//$1 unique color to better identify on $this->parse_costum
 		
 		// Clickable: hover state
-		'bgColorHover'			=> ['name'=>'StateHoverBackgroundColor', 'value'=>'#cdcdcd'],
+		'bgColorHover'			=> ['name'=>'StateHoverBackground', 'value'=>'#cdcdcd'],
 		'bgTextureHover'		=> ['use'=>'jquery_value', 'jquery_value'=>'flat'],// "flat" to disable image
 		'bgImgOpacityHover'		=> ['use'=>false],
 		'borderColorHover'		=> ['name'=>'StateHoverBorderColor', 'value'=>'#4d4d4d'],
 		'fcHover'				=> ['name'=>'StateHoverFontColor', 'value'=>'#000'],
-		'iconColorHover'		=> ['use'=>'jquery_value', 'name'=>'StateHoverIconColor', 'value'=>'', 'jquery_value'=>'F00004'],// unique color to better identify on $this->parse_costum
+		'iconColorHover'		=> ['use'=>'jquery_value', 'name'=>'StateHoverIconColor', 'value'=>'\'ffffff\'', 'jquery_value'=>'F00004'],// unique color to better identify on $this->parse_costum
 		
 		// Clickable: active state
-		'bgColorActive'			=> ['name'=>'StateActiveBackgroundColor', 'value'=>'#ffffff'],
+		'bgColorActive'			=> ['name'=>'StateActiveBackground', 'value'=>'#ffffff'],
 		'bgTextureActive'		=> ['use'=>'jquery_value', 'jquery_value'=>'flat'],// "flat" to disable image
 		'bgImgOpacityActive'	=> ['use'=>false],
 		'borderColorActive'		=> ['name'=>'StateActiveBorderColor', 'value'=>'#ccc'],
 		'fcActive'				=> ['name'=>'StateActiveFontColor', 'value'=>'#000'],
-		'iconColorActive'		=> ['use'=>'jquery_value', 'name'=>'StateActiveIconColor', 'value'=>'#222', 'jquery_value'=>'F00005'],// unique color to better identify on $this->parse_costum
+		'iconColorActive'		=> ['use'=>'jquery_value', 'name'=>'StateActiveIconColor', 'value'=>'\'222222\'', 'jquery_value'=>'F00005'],// unique color to better identify on $this->parse_costum
 		
 		// Highlight
-		'bgColorHighlight'		=> ['name'=>'HighlightBackgroundColor', 'value'=>'#f5f5f5'],
+		'bgColorHighlight'		=> ['name'=>'HighlightBackground', 'value'=>'#f5f5f5'],
 		'bgTextureHighlight'	=> ['use'=>'jquery_value', 'jquery_value'=>'flat'],// "flat" to disable image
 		'bgImgOpacityHighlight'	=> ['use'=>false],
 		'borderColorHighlight'	=> ['name'=>'HighlightBorderColor', 'value'=>'#ccc'],
 		'fcHighlight'			=> ['name'=>'HighlightFontColor', 'value'=>'#000'],
-		'iconColorHighlight'	=> ['use'=>'jquery_value', 'name'=>'HighlightIconColor', 'value'=>'#4b8e0b', 'jquery_value'=>'F00006'],// unique color to better identify on $this->parse_costum
+		'iconColorHighlight'	=> ['use'=>'jquery_value', 'name'=>'HighlightIconColor', 'value'=>'\'4b8e0b\'', 'jquery_value'=>'F00006'],// unique color to better identify on $this->parse_costum
 		
 		// Error
-		'bgColorError'			=> ['name'=>'ErrorBackgroundColor', 'value'=>'#cd0a0a'],
+		'bgColorError'			=> ['name'=>'ErrorBackground', 'value'=>'#cd0a0a'],
 		'bgTextureError'		=> ['use'=>'jquery_value', 'jquery_value'=>'flat'],// "flat" to disable image
 		'bgImgOpacityError'		=> ['use'=>false],
 		'borderColorError'		=> ['name'=>'ErrorBorderColor', 'value'=>'#cd0a0a'],
 		'fcError'				=> ['name'=>'ErrorFontColor', 'value'=>'#cd0a0a'],
-		'iconColorError'		=> ['use'=>'jquery_value', 'name'=>'ErrorIconColor', 'value'=>'#a83300', 'jquery_value'=>'F00007'],// unique color to better identify on $this->parse_costum
+		'iconColorError'		=> ['use'=>'jquery_value', 'name'=>'ErrorIconColor', 'value'=>'\'a83300\'', 'jquery_value'=>'F00007'],// unique color to better identify on $this->parse_costum
 		
 		// Modal Screen for Overlays
-		'bgColorOverlay'		=> ['name'=>'OverlayBackgroundColor', 'value'=>'#333333'],
+		'bgColorOverlay'		=> ['name'=>'OverlayBackground', 'value'=>'#333333'],
 		'bgTextureOverlay'		=> ['use'=>'jquery_value', 'jquery_value'=>'flat'],// "flat" to disable image
 		'bgImgOpacityOverlay'	=> ['use'=>false],
 		'opacityOverlay'		=> ['name'=>'OverlayOpacity', 'value'=>'.5'],
@@ -190,7 +190,7 @@ class jquery_themeroller {
 		// Put here your own preg_replace rules etc...
 		
 		// Change Icon Images
-		$strPattern = '/background-image: url\(\"\/themeroller\/images\/ui-icons_(\w{3,6})_256x240.png\"\);/i';
+		$strPattern = '/background-image: url\(\"\/themeroller\/images\/ui-icons_([\d\w]{3,6})_256x240.png\"\);/i';
 		$strCSS = preg_replace_callback($strPattern, function($match){
 			switch($match[1]){
 				case 'F00001': $less_var = $this->var_prefix.$this->less_vars['iconColorHeader']['name'];		break;
@@ -203,21 +203,21 @@ class jquery_themeroller {
 				case '454545': $less_var = $this->var_prefix.$this->less_vars['iconColorHeader']['name'];		break;
 				default: $less_var = $this->var_prefix.'UnkownImage';
 			}
-			return 'background-image: url("./../@{_path}images/ui-icon_@{'.substr($less_var, 1).'}_256x240.png")';
+			return 'background-image: url("../../../@{_path}images/ui-icons_@{'.substr($less_var, 1).'}_256x240.png")';
 		}, $strCSS);
 		
 		// Fix: Overlay Opacity
-		$strPattern = '/(.ui-widget-overlay {.*opacity: )NaN(;.*filter: Alpha\(Opacity=)@jqueryUIOverlayOpacity(\);.*})/si';
-		$strCSS = preg_replace($strPattern, '$1'.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].'$2percentage('.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].')$3', $strCSS);
+		// $strPattern = '/(.ui-widget-overlay {.*opacity: )NaN(;.*filter: Alpha\(Opacity=)@jqueryUIOverlayOpacity(\);.*})/si';
+		// $strCSS = preg_replace($strPattern, '$1'.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].'$2percentage('.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].')$3', $strCSS);
 		
 	}
 	
 	private function create_theme_file(&$strCSS){
-		file_put_contents($this->file_theme, $strCSS);
+		file_put_contents($this->file_theme, PHP_EOL.$strCSS.PHP_EOL);
 	}
 	
 	private function create_var_file(){
-		$strFileText = '';
+		$strFileText = PHP_EOL.'// jQueryUI Themeroller'.PHP_EOL;
 		foreach($this->less_vars as $var){
 			if(isset($var['use']) && $var['use'] != false || !isset($var['use'])){
 				if(isset($var['name']) && !empty($var['name'])){
@@ -230,7 +230,7 @@ class jquery_themeroller {
 			}
 		}
 		
-		$strFileText .= PHP_EOL."@_path: replace(@eqdkpTemplateImagePath, '(\.\./)|(images/)', '');".PHP_EOL."@import (once, optional, less) './../@{_path}jquery.less';";
+		$strFileText .= PHP_EOL."@_path: replace(@eqdkpTemplateImagePath, '(\.\./)|(images/)', '');".PHP_EOL."@import (once, optional, less) '@{_path}jquery.less';".PHP_EOL;
 		
 		file_put_contents($this->file_variables, $strFileText);
 	}
