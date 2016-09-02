@@ -10,9 +10,9 @@ module.exports = function(grunt) {
 		shell: {
 			themerollerconvert: {
 				command: 'php -f src/less-jquibuilder/perform_themeroller_convert.php',
-				options: { 
-					stdout: true 
-				} 
+				options: {
+					stdout: true
+				}
 			}
 		},
 		concat: {
@@ -45,6 +45,7 @@ module.exports = function(grunt) {
 		cssmin: {
 			options: {
 				sourceMap: false,
+				processImport: false
 			},
 			target: {
 				files: {

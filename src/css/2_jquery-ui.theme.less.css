@@ -1,3 +1,4 @@
+
 /*!
  * jQuery UI CSS Framework 1.12.0
  * http://jqueryui.com
@@ -8,7 +9,7 @@
  *
  * http://api.jqueryui.com/category/theming/
  *
- * To view and modify this theme, visit http://jqueryui.com/themeroller/?dynamicImage=true&dynamicImageHost=&ffDefault=%40jqueryUIFontFamily&fsDefault=%40jqueryUIFontSize&fwDefault=%40jqueryUIFontWeight&cornerRadius=%40jqueryUIBorderRadius&bgColorHeader=%40jqueryUIHeaderBackgroundColor&bgTextureHeader=flat&borderColorHeader=%40jqueryUIHeaderBorderColor&fcHeader=%40jqueryUIHeaderFontColor&iconColorHeader=F00001&bgColorContent=%40jqueryUIContentBackgroundColor&bgTextureContent=flat&borderColorContent=%40jqueryUIContentBorderColor&fcContent=%40jqueryUIContentFontColor&iconColorContent=F00002&bgColorDefault=%40jqueryUIStateDefaultBackgroundColor&bgTextureDefault=flat&borderColorDefault=%40jqueryUIStateDefaultBorderColor&fcDefault=%40jqueryUIStateDefaultFontColor&iconColorDefault=F00003&bgColorHover=%40jqueryUIStateHoverBackgroundColor&bgTextureHover=flat&borderColorHover=%40jqueryUIStateHoverBorderColor&fcHover=%40jqueryUIStateHoverFontColor&iconColorHover=F00004&bgColorActive=%40jqueryUIStateActiveBackgroundColor&bgTextureActive=flat&borderColorActive=%40jqueryUIStateActiveBorderColor&fcActive=%40jqueryUIStateActiveFontColor&iconColorActive=F00005&bgColorHighlight=%40jqueryUIHighlightBackgroundColor&bgTextureHighlight=flat&borderColorHighlight=%40jqueryUIHighlightBorderColor&fcHighlight=%40jqueryUIHighlightFontColor&iconColorHighlight=F00006&bgColorError=%40jqueryUIErrorBackgroundColor&bgTextureError=flat&borderColorError=%40jqueryUIErrorBorderColor&fcError=%40jqueryUIErrorFontColor&iconColorError=F00007&bgColorOverlay=%40jqueryUIOverlayBackgroundColor&bgTextureOverlay=flat&bgImgOpacityOverlay=flat&opacityOverlay=%40jqueryUIOverlayOpacity&bgColorShadow=%40jqueryUIShadowColor&bgTextureShadow=flat&bgImgOpacityShadow=flat&opacityShadow=flat&thicknessShadow=%40jqueryUIShadowThickness&offsetTopShadow=%40jqueryUIShadowTop&offsetLeftShadow=%40jqueryUIShadowLeft&cornerRadiusShadow=flat
+ * To view and modify this theme, visit http://jqueryui.com/themeroller/?dynamicImage=true&dynamicImageHost=&ffDefault=%40jqueryUIFontFamily&fsDefault=%40jqueryUIFontSize&fwDefault=%40jqueryUIFontWeight&cornerRadius=%40jqueryUIBorderRadius&bgColorHeader=%40jqueryUIHeaderBackground&bgTextureHeader=flat&borderColorHeader=%40jqueryUIHeaderBorderColor&fcHeader=%40jqueryUIHeaderFontColor&iconColorHeader=F00001&bgColorContent=%40jqueryUIContentBackground&bgTextureContent=flat&borderColorContent=%40jqueryUIContentBorderColor&fcContent=%40jqueryUIContentFontColor&iconColorContent=F00002&bgColorDefault=%40jqueryUIStateDefaultBackground&bgTextureDefault=flat&borderColorDefault=%40jqueryUIStateDefaultBorderColor&fcDefault=%40jqueryUIStateDefaultFontColor&iconColorDefault=F00003&bgColorHover=%40jqueryUIStateHoverBackground&bgTextureHover=flat&borderColorHover=%40jqueryUIStateHoverBorderColor&fcHover=%40jqueryUIStateHoverFontColor&iconColorHover=F00004&bgColorActive=%40jqueryUIStateActiveBackground&bgTextureActive=flat&borderColorActive=%40jqueryUIStateActiveBorderColor&fcActive=%40jqueryUIStateActiveFontColor&iconColorActive=F00005&bgColorHighlight=%40jqueryUIHighlightBackground&bgTextureHighlight=flat&borderColorHighlight=%40jqueryUIHighlightBorderColor&fcHighlight=%40jqueryUIHighlightFontColor&iconColorHighlight=F00006&bgColorError=%40jqueryUIErrorBackground&bgTextureError=flat&borderColorError=%40jqueryUIErrorBorderColor&fcError=%40jqueryUIErrorFontColor&iconColorError=F00007&bgColorOverlay=%40jqueryUIOverlayBackground&bgTextureOverlay=flat&bgImgOpacityOverlay=flat&opacityOverlay=%40jqueryUIOverlayOpacity&bgColorShadow=%40jqueryUIShadowColor&bgTextureShadow=flat&bgImgOpacityShadow=flat&opacityShadow=flat&thicknessShadow=%40jqueryUIShadowThickness&offsetTopShadow=%40jqueryUIShadowTop&offsetLeftShadow=%40jqueryUIShadowLeft&cornerRadiusShadow=flat
  */
 
 
@@ -33,7 +34,7 @@
 }
 .ui-widget-content {
 	border: 1px solid @jqueryUIContentBorderColor;
-	background: @jqueryUIContentBackgroundColor;
+	background: @jqueryUIContentBackground;
 	color: @jqueryUIContentFontColor;
 }
 .ui-widget-content a {
@@ -41,7 +42,7 @@
 }
 .ui-widget-header {
 	border: 1px solid @jqueryUIHeaderBorderColor;
-	background: @jqueryUIHeaderBackgroundColor;
+	background: @jqueryUIHeaderBackground;
 	color: @jqueryUIHeaderFontColor;
 	font-weight: bold;
 }
@@ -61,7 +62,7 @@ works properly when clicked or hovered */
 html .ui-button.ui-state-disabled:hover,
 html .ui-button.ui-state-disabled:active {
 	border: 1px solid @jqueryUIStateDefaultBorderColor;
-	background: @jqueryUIStateDefaultBackgroundColor;
+	background: @jqueryUIStateDefaultBackground;
 	font-weight: @jqueryUIFontWeight;
 	color: @jqueryUIStateDefaultFontColor;
 }
@@ -84,7 +85,7 @@ a:visited.ui-button,
 .ui-button:hover,
 .ui-button:focus {
 	border: 1px solid @jqueryUIStateHoverBorderColor;
-	background: @jqueryUIStateHoverBackgroundColor;
+	background: @jqueryUIStateHoverBackground;
 	font-weight: @jqueryUIFontWeight;
 	color: @jqueryUIStateHoverFontColor;
 }
@@ -112,7 +113,7 @@ a.ui-button:active,
 .ui-button:active,
 .ui-button.ui-state-active:hover {
 	border: 1px solid @jqueryUIStateActiveBorderColor;
-	background: @jqueryUIStateActiveBackgroundColor;
+	background: @jqueryUIStateActiveBackground;
 	font-weight: @jqueryUIFontWeight;
 	color: @jqueryUIStateActiveFontColor;
 }
@@ -134,12 +135,12 @@ a.ui-button:active,
 .ui-widget-content .ui-state-highlight,
 .ui-widget-header .ui-state-highlight {
 	border: 1px solid @jqueryUIHighlightBorderColor;
-	background: @jqueryUIHighlightBackgroundColor;
+	background: @jqueryUIHighlightBackground;
 	color: @jqueryUIHighlightFontColor;
 }
 .ui-state-checked {
 	border: 1px solid @jqueryUIHighlightBorderColor;
-	background: @jqueryUIHighlightBackgroundColor;
+	background: @jqueryUIHighlightBackground;
 }
 .ui-state-highlight a,
 .ui-widget-content .ui-state-highlight a,
@@ -150,7 +151,7 @@ a.ui-button:active,
 .ui-widget-content .ui-state-error,
 .ui-widget-header .ui-state-error {
 	border: 1px solid @jqueryUIErrorBorderColor;
-	background: @jqueryUIErrorBackgroundColor;
+	background: @jqueryUIErrorBackground;
 	color: @jqueryUIErrorFontColor;
 }
 .ui-state-error a,
@@ -196,32 +197,32 @@ a.ui-button:active,
 }
 .ui-icon,
 .ui-widget-content .ui-icon {
-	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIContentIconColor}_256x240.png")
+	background-image: url("../../../@{_path}images/ui-icons_@{jqueryUIContentIconColor}_256x240.png")
 }
 .ui-widget-header .ui-icon {
-	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIHeaderIconColor}_256x240.png")
+	background-image: url("../../../@{_path}images/ui-icons_@{jqueryUIHeaderIconColor}_256x240.png")
 }
 .ui-button .ui-icon {
-	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIStateDefaultIconColor}_256x240.png")
+	background-image: url("../../../@{_path}images/ui-icons_@{jqueryUIStateDefaultIconColor}_256x240.png")
 }
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon,
 .ui-button:hover .ui-icon,
 .ui-button:focus .ui-icon,
 .ui-state-default .ui-icon {
-	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIStateHoverIconColor}_256x240.png")
+	background-image: url("../../../@{_path}images/ui-icons_@{jqueryUIStateHoverIconColor}_256x240.png")
 }
 .ui-state-active .ui-icon,
 .ui-button:active .ui-icon {
-	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIStateActiveIconColor}_256x240.png")
+	background-image: url("../../../@{_path}images/ui-icons_@{jqueryUIStateActiveIconColor}_256x240.png")
 }
 .ui-state-highlight .ui-icon,
 .ui-button .ui-state-highlight.ui-icon {
-	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIHighlightIconColor}_256x240.png")
+	background-image: url("../../../@{_path}images/ui-icons_@{jqueryUIHighlightIconColor}_256x240.png")
 }
 .ui-state-error .ui-icon,
 .ui-state-error-text .ui-icon {
-	background-image: url("./../@{_path}images/ui-icon_@{jqueryUIErrorIconColor}_256x240.png")
+	background-image: url("../../../@{_path}images/ui-icons_@{jqueryUIErrorIconColor}_256x240.png")
 }
 
 /* positioning */
@@ -434,11 +435,12 @@ a.ui-button:active,
 
 /* Overlays */
 .ui-widget-overlay {
-	background: @jqueryUIOverlayBackgroundColor;
-	opacity: @jqueryUIOverlayOpacity;
-	filter: Alpha(Opacity=percentage(@jqueryUIOverlayOpacity)); /* support: IE8 */
+	background: @jqueryUIOverlayBackground;
+	opacity: NaN;
+	filter: Alpha(Opacity=@jqueryUIOverlayOpacity); /* support: IE8 */
 }
 .ui-widget-shadow {
 	-webkit-box-shadow: @jqueryUIShadowLeft @jqueryUIShadowTop @jqueryUIShadowThickness @jqueryUIShadowColor;
 	box-shadow: @jqueryUIShadowLeft @jqueryUIShadowTop @jqueryUIShadowThickness @jqueryUIShadowColor;
 }
+
