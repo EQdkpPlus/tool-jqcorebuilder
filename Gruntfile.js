@@ -42,6 +42,16 @@ module.exports = function(grunt) {
 				dest: 'dist/core.min.js'
 			}
 		},
+		decomment: {
+			text: {
+				options: {
+				   type: 'text' // use method `decomment.text()`;
+			   },
+				files: {
+					"dist/core2.css": "dist/core.css", // decomment a JavaScript file;
+				}
+			},
+		},
 		cssmin: {
 			options: {
 				sourceMap: false,
@@ -49,7 +59,7 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					'dist/core.min.css': ['dist/core.css']
+					'dist/core.min.css': ['dist/core2.css']
 				}
 			}
 		},
@@ -75,8 +85,9 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-decomment');
 
 	// build all files & copy to eqdkp folder
-	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
+	grunt.registerTask('default', ['concat', 'uglify', 'decomment', 'cssmin', 'copy:dist']);
 	grunt.registerTask('buildUItemplate', ['shell:themerollerconvert']);
 };
