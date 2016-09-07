@@ -13,6 +13,12 @@ module.exports = function(grunt) {
 				options: { 
 					stdout: true 
 				} 
+			},
+			locales: {
+				command: 'php -f src/build_jqcorelocales/downloader.php',
+				options: { 
+					stdout: true 
+				} 
 			}
 		},
 		concat: {
@@ -78,4 +84,5 @@ module.exports = function(grunt) {
 	// build all files & copy to eqdkp folder
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
 	grunt.registerTask('buildUItemplate', ['shell:themerollerconvert']);
+	grunt.registerTask('buildLocales', ['shell:locales']);
 };

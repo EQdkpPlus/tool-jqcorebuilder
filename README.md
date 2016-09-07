@@ -47,7 +47,7 @@ These pugins are not compiled into the core.js, they are moved to single folders
 Plugin name  | plugin | version | URL
 ------------- | ----- | ----- | -------------
 jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
-jquery.fullcalendar | core/calendar | 3.0.0 beta 1 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
+jquery.fullcalendar | core/calendar | 3.0.0 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
 jquery.placepicker | core/calendar | 0.0.3 | [jquery.placepicker](https://github.com/benignware/jquery-placepicker)
 gmaps | core/calendar | 0.4.24 | [gmaps](https://github.com/hpneo/gmaps)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
@@ -114,7 +114,15 @@ To build the query core, [nodeJS](https://nodejs.org) and the javascript task ru
 4. wait and look if there is an error
 5. the generated files are in the dist folder
 
+### Build locale file
+1. open the console / command prompt
+2. Go to the "Sites/tools/tool-jqcorebuilder/"
+3. run the command "grunt buildLocales" on unix and "grunt.cmd buildLocales" on windows
+4. wait and look if there is an error
+5. the generated files are in the locales folder
+
 Authors
 ------------------
  * Wallenium (building tools and maintaining the stuff)
  * Godmod (development)
+ * Asitara (JqueryUI Themereoller Less Extractor) 
