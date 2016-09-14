@@ -30,7 +30,7 @@
 			$(container).ajaxError(function () {
 				$(this).append("<strong>"+l.lang_errorpage+"</strong>")
 			});
-			
+
 			$.ajax({
 				type: "get",
 				url: l.targeturl,
@@ -60,7 +60,7 @@
 						$('<a class="rss_readmore" href="' + c + '">' + l.lang_readmore + '</a><br />').appendTo(container);
 					})
 				}
-				
+
 				function atom(e){
 					$(f).find('entry').each(function (i) {
 						if (i > e - 1) return;
@@ -69,11 +69,11 @@
 						var u = $(this).find('updated').text();
 						if(b != ""){
 							var mymo = moment(new Date(b)).utcOffset(mmocms_user_timezone);
-							b = mymo.format(df);	
-						} elseif (u != ""){
+							b = mymo.format(df);
+						} else if (u != ""){
 							var mymo = moment(new Date(u)).utcOffset(mmocms_user_timezone);
 							b = mymo.format(df);
-						} 
+						}
 						var c = $(this).find('link').attr('href');
 						var d = $(this).find('summary').text();
 						$('<a href="' + c + '">' + a + '</a>').html(a).appendTo(container);
@@ -83,7 +83,7 @@
 						$('<a class="rss_readmore" href="' + c + '">' + l.lang_readmore + '</a><br />').appendTo(container);
 					})
 				}
-				
+
 				if (jQuery('channel', f).length == 1) {
 					return h(g);
 				} else if (jQuery('feed', f).length == 1) {
@@ -91,7 +91,7 @@
 				}
 			}
 			});
-			
+
 		} else {
 			var n = "xml";
 			$.ajax({
@@ -131,14 +131,20 @@
 							$('<a class="rss_readmore" href="' + c + '">' + l.lang_readmore + '</a><br /><br />').appendTo(container);
 						})
 					}
-					
+
 					function atom(e){
 						$(f).find('entry').each(function (i) {
 							if (i > e - 1) return;
 							var a = $(this).find('title').text();
 							var b = $(this).find('published').text();
-							var mymo = moment(new Date(b)).utcOffset(mmocms_user_timezone);
-							b = mymo.format(df);
+							var u = $(this).find('updated').text();
+							if(b != ""){
+								var mymo = moment(new Date(b)).utcOffset(mmocms_user_timezone);
+								b = mymo.format(df);
+							} else if (u != ""){
+								var mymo = moment(new Date(u)).utcOffset(mmocms_user_timezone);
+								b = mymo.format(df);
+							} 
 							var c = $(this).find('link').attr('href');
 							var d = $(this).find('summary').text();
 							$('<a href="' + c + '">' + a + '</a>').html(a).appendTo(container);
@@ -148,7 +154,7 @@
 							$('<a class="rss_readmore" href="' + c + '">' + l.lang_readmore + '</a><br />').appendTo(container);
 						})
 					}
-					
+
 					if (jQuery('channel', f).length == 1) {
 						return h(g);
 					} else if (jQuery('feed', f).length == 1) {
