@@ -25,10 +25,10 @@ Plugin name  | Version | URL
 ------------- | ----- | -------------
 jquery | 3.1.0 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.0 | [jqueryui.com](http://www.jqueryui.com)
-moment.js | 2.14.1 | [momentJS.com](http://momentjs.com)
+moment.js | 2.15.0 | [momentJS.com](http://momentjs.com)
 jquery.form	| 3.51.0 | [jquery.form](http://jquery.malsup.com/form/)
 jquery.collapser | 2.0.1 | [jquery.collapser](https://github.com/EQdkpPlus/jquery.jcollapser)
-jquery.rssreader | 1.0.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
+jquery.rssreader | 1.1.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
 jquery.timepicker | 1.6.3 | [jquery.timepicker](http://trentrichardson.com/examples/timepicker/)
 jquery.multiselect | 1.15 | [jquery.multiselect](https://github.com/ehynds/jquery-ui-multiselect-widget)
 jquery.ui.framedialog | custom | [old homepage](http://plugins.jquery.com/project/jquery-framedialog)
@@ -40,6 +40,7 @@ jquery.raty | 2.7.0 | [jquery.raty](https://github.com/wbotelhos/raty)
 jquery.nestedsortable | 2.0.0 | [original](https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha) [current](https://github.com/ilikenwf/nestedSortable)
 jquery.relativeTime | 1.0.0 | custom
 favico.js | 0.3.10 | [favicon.js](https://github.com/ejci/favico.js)
+jquery.toast | 1.3.1 | [jquery.toast.js](https://github.com/kamranahmedse/jquery-toast-plugin)
 
 ### standalone plugins
 These pugins are not compiled into the core.js, they are moved to single folders and included on the pages using the plugin. If the plugin should be available globally, it must be compiled in the core.
@@ -74,7 +75,7 @@ These plugins are currently used, but will be substituted in a future version of
 
 Plugin name | Version | URL
 ------------- | ----- | -------------
-jquery.notify | 1.5 | [jquery.notify](https://github.com/ehynds/jquery-notify)
+
 
 ### deprecated
 These plugins are deprecated and will be removed in the defined target version
@@ -84,6 +85,7 @@ These plugins are deprecated and will be removed in the defined target version
 jquery.superfish | 1.7.7 | 2.4.0/3.0.0 | [jquery.superfish](http://users.tpg.com.au/j_birch/plugins/superfish/)
 jquery.eqdualheight | unknown | 2.3.0 | [jquery.equalheight](http://www.cssnewbie.com/equalheights-jquery-plugin/)
 jquery.easydropdown | nightly | 2.3.0 | [jquery.easydropdown](https://github.com/patrickkunka/easydropdown)
+jquery.notify | 1.5 | 2.3.0 | [jquery.notify](https://github.com/ehynds/jquery-notify)
 
 jqueryUI themes
 ------------------
