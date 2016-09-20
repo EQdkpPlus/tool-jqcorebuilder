@@ -92,5 +92,5 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
 	grunt.registerTask('buildUItemplate', ['shell:themerollerconvert']);
 	grunt.registerTask('buildLocales', ['shell:locales']);
-	grunt.registerTask('test', ['jshint:beforeconcat'. 'jshint:afterconcat']);
+	grunt.registerTask('test', ['jshint:beforeconcat', 'jshint:afterconcat']);
 };
