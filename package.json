@@ -19,6 +19,9 @@
   "dependencies": {
     "lodash": "^4.3.0"
   },
+  "scripts": {
+    "test": "grunt test"
+  },
   "devDependencies": {
     "grunt": "^1.0.0",
     "grunt-contrib-concat": "^1.0.1",

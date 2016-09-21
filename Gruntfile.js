@@ -10,14 +10,14 @@ module.exports = function(grunt) {
 		shell: {
 			themerollerconvert: {
 				command: 'php -f src/less-jquibuilder/perform_themeroller_convert.php',
-				options: { 
-					stdout: true 
-				} 
+				options: {
+					stdout: true
+				}
 			},
 			locales: {
 				command: 'php -f src/build_jqcorelocales/downloader.php',
-				options: { 
-					stdout: true 
+				options: {
+					stdout: true
 				}
 			}
 		},
@@ -74,7 +74,20 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'src/plugins/superfish/', src: ['superfish.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/superfish/'},
 				]
 			},
-		}
+		},
+    jshint: {
+			options: {
+      	curly: true,
+      	eqeqeq: true,
+      	eqnull: true,
+      	browser: true,
+      	globals: {
+        	jQuery: true
+      	},
+			},
+			beforeconcat: ['src/js/*.js'],
+			afterconcat: ['dist/core.js']
+    }
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
@@ -87,4 +100,5 @@ module.exports = function(grunt) {
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
 	grunt.registerTask('buildUItemplate', ['shell:themerollerconvert']);
 	grunt.registerTask('buildLocales', ['shell:locales']);
+	grunt.registerTask('test', ['concat', 'uglify', 'cssmin']);
 };

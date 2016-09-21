@@ -1,4 +1,4 @@
-tool-jqcorebuilder
+tool-jqcorebuilder  [![Build Status](https://travis-ci.org/EQdkpPlus/tool-jqcorebuilder.svg?branch=master)](https://travis-ci.org/EQdkpPlus/tool-jqcorebuilder)
 ==================
 The single jQuery plugins and the jQuery core and the grunt combination & minification tool for the Eqdkp-Plus jquery core
 
@@ -127,4 +127,4 @@ Authors
 ------------------
  * Wallenium (building tools and maintaining the stuff)
  * Godmod (development)
- * Asitara (JqueryUI Themereoller Less Extractor) 
+ * Asitara (JqueryUI Themereoller Less Extractor)
