@@ -51,8 +51,6 @@ module.exports = function(grunt) {
 		cssmin: {
 			options: {
 				sourceMap: false,
-				processImport: false,
-				keepSpecialComments: 0
 			},
 			target: {
 				files: {
@@ -74,20 +72,7 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'src/plugins/superfish/', src: ['superfish.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/superfish/'},
 				]
 			},
-		},
-    jshint: {
-			options: {
-      	curly: true,
-      	eqeqeq: true,
-      	eqnull: true,
-      	browser: true,
-      	globals: {
-        	jQuery: true
-      	},
-			},
-			beforeconcat: ['src/js/*.js'],
-			afterconcat: ['dist/core.js']
-    }
+		}
 	});
 
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
