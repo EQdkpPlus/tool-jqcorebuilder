@@ -54,7 +54,7 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					'dist/core.min.css': ['dist/core2.css']
+					'dist/core.min.css': ['dist/core.css']
 				}
 			}
 		},
