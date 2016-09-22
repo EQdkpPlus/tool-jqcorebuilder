@@ -51,6 +51,8 @@ module.exports = function(grunt) {
 		cssmin: {
 			options: {
 				sourceMap: false,
+				processImport: false,
+				keepSpecialComments: 0
 			},
 			target: {
 				files: {
