@@ -18,40 +18,45 @@ $singlefiles = array(
 	array('https://raw.githubusercontent.com/arshaw/fullcalendar/master/locale/{!language!}.js', 'lang_fullcalendar'),
 );
 
-
+$arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ),
+);
 
 print 'Starting creation of file<br/>';
 foreach($languages as $mylang){
-	$language_folder	= '../locales/'.$mylang.'/';
+	$language_folder	= './src/locales/'.$mylang.'/';
 	@mkdir($language_folder, 0777, true);
 	$file = fopen($language_folder.'lang_jquery.js','w');
 
-	print '<br/>Language: '.$mylang.'<br/>';
+	print 'Language: '.$mylang.PHP_EOL;
 	foreach($langfiles as $langURL){
 		$langURL	= str_replace('{!language!}', $mylang, $langURL);
-		if($jsfile		= @file_get_contents($langURL)){
+		if($jsfile		= @file_get_contents($langURL, false, stream_context_create($arrContextOptions))){
 			fputs($file,$jsfile);
-			print '<div style="color:green">Adding '.$langURL.' to the language file...</div>';
+			print 'Adding '.$langURL.' to the language file...'.PHP_EOL;
 		}else{
-			print '<div style="color:red">The file '.$langURL.' is not available in this language...</div>';
+			print 'The file '.$langURL.' is not available in this language...'.PHP_EOL;
 		}
 
 	}
 	fclose($file);
-	print '<br/><br/>';
+	print PHP_EOL.PHP_EOL;
 }
 
 foreach($languages as $mylang2){
-	print '<br/>Language: '.$mylang2.'<br/>';
+	print 'Language: '.$mylang2.PHP_EOL;
 	foreach($singlefiles as $slangparams){
-		$file = fopen('../locales/'.$mylang2.'/'.$slangparams[1].'.js','w');
+		$file = fopen('./src/locales/'.$mylang2.'/'.$slangparams[1].'.js','w');
 		$langURL	= str_replace('{!language!}', $mylang2, $slangparams[0]);
-		$jsfile		= file_get_contents($langURL);
+		$jsfile		= file_get_contents($langURL, false, stream_context_create($arrContextOptions));
 		fputs($file,$jsfile);
-		print 'Adding '.$langURL.' file to the language folder...<br/>';
+		print 'Adding '.$langURL.' file to the language folder...'.PHP_EOL;
 		fclose($file);
 	}
-	print '<br/><br/>';
+	print PHP_EOL.PHP_EOL;
 }
 
 print 'DONE!';
