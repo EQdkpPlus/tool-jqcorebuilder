@@ -52,7 +52,8 @@ module.exports = function(grunt) {
 			options: {
 				sourceMap: false,
 				processImport: false,
-				keepSpecialComments: 0
+				keepSpecialComments: 0,
+				advanced: false,
 			},
 			target: {
 				files: {
