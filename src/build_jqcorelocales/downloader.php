@@ -15,7 +15,7 @@ $langfiles	= array(
 
 // files to be copied as single files
 $singlefiles = array(
-	array('https://raw.githubusercontent.com/arshaw/fullcalendar/master/locale/{!language!}.js', 'lang_fullcalendar'),
+	#array('https://raw.githubusercontent.com/arshaw/fullcalendar/master/locale/{!language!}.js', 'lang_fullcalendar'),
 );
 
 $arrContextOptions=array(
@@ -46,18 +46,19 @@ foreach($languages as $mylang){
 	print PHP_EOL.PHP_EOL;
 }
 
-foreach($languages as $mylang2){
-	print 'Language: '.$mylang2.PHP_EOL;
-	foreach($singlefiles as $slangparams){
-		$file = fopen('./src/locales/'.$mylang2.'/'.$slangparams[1].'.js','w');
-		$langURL	= str_replace('{!language!}', $mylang2, $slangparams[0]);
-		$jsfile		= file_get_contents($langURL, false, stream_context_create($arrContextOptions));
-		fputs($file,$jsfile);
-		print 'Adding '.$langURL.' file to the language folder...'.PHP_EOL;
-		fclose($file);
+if(is_array($singlefiles) && count($singlefiles) > 0){
+	foreach($languages as $mylang2){
+		print 'Language: '.$mylang2.PHP_EOL;
+		foreach($singlefiles as $slangparams){
+			$file = fopen('./src/locales/'.$mylang2.'/'.$slangparams[1].'.js','w');
+			$langURL	= str_replace('{!language!}', $mylang2, $slangparams[0]);
+			$jsfile		= file_get_contents($langURL, false, stream_context_create($arrContextOptions));
+			fputs($file,$jsfile);
+			print 'Adding '.$langURL.' file to the language folder...'.PHP_EOL;
+			fclose($file);
+		}
+		print PHP_EOL.PHP_EOL;
 	}
-	print PHP_EOL.PHP_EOL;
 }
-
 print 'DONE!';
 ?>
