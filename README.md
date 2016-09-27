@@ -23,7 +23,7 @@ The following plugins are compiled to the core.js file
 
 Plugin name  | Version | URL
 ------------- | ----- | -------------
-jquery | 3.1.0 | [jquery.com](http://www.jquery.com)
+jquery | 3.1.1 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.1 | [jqueryui.com](http://www.jqueryui.com)
 moment.js | 2.15.1 | [momentJS.com](http://momentjs.com)
 jquery.form	| 3.51.0 | [jquery.form](http://jquery.malsup.com/form/)
