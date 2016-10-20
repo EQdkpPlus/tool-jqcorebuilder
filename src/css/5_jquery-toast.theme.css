@@ -1,0 +1,33 @@
+
+// jQuery Notify (toast-plugin)
+.jq-toast-wrap { width:350px; position:fixed; z-index:9000; pointer-events:none; }
+.jq-toast-wrap.top-left { top:10px; left:10px; }
+.jq-toast-wrap.top-right { top:10px; right:10px; }
+.jq-toast-wrap.bottom-left { bottom:10px; left:10px; }
+.jq-toast-wrap.bottom-right { bottom:10px; right:10px; }
+
+.jq-toast-single { min-height:30px; margin-bottom:10px; padding:10px; position:relative; color:@jqueryNotifyFontColor; background:@jqueryNotifyDefaultBackground; box-shadow:0 0 6px #000, 0 0 50px rgba(0,0,0,.4) inset; border-radius:8px;  pointer-events:all; }
+.jq-toast-single h2 { margin:-5px 0px 5px; padding:0; color:inherit; border:none; }
+.jq-toast-single {
+	a, a:link, a:active, a:visited { color:inherit; }
+	a:hover { color:@jqueryNotifyFontColorHover; }
+}
+
+.close-jq-toast-single { visibility:hidden; float:right; margin:-5px -10px; padding-left:5px; cursor:pointer; }
+.close-jq-toast-single:before { visibility:visible; font-family:'FontAwesome'; content:'\f00d'; color:darken(@jqueryNotifyFontColor, 18.5); }
+.close-jq-toast-single:hover:before { color:@jqueryNotifyFontColorHover; }
+
+.jq-toast-loader { display:block; position:absolute; top:0; height:2px; width:0%; left:5px; background:red; }
+.jq-toast-loaded { width:calc(~'100% - 10px'); }
+
+.jq-icon-info { background-color:@jqueryNotifyInfoBackground; }
+.jq-icon-info:before { content:'\f05a'; font-family:'FontAwesome'; font-size:30px; float:left; padding-right:10px; }
+
+.jq-icon-warning { background-color:@jqueryNotifyWarningBackground; }
+.jq-icon-warning:before { content:'\f071'; font-family: 'FontAwesome'; font-size:30px; float:left; padding-right:10px; }
+
+.jq-icon-error { background-color:@jqueryNotifyErrorBackground; }
+.jq-icon-error:before { content:'\f06a'; font-family:'FontAwesome'; font-size:30px; float:left; padding-right:10px; }
+
+.jq-icon-success { background-color:@jqueryNotifySuccessBackground; }
+.jq-icon-success:before { content:'\f00c'; font-family:'FontAwesome'; font-size:30px; float:left; padding-right:10px; }
