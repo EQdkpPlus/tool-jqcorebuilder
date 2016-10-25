@@ -25,7 +25,7 @@ Plugin name  | Version | URL
 ------------- | ----- | -------------
 jquery | 3.1.1 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.1 | [jqueryui.com](http://www.jqueryui.com)
-moment.js | 2.15.1 | [momentJS.com](http://momentjs.com)
+moment.js | 2.15.2 | [momentJS.com](http://momentjs.com)
 jquery.form	| 3.51.0 | [jquery.form](http://jquery.malsup.com/form/)
 jquery.collapser | 2.0.1 | [jquery.collapser](https://github.com/EQdkpPlus/jquery.jcollapser)
 jquery.rssreader | 1.1.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
@@ -50,7 +50,7 @@ Plugin name  | plugin | version | URL
 ------------- | ----- | ----- | -------------
 jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
 jquery.fullcalendar | core/calendar | 3.0.1 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
-jquery.placepicker | core/calendar | 0.0.3 | [jquery.placepicker](https://github.com/benignware/jquery-placepicker)
+jquery.placepicker | core/calendar | 0.0.4 | [jquery.placepicker](https://github.com/benignware/jquery-placepicker)
 gmaps | core/calendar | 0.4.24 | [gmaps](https://github.com/hpneo/gmaps)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
 jquery.jcrop | plugin/mediacenter | 2.0.4 | [jquery.jcrop](https://github.com/tapmodo/Jcrop)
