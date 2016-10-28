@@ -1,0 +1,5 @@
+
+
+// Import style rules & variables
+@_path: replace(@eqdkpTemplateImagePath, '(\.\./)|(images/)', '');
+@import (once, optional, less) '@{_path}jquery.less';

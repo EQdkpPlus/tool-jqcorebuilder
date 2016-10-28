@@ -20,7 +20,7 @@ class jquery_themeroller {
 	private $jquery_default_vars	= ['dynamicImage'=>'true', 'dynamicImageHost'=>''];
 	
 	private $file_variables			= '../css/0_jquery-ui.lessvariables.css';
-	private $file_theme				= '../css/1_jquery-ui.theme.less.css';
+	private $file_theme				= '../css/21_jquery-ui.theme.less.css';
 	
 	private $var_prefix				= '@jqueryUI';
 	private $merged_vars			= '';
@@ -229,8 +229,6 @@ class jquery_themeroller {
 				}
 			}
 		}
-		
-		$strFileText .= PHP_EOL."@_path: replace(@eqdkpTemplateImagePath, '(\.\./)|(images/)', '');".PHP_EOL."@import (once, optional, less) '@{_path}jquery.less';".PHP_EOL;
 		
 		file_put_contents($this->file_variables, $strFileText);
 	}
