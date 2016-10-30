@@ -6,7 +6,7 @@
 .jq-toast-wrap.bottom-left { bottom:10px; left:10px; }
 .jq-toast-wrap.bottom-right { bottom:10px; right:10px; }
 
-.jq-toast-single { min-height:30px; margin-bottom:10px; padding:10px; position:relative; color:@jqueryNotifyFontColor; background:@jqueryNotifyDefaultBackground; box-shadow:0 0 6px #000, 0 0 50px rgba(0,0,0,.4) inset; border-radius:8px;  pointer-events:all; }
+.jq-toast-single { min-height:30px; margin-bottom:10px; padding:10px; position:relative; color:@jqueryNotifyFontColor; background:@jqueryNotifyDefaultBackground; box-shadow:0 0 6px #000, 0 0 50px rgba(0,0,0,.4) inset; border-radius:@jqueryNotifyBorderRadius;  pointer-events:all; }
 .jq-toast-single h2 { margin:-5px 0px 5px; padding:0; color:inherit; border:none; }
 .jq-toast-single {
 	a, a:link, a:active, a:visited { color:inherit; }
@@ -17,8 +17,8 @@
 .close-jq-toast-single:before { visibility:visible; font-family:'FontAwesome'; content:'\f00d'; color:darken(@jqueryNotifyFontColor, 18.5); }
 .close-jq-toast-single:hover:before { color:@jqueryNotifyFontColorHover; }
 
-.jq-toast-loader { display:block; position:absolute; top:0; height:2px; width:0%; left:5px; background:red; }
-.jq-toast-loaded { width:calc(~'100% - 10px'); }
+.jq-toast-loader { display:block; position:absolute; top:0; height:2px; width:0%; background:red; left:5px; & when(@jqueryNotifyBorderRadius = '0px'),(@jqueryNotifyBorderRadius = 0){ left:0; } }
+.jq-toast-loaded { width:calc(~'100% - 10px'); & when(@jqueryNotifyBorderRadius = '0px'),(@jqueryNotifyBorderRadius = 0){ width: 100%; } }
 
 .jq-icon-info { background-color:@jqueryNotifyInfoBackground; }
 .jq-icon-info:before { content:'\f05a'; font-family:'FontAwesome'; font-size:30px; float:left; padding-right:10px; }

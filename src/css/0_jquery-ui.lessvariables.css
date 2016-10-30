@@ -38,6 +38,3 @@
 @jqueryUIShadowThickness: 8px;
 @jqueryUIShadowTop: -8px;
 @jqueryUIShadowLeft: -8px;
-
-@_path: replace(@eqdkpTemplateImagePath, '(\.\./)|(images/)', '');
-@import (once, optional, less) '@{_path}jquery.less';

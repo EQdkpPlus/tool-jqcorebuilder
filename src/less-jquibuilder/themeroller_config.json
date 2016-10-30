@@ -3,8 +3,8 @@
 	"jquery_parsetheme_url":	"http:\/\/download.jqueryui.com\/themeroller\/parsetheme.css?",
 	"jquery_default_vars":		{"dynamicImage":"true", "dynamicImageHost":""},
 	
-	"file_variables":			"../css/1_jquery-ui.lessvariables.css",
-	"file_theme":				"../css/3_jquery-ui.theme.css",
+	"file_variables":			"../css/0_jquery-ui.lessvariables.css",
+	"file_theme":				"../css/21_jquery-ui.theme.css",
 	
 	"var_prefix":				"@jqueryUI",
 	"less_vars":{
