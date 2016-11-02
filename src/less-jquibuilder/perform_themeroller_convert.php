@@ -207,8 +207,8 @@ class jquery_themeroller {
 		}, $strCSS);
 		
 		// Fix: Overlay Opacity
-		// $strPattern = '/(.ui-widget-overlay {.*opacity: )NaN(;.*filter: Alpha\(Opacity=)@jqueryUIOverlayOpacity(\);.*})/si';
-		// $strCSS = preg_replace($strPattern, '$1'.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].'$2percentage('.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].')$3', $strCSS);
+		$strPattern = '/(.ui-widget-overlay {.*opacity: )NaN(;.*filter: Alpha\(Opacity=)@jqueryUIOverlayOpacity(\);.*})/si';
+		$strCSS = preg_replace($strPattern, '$1'.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].'$2percentage('.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].')$3', $strCSS);
 		
 	}
 	
