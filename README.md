@@ -25,7 +25,7 @@ Plugin name  | Version | URL
 ------------- | ----- | -------------
 jquery | 3.1.1 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.1 | [jqueryui.com](http://www.jqueryui.com)
-moment.js | 2.15.2 | [momentJS.com](http://momentjs.com)
+moment.js | 2.16.0 | [momentJS.com](http://momentjs.com)
 jquery.form	| 3.51.0 | [jquery.form](http://jquery.malsup.com/form/)
 jquery.collapser | 2.0.1 | [jquery.collapser](https://github.com/EQdkpPlus/jquery.jcollapser)
 jquery.rssreader | 1.1.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
@@ -37,7 +37,7 @@ jquery.qtip2 | 3.0.3 | [jquery.qtip2](http://craigsworks.com/projects/qtip2/)
 jquery.colorbox | 1.6.4 | [jquery.colorbox](https://github.com/jackmoore/colorbox)
 jquery.spectrum | 1.8.0  | [jquery.spectrum](https://github.com/bgrins/spectrum)
 jquery.toolbar | 1.1.0 | [jquery.toolbar](https://github.com/paulkinzett/toolbar)
-jquery.raty | 2.7.0 | [jquery.raty](https://github.com/wbotelhos/raty)
+jquery.raty | 2.7.1 | [jquery.raty](https://github.com/wbotelhos/raty)
 jquery.nestedsortable | 2.0.0 | [original](https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha) [current](https://github.com/ilikenwf/nestedSortable)
 jquery.relativeTime | 1.0.0 | custom
 favico.js | 0.3.10 | [favicon.js](https://github.com/ejci/favico.js)
