@@ -71,8 +71,8 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'src/plugins/placepicker/', src: ['jquery.placepicker.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/placepicker/'},
 					{expand: true, cwd: 'src/plugins/circles/', src: ['jquery.circles.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/circles/'},
 					{expand: true, cwd: 'src/plugins/jqplot/', src: ['jjqplot.canvasAxisTickRenderer.min.js','jqplot.canvasTextRenderer.min.js','jqplot.categoryAxisRenderer.min.js','jqplot.dateAxisRenderer.min.js','jqplot.highlighter.min.js','jqplot.mobile.min.js','jqplot.pieRenderer.min.js','jquery.jqplot.min.js','jquery.jqplot.css'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/jqplot/'},
-					{expand: true, cwd: 'src/fullcalendar/', src: ["fullcalendar.print.min.css"], dest: "<%= build.eqdkppath %>/templates/"},
-					{expand: true, cwd: 'src/fullcalendar/', src: ["fullcalendar.css"], dest: "<%= build.eqdkppath %>/templates/base_template/"},
+					{expand: true, cwd: 'src/plugins/fullcalendar/', src: ['fullcalendar.print.min.css'], dest: '<%= build.eqdkppath %>/templates/'},
+					{expand: true, cwd: 'src/plugins/fullcalendar/', src: ['fullcalendar.min.css'], dest: '<%= build.eqdkppath %>/templates/base_template/'},
 					{expand: true, cwd: 'src/plugins/superfish/', src: ['superfish.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/superfish/'},
 				]
 			},
