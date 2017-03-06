@@ -26,12 +26,12 @@ Plugin name  | Version | URL
 jquery | 3.1.1 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.1 | [jqueryui.com](http://www.jqueryui.com)
 moment.js | 2.17.1 | [momentJS.com](http://momentjs.com)
-jquery.form	| 3.51.0 | [jquery.form](http://jquery.malsup.com/form/)
+jquery.form	| 4.0.1 | [jquery.form](https://github.com/jquery-form/form)
 jquery.collapser | 2.0.1 | [jquery.collapser](https://github.com/EQdkpPlus/jquery.jcollapser)
 jquery.rssreader | 1.1.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
 jquery.timepicker | 1.6.3 | [jquery.timepicker](http://trentrichardson.com/examples/timepicker/)
-jquery.multiselect | 1.16 | [jquery.multiselect](https://github.com/ehynds/jquery-ui-multiselect-widget)
-jquery.multiselect.filter | 1.5 | [jquery.multiselect.filter](https://github.com/ehynds/jquery-ui-multiselect-widget)
+jquery.multiselect | 2.0 | [jquery.multiselect](https://github.com/ehynds/jquery-ui-multiselect-widget)
+jquery.multiselect.filter | 2.0 | [jquery.multiselect.filter](https://github.com/ehynds/jquery-ui-multiselect-widget)
 jquery.ui.framedialog | custom | [old homepage](http://plugins.jquery.com/project/jquery-framedialog)
 jquery.qtip2 | 3.0.3 | [jquery.qtip2](http://craigsworks.com/projects/qtip2/)
 jquery.colorbox | 1.6.4 | [jquery.colorbox](https://github.com/jackmoore/colorbox)
@@ -49,9 +49,9 @@ These pugins are not compiled into the core.js, they are moved to single folders
 Plugin name  | plugin | version | URL
 ------------- | ----- | ----- | -------------
 jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
-jquery.fullcalendar | core/calendar | 3.1.0 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
+jquery.fullcalendar | core/calendar | 3.2.0 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
 jquery.placepicker | core/calendar | 0.0.4 | [jquery.placepicker](https://github.com/benignware/jquery-placepicker)
-gmaps | core/calendar | 0.4.24 | [gmaps](https://github.com/hpneo/gmaps)
+gmaps | core/calendar | 0.4.25 | [gmaps](https://github.com/hpneo/gmaps)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
 jquery.jcrop | plugin/mediacenter | 2.0.4 | [jquery.jcrop](https://github.com/tapmodo/Jcrop)
 
