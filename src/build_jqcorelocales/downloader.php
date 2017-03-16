@@ -19,10 +19,10 @@ $singlefiles = array(
 );
 
 $arrContextOptions=array(
-    "ssl"=>array(
-        "verify_peer"=>false,
-        "verify_peer_name"=>false,
-    ),
+	"ssl"=>array(
+		"verify_peer"=>false,
+		"verify_peer_name"=>false,
+	),
 );
 
 print 'Starting creation of file<br/>';

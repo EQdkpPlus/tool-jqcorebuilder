@@ -26,7 +26,7 @@ Plugin name  | Version | URL
 jquery | 3.1.1 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.1 | [jqueryui.com](http://www.jqueryui.com)
 moment.js | 2.17.1 | [momentJS.com](http://momentjs.com)
-jquery.form	| 4.0.1 | [jquery.form](https://github.com/jquery-form/form)
+jquery.form	| 4.1.0 | [jquery.form](https://github.com/jquery-form/form)
 jquery.collapser | 2.0.1 | [jquery.collapser](https://github.com/EQdkpPlus/jquery.jcollapser)
 jquery.rssreader | 1.1.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
 jquery.timepicker | 1.6.3 | [jquery.timepicker](http://trentrichardson.com/examples/timepicker/)
@@ -54,6 +54,7 @@ jquery.placepicker | core/calendar | 0.0.4 | [jquery.placepicker](https://github
 gmaps | core/calendar | 0.4.25 | [gmaps](https://github.com/hpneo/gmaps)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
 jquery.jcrop | plugin/mediacenter | 2.0.4 | [jquery.jcrop](https://github.com/tapmodo/Jcrop)
+jquery.MonthPicker | plugin/monthpicker | 3.0.4 | [jquery.MonthPicker](https://kidsysco.github.io/jquery-ui-month-picker/)
 
 ### modules with dependency to jquery or jqueryUI
 The following independent javascript programmes/modules have dependencies with jQuery or jQueryUI and needs to be tested before upgrading one of these two.

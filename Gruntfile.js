@@ -69,6 +69,7 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'src/plugins/fullcalendar/', src: ['fullcalendar.min.js', 'locale-all.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/'},
 					{expand: true, cwd: 'src/plugins/gmaps/', src: ['gmaps.min.js', 'gmaps.min.js.map'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/gmaps/'},
 					{expand: true, cwd: 'src/plugins/placepicker/', src: ['jquery.placepicker.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/placepicker/'},
+					{expand: true, cwd: 'src/plugins/monthpicker/', src: ['MonthPicker.min.js', 'MonthPicker.min.css'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/monthpicker/'},
 					{expand: true, cwd: 'src/plugins/circles/', src: ['jquery.circles.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/circles/'},
 					{expand: true, cwd: 'src/plugins/jqplot/', src: ['jjqplot.canvasAxisTickRenderer.min.js','jqplot.canvasTextRenderer.min.js','jqplot.categoryAxisRenderer.min.js','jqplot.dateAxisRenderer.min.js','jqplot.highlighter.min.js','jqplot.mobile.min.js','jqplot.pieRenderer.min.js','jquery.jqplot.min.js','jquery.jqplot.css'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/jqplot/'},
 					{expand: true, cwd: 'src/plugins/fullcalendar/', src: ['fullcalendar.print.min.css'], dest: '<%= build.eqdkppath %>/templates/'},
