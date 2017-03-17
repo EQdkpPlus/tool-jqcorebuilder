@@ -40,47 +40,6 @@
 @jqueryUIShadowLeft: -8px;
 
 
-/* jQueryUI Themeroller */
-@jqueryUIFontFamily: Verdana,Arial,sans-serif;
-@jqueryUIFontSize: 1.1em;
-@jqueryUIFontWeight: normal;
-@jqueryUIBorderRadius: 4px;
-@jqueryUIHeaderBackground: #999999;
-@jqueryUIHeaderBorderColor: #ccc;
-@jqueryUIHeaderFontColor: #000;
-@jqueryUIHeaderIconColor: 'ffffff';
-@jqueryUIContentBackground: #fff;
-@jqueryUIContentBorderColor: #ccc;
-@jqueryUIContentFontColor: #000;
-@jqueryUIContentIconColor: 'cccccc';
-@jqueryUIStateDefaultBackground: #e6e6e6;
-@jqueryUIStateDefaultBorderColor: #ccc;
-@jqueryUIStateDefaultFontColor: #000;
-@jqueryUIStateDefaultIconColor: 'ffffff';
-@jqueryUIStateHoverBackground: #cdcdcd;
-@jqueryUIStateHoverBorderColor: #4d4d4d;
-@jqueryUIStateHoverFontColor: #000;
-@jqueryUIStateHoverIconColor: 'ffffff';
-@jqueryUIStateActiveBackground: #ffffff;
-@jqueryUIStateActiveBorderColor: #ccc;
-@jqueryUIStateActiveFontColor: #000;
-@jqueryUIStateActiveIconColor: '222222';
-@jqueryUIHighlightBackground: #f5f5f5;
-@jqueryUIHighlightBorderColor: #ccc;
-@jqueryUIHighlightFontColor: #000;
-@jqueryUIHighlightIconColor: '4b8e0b';
-@jqueryUIErrorBackground: #cd0a0a;
-@jqueryUIErrorBorderColor: #cd0a0a;
-@jqueryUIErrorFontColor: #cd0a0a;
-@jqueryUIErrorIconColor: 'a83300';
-@jqueryUIOverlayBackground: #333333;
-@jqueryUIOverlayOpacity: .5;
-@jqueryUIShadowColor: #ccc;
-@jqueryUIShadowThickness: 8px;
-@jqueryUIShadowTop: -8px;
-@jqueryUIShadowLeft: -8px;
-
-
 // jQuery Notify (toast-plugin)
 @jqueryNotifyFontColor: #d9d9d9;
 @jqueryNotifyFontColorHover: #fff;
@@ -1416,7 +1375,7 @@ a.ui-button:active,
 .ui-widget-overlay {
 	background: @jqueryUIOverlayBackground;
 	opacity: @jqueryUIOverlayOpacity;
-	filter: Alpha(Opacity=percentage(@jqueryUIOverlayOpacity)); /* support: IE8 */
+	filter: ~'Alpha(Opacity='@jqueryUIOverlayOpacity * 100~')'; /* support: IE8 */
 }
 .ui-widget-shadow {
 	-webkit-box-shadow: @jqueryUIShadowLeft @jqueryUIShadowTop @jqueryUIShadowThickness @jqueryUIShadowColor;
@@ -3244,6 +3203,39 @@ See http://bgrins.github.io/spectrum/themes/ for instructions.
 }
 .hidden {
   display: none;
+}
+
+
+// own calender additions for monthpicker & prev,next button near month name
+#calendar .fc-prev-button {
+	margin:0;
+	border-top-right-radius:0;
+	border-bottom-right-radius:0;
+}
+#calendar .fc-next-button {
+	margin:0;
+	border-top-left-radius:0;
+	border-bottom-left-radius:0;
+}
+#calendar #fc-datepicker {
+	margin:0;
+	padding:0;
+}
+#calendar .fc-toolbar .fc-center h2 {
+	margin:0;
+	padding:.3em .5em 0;
+	height:1.4em;
+	font-size:1.5em;
+	box-sizing:border-box;
+	cursor:pointer;
+	background:@jqueryUIStateDefaultBackground;
+	border:1px solid @jqueryUIStateDefaultBorderColor;
+	color:@jqueryUIStateDefaultFontColor;
+}
+#calendar .fc-toolbar .fc-center h2:hover {
+	background: @jqueryUIStateHoverBackground;
+	border:1px solid @jqueryUIStateHoverBorderColor;
+	color:@jqueryUIStateHoverFontColor;
 }
 
 

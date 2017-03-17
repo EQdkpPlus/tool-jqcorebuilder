@@ -436,7 +436,7 @@ a.ui-button:active,
 .ui-widget-overlay {
 	background: @jqueryUIOverlayBackground;
 	opacity: @jqueryUIOverlayOpacity;
-	filter: Alpha(Opacity=percentage(@jqueryUIOverlayOpacity)); /* support: IE8 */
+	filter: ~'Alpha(Opacity='@jqueryUIOverlayOpacity * 100~')'; /* support: IE8 */
 }
 .ui-widget-shadow {
 	-webkit-box-shadow: @jqueryUIShadowLeft @jqueryUIShadowTop @jqueryUIShadowThickness @jqueryUIShadowColor;
