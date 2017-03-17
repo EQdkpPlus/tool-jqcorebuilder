@@ -19,7 +19,7 @@ class jquery_themeroller {
 	private $jquery_parsetheme_url	= 'http://download.jqueryui.com/themeroller/parsetheme.css?';
 	private $jquery_default_vars	= ['dynamicImage'=>'true', 'dynamicImageHost'=>''];
 	
-	private $file_variables			= '../css/0_jquery-ui.lessvariables.css';
+	private $file_variables			= '../css/00_jquery-ui.lessvariables.css';
 	private $file_theme				= '../css/21_jquery-ui.theme.less.css';
 	
 	private $var_prefix				= '@jqueryUI';
@@ -207,8 +207,8 @@ class jquery_themeroller {
 		}, $strCSS);
 		
 		// Fix: Overlay Opacity
-		$strPattern = '/(.ui-widget-overlay {.*opacity: )NaN(;.*filter: Alpha\(Opacity=)@jqueryUIOverlayOpacity(\);.*})/si';
-		$strCSS = preg_replace($strPattern, '$1'.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].'$2percentage('.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].')$3', $strCSS);
+		$strPattern = '/(.ui-widget-overlay {.*opacity: )NaN(;.*filter: )Alpha\(Opacity=@jqueryUIOverlayOpacity\)(;.*})/si';
+		$strCSS = preg_replace($strPattern, '$1'.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].'$2~\'Alpha(Opacity=\''.$this->var_prefix.$this->less_vars['opacityOverlay']['name'].' * 100~\')\'$3', $strCSS);
 		
 	}
 	
