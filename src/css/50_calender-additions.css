@@ -1,0 +1,32 @@
+
+// own calender additions for monthpicker & prev,next button near month name
+#calendar .fc-prev-button {
+	margin:0;
+	border-top-right-radius:0;
+	border-bottom-right-radius:0;
+}
+#calendar .fc-next-button {
+	margin:0;
+	border-top-left-radius:0;
+	border-bottom-left-radius:0;
+}
+#calendar #fc-datepicker {
+	margin:0;
+	padding:0;
+}
+#calendar .fc-toolbar .fc-center h2 {
+	margin:0;
+	padding:.3em .5em 0;
+	height:1.4em;
+	font-size:1.5em;
+	box-sizing:border-box;
+	cursor:pointer;
+	background:@jqueryUIStateDefaultBackground;
+	border:1px solid @jqueryUIStateDefaultBorderColor;
+	color:@jqueryUIStateDefaultFontColor;
+}
+#calendar .fc-toolbar .fc-center h2:hover {
+	background: @jqueryUIStateHoverBackground;
+	border:1px solid @jqueryUIStateHoverBorderColor;
+	color:@jqueryUIStateHoverFontColor;
+}
