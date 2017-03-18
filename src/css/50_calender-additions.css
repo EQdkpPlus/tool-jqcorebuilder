@@ -10,7 +10,8 @@
 	border-top-left-radius:0;
 	border-bottom-left-radius:0;
 }
-#calendar #fc-datepicker {
+#calendar #fc-datepicker,
+#calendar #fc-monthpicker {
 	margin:0;
 	padding:0;
 }
@@ -21,12 +22,12 @@
 	font-size:1.5em;
 	box-sizing:border-box;
 	cursor:pointer;
-	background:@jqueryUIStateDefaultBackground;
-	border:1px solid @jqueryUIStateDefaultBorderColor;
-	color:@jqueryUIStateDefaultFontColor;
+	background:@jqueryCalenderAdditionsBackground;
+	border:1px solid @jqueryCalenderAdditionsBorderColor;
+	color:@jqueryCalenderAdditionsFontColor;
 }
 #calendar .fc-toolbar .fc-center h2:hover {
-	background: @jqueryUIStateHoverBackground;
-	border:1px solid @jqueryUIStateHoverBorderColor;
-	color:@jqueryUIStateHoverFontColor;
+	background: @jqueryCalenderAdditionsBackgroundHover;
+	border:1px solid @jqueryCalenderAdditionsBorderColorHover;
+	color:@jqueryCalenderAdditionsFontColorHover;
 }
