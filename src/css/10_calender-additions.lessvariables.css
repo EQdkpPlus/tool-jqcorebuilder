@@ -1,0 +1,9 @@
+
+// Variables for own Calender Additions (calender-additions.css)
+@jqueryCalenderAdditionsBackground: @jqueryUIStateDefaultBackground;
+@jqueryCalenderAdditionsBorderColor: @jqueryUIStateDefaultBorderColor;
+@jqueryCalenderAdditionsFontColor: @jqueryUIStateDefaultFontColor;
+
+@jqueryCalenderAdditionsBackgroundHover: @jqueryUIStateHoverBackground;
+@jqueryCalenderAdditionsBorderColorHover: @jqueryUIStateHoverBorderColor;
+@jqueryCalenderAdditionsFontColorHover: @jqueryUIStateHoverFontColor;
