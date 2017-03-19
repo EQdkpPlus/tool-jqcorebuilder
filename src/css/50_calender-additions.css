@@ -31,3 +31,29 @@
 	border:1px solid @jqueryCalenderAdditionsBorderColorHover;
 	color:@jqueryCalenderAdditionsFontColorHover;
 }
+
+
+#calendar .fc-prev-button .ui-icon,
+#calendar .fc-next-button .ui-icon,
+#MonthPicker_fc-monthpicker .month-picker-next .ui-icon,
+#MonthPicker_fc-monthpicker .month-picker-previous .ui-icon {
+	line-height: 1.2em;
+	font-family: 'Courier New', Courier, monospace;
+	background: none;
+	text-indent: 0;
+}
+#calendar .fc-prev-button .ui-icon:before,
+#calendar .fc-next-button .ui-icon:before,
+#MonthPicker_fc-monthpicker .month-picker-next .ui-icon:before,
+#MonthPicker_fc-monthpicker .month-picker-previous .ui-icon:before {
+	font-weight: 700;
+	font-size: 210%;
+}
+#calendar .fc-prev-button .ui-icon:before,
+#MonthPicker_fc-monthpicker .month-picker-previous .ui-icon:before {
+	content: '\02039';
+}
+#calendar .fc-next-button .ui-icon:before,
+#MonthPicker_fc-monthpicker .month-picker-next .ui-icon:before {
+	content: '\0203A';
+}
