@@ -22,7 +22,7 @@
 .ui-multiselect-menu .ui-icon:before,
 .ui-spinner .ui-icon:before{
 	text-decoration: inherit;
-	text-indent: 0 !important; 
+	text-indent: 0 !important;
 	speak: none;
 	font-size: 14px;
 }
@@ -48,3 +48,6 @@
 .ui-icon-check:before { content: '\f00c'; }
 .ui-icon-circle-close:before { content: '\f057'; }
 .ui-icon-closethick:before { content: '\f00d'; font-weight: bold; }
+
+.ui-datepicker .ui-icon-circle-triangle-w:before { content:'\f053'; }
+.ui-datepicker .ui-icon-circle-triangle-e:before { content:'\f054'; }
