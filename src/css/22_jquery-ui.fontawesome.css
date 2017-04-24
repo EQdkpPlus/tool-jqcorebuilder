@@ -1,4 +1,4 @@
-.ui-dialog .ui-icon,
+.ui-dialog:not(.elfinder-dialog) .ui-icon,
 .ui-datepicker .ui-icon,
 .ui-multiselect .ui-icon,
 .ui-multiselect-menu .ui-icon,
@@ -16,7 +16,7 @@
 	display: inline !important;
 	font-size: 0;
 }
-.ui-dialog .ui-icon:before,
+.ui-dialog:not(.elfinder-dialog) .ui-icon:before,
 .ui-datepicker .ui-icon:before,
 .ui-multiselect .ui-icon:before,
 .ui-multiselect-menu .ui-icon:before,
