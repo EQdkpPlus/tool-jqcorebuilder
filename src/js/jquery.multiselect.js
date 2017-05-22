@@ -1,13 +1,13 @@
 /* jshint forin:true, noarg:true, noempty:true, eqeqeq:true, boss:true, undef:true, curly:true, browser:true, jquery:true */
 /*
- * jQuery MultiSelect UI Widget 2.0.0
+ * jQuery MultiSelect UI Widget 2.0.1
  * Copyright (c) 2012 Eric Hynds
  *
  * http://www.erichynds.com/jquery/jquery-ui-multiselect-widget/
  *
  * Depends:
  *   - jQuery 1.4.2+
- *   - jQuery UI 1.8 widget factory
+ *   - jQuery UI 1.11 widget factory
  *
  * Optional:
  *   - jQuery UI effects
@@ -19,7 +19,7 @@
  *
  */
 (function($, undefined) {
-
+  // Counter used to prevent collisions
   var multiselectID = 0;
   var $doc = $(document);
 
@@ -77,6 +77,8 @@
       // factory cannot unbind automatically. Use eventNamespace if on
       // jQuery UI 1.9+, and otherwise fallback to a custom string.
       this._namespaceID = this.eventNamespace || ('multiselect' + multiselectID);
+      // bump unique ID after assigning it to the widget instance
+      this.multiselectID = multiselectID++;
 
       var button = (this.button = $('<button type="button"><span class="ui-icon ui-icon-triangle-1-s"></span></button>'))
         .addClass('ui-multiselect ui-widget ui-state-default ui-corner-all')
@@ -133,9 +135,6 @@
         if(!o.multiple) {
           this.menu.addClass('ui-multiselect-single');
         }
-
-        // bump unique ID
-        multiselectID++;
         el.hide();
     },
 
@@ -159,8 +158,8 @@
     _makeOption: function(option) {
       var title = option.title ? option.title : null;
       var value = option.value;
-      var id = this.element.attr('id') || multiselectID; // unique ID for the label & option tags
-      var inputID = 'ui-multiselect-' + multiselectID + '-' + (option.id || id + '-option-' + this.inputIdCounter++);
+      var id = this.element.attr('id') || this.multiselectID; // unique ID for the label & option tags
+      var inputID = 'ui-multiselect-' + this.multiselectID + '-' + (option.id || id + '-option-' + this.inputIdCounter++);
       var isDisabled = option.disabled;
       var isSelected = option.selected;
       var labelClasses = [ 'ui-corner-all' ];
@@ -249,8 +248,7 @@
 
       this._setButtonWidth();
 
-      // remember default value
-      this.button[0].defaultValue = this.update();
+      this.update(true);
 
       // broadcast refresh event; useful for widgets
       if(!init) {
@@ -259,7 +257,7 @@
     },
 
     // updates the button text. call refresh() to rebuild
-    update: function() {
+    update: function(isDefault) {
       var o = this.options;
       var $inputs = this.inputs;
       var $checked = $inputs.filter(':checked');
@@ -279,8 +277,10 @@
       }
 
       this._setButtonValue(value);
+      if(isDefault) {
+        this.button[0].defaultValue = value;
+      }
 
-      return value;
     },
 
     // this exists as a separate method so that the developer
@@ -941,7 +941,7 @@
           break;
         case 'selectedListSeparator':
           this.options[key] = value;
-          this.button[0].defaultValue = this.update();
+          this.update(true);
           break;
       }
 
