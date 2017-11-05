@@ -42,6 +42,7 @@ jquery.nestedsortable | 2.0.0 | [original](https://github.com/mjsarfatti/nestedS
 jquery.relativeTime | 1.0.0 | custom
 favico.js | 0.3.10 | [favicon.js](https://github.com/ejci/favico.js)
 jquery.toast | 1.3.1 | [jquery.toast.js](https://github.com/kamranahmedse/jquery-toast-plugin)
+jquery.touchswipe | 1.6.18 | [jquery.touchswipe](https://github.com/mattbryson/TouchSwipe-Jquery-Plugin)
 
 ### standalone plugins
 These pugins are not compiled into the core.js, they are moved to single folders and included on the pages using the plugin. If the plugin should be available globally, it must be compiled in the core.
