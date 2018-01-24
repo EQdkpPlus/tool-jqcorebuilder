@@ -90,7 +90,7 @@
 		
 	};
 	
-	$.fn.relativeTime = function( options ) {
+	$.fn.relativeTime = function(selector, options ) {
 
 		// Establish our default settings
 		var settings = $.extend({
@@ -98,7 +98,7 @@
 			debug: 0,
 		}, options);
 
-		relativeTime.init(settings, this.selector);
+		relativeTime.init(settings, selector);
 		return this;
 	};
 }(jQuery));
