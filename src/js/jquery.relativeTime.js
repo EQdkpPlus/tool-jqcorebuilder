@@ -1,7 +1,7 @@
 /*!
- * jQuery relativeTime v1.0.0
+ * jQuery relativeTime v1.0.1
  *
- * Copyright 2014 Eqdkp-Plus Dev Team
+ * Copyright 2018 Eqdkp-Plus Dev Team
  */
 (function($) {
 
