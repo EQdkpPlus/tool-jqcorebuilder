@@ -23,25 +23,25 @@ The following plugins are compiled to the core.js file
 
 Plugin name  | Version | URL
 ------------- | ----- | -------------
-jquery | 3.2.1 | [jquery.com](http://www.jquery.com)
+jquery | 3.3.1 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.1 | [jqueryui.com](http://www.jqueryui.com)
-moment.js | 2.19.1 | [momentJS.com](http://momentjs.com)
+moment.js | 2.20.1 | [momentJS.com](http://momentjs.com)
 jquery.form	| 4.2.2 | [jquery.form](https://github.com/jquery-form/form)
 jquery.collapser | 2.0.1 | [jquery.collapser](https://github.com/EQdkpPlus/jquery.jcollapser)
 jquery.rssreader | 1.1.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
 jquery.timepicker | 1.6.3 | [jquery.timepicker](http://trentrichardson.com/examples/timepicker/)
-jquery.multiselect | 2.0.1 | [jquery.multiselect](https://github.com/ehynds/jquery-ui-multiselect-widget)
+jquery.multiselect | latest dev | [jquery.multiselect](https://github.com/ehynds/jquery-ui-multiselect-widget)
 jquery.multiselect.filter | 2.0 | [jquery.multiselect.filter](https://github.com/ehynds/jquery-ui-multiselect-widget)
 jquery.ui.framedialog | custom | [old homepage](http://plugins.jquery.com/project/jquery-framedialog)
 jquery.qtip2 | 3.0.3 | [jquery.qtip2](http://craigsworks.com/projects/qtip2/)
 jquery.colorbox | 1.6.4 | [jquery.colorbox](https://github.com/jackmoore/colorbox)
 jquery.spectrum | 1.8.0  | [jquery.spectrum](https://github.com/bgrins/spectrum)
 jquery.toolbar | 1.1.0 | [jquery.toolbar](https://github.com/paulkinzett/toolbar)
-jquery.raty | 2.7.1 | [jquery.raty](https://github.com/wbotelhos/raty)
+jquery.raty | 2.8.0 | [jquery.raty](https://github.com/wbotelhos/raty)
 jquery.nestedsortable | 2.0.0 | [original](https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha) [current](https://github.com/ilikenwf/nestedSortable)
-jquery.relativeTime | 1.0.0 | custom
+jquery.relativeTime | 1.0.1 | custom
 favico.js | 0.3.10 | [favicon.js](https://github.com/ejci/favico.js)
-jquery.toast | 1.3.1 | [jquery.toast.js](https://github.com/kamranahmedse/jquery-toast-plugin)
+jquery.toast | 1.3.2 | [jquery.toast.js](https://github.com/kamranahmedse/jquery-toast-plugin)
 jquery.touchswipe | 1.6.18 | [jquery.touchswipe](https://github.com/mattbryson/TouchSwipe-Jquery-Plugin)
 
 ### standalone plugins
@@ -50,7 +50,7 @@ These pugins are not compiled into the core.js, they are moved to single folders
 Plugin name  | plugin | version | URL
 ------------- | ----- | ----- | -------------
 jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
-jquery.fullcalendar | core/calendar | 3.6.1 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
+jquery.fullcalendar | core/calendar | 3.8.0 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
 jquery.placepicker | core/calendar | 0.0.4 | [jquery.placepicker](https://github.com/benignware/jquery-placepicker)
 gmaps | core/calendar | 0.4.25 | [gmaps](https://github.com/hpneo/gmaps)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
