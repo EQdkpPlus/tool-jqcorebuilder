@@ -71,7 +71,7 @@ Plugins are loaded in the dev version of eqdkp-pkus only (uncompressed core, deb
 
 Plugin name | Version | URL
 ------------- | ----- | -------------
-jquery.migrate | 3.0.0 | [jquery.migrate](https://github.com/jquery/jquery-migrate)
+jquery.migrate | 3.0.1 | [jquery.migrate](https://github.com/jquery/jquery-migrate)
 
 ### to be replaced
 These plugins are currently used, but will be substituted in a future version of Eqdkp-Plus
