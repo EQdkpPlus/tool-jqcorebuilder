@@ -52,10 +52,10 @@ Plugin name  | plugin | version | URL
 jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
 jquery.fullcalendar | core/calendar | 3.8.0 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
 jquery.placepicker | core/calendar | 0.0.4 | [jquery.placepicker](https://github.com/benignware/jquery-placepicker)
-gmaps | core/calendar | 0.4.25 | [gmaps](https://github.com/hpneo/gmaps)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
 jquery.jcrop | plugin/mediacenter | 2.0.4 | [jquery.jcrop](https://github.com/tapmodo/Jcrop)
 jquery.MonthPicker | core/calendar | 3.0.4 | [jquery.MonthPicker](https://kidsysco.github.io/jquery-ui-month-picker/)
+leaflet | core/calendar | 1.3.1 | [leaflet.js](https://leafletjs.com/)
 
 ### modules with dependency to jquery or jqueryUI
 The following independent javascript programmes/modules have dependencies with jQuery or jQueryUI and needs to be tested before upgrading one of these two.
@@ -89,6 +89,7 @@ jquery.superfish | 1.7.9 | 2.4.0/3.0.0 | [jquery.superfish](http://users.tpg.com
 jquery.eqdualheight | unknown | 2.3.0 | [jquery.equalheight](http://www.cssnewbie.com/equalheights-jquery-plugin/)
 jquery.easydropdown | nightly | 2.3.0 | [jquery.easydropdown](https://github.com/patrickkunka/easydropdown)
 jquery.notify | 1.5 | 2.3.0 | [jquery.notify](https://github.com/ehynds/jquery-notify)
+gmaps | 0.4.25 | 2.3.0 | [gmaps](https://github.com/hpneo/gmaps)
 
 jqueryUI themes
 ------------------
