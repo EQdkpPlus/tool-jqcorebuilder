@@ -75,6 +75,7 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'src/plugins/fullcalendar/', src: ['fullcalendar.print.min.css'], dest: '<%= build.eqdkppath %>/templates/'},
 					{expand: true, cwd: 'src/plugins/fullcalendar/', src: ['fullcalendar.min.css'], dest: '<%= build.eqdkppath %>/templates/base_template/'},
 					{expand: true, cwd: 'src/plugins/superfish/', src: ['superfish.min.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/superfish/'},
+					{expand: true, cwd: 'src/plugins/leaflet/', src: ['leaflet.js', 'leaflet.css', 'images/layers-2x.png', 'images/layers.png', 'images/marker-icon-2x.png', 'images/marker-icon.png', 'images/marker-shadow.png'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/leaflet/'},
 				]
 			},
 		}
