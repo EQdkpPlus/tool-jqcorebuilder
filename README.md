@@ -23,9 +23,9 @@ The following plugins are compiled to the core.js file
 
 Plugin name  | Version | URL
 ------------- | ----- | -------------
-jquery | 3.3.1 | [jquery.com](http://www.jquery.com)
+jquery | 3.4.1 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.1 | [jqueryui.com](http://www.jqueryui.com)
-moment.js | 2.20.1 | [momentJS.com](http://momentjs.com)
+moment.js | 2.24.0 | [momentJS.com](http://momentjs.com)
 jquery.form	| 4.2.2 | [jquery.form](https://github.com/jquery-form/form)
 jquery.collapser | 2.0.1 | [jquery.collapser](https://github.com/EQdkpPlus/jquery.jcollapser)
 jquery.rssreader | 1.1.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
@@ -42,7 +42,7 @@ jquery.nestedsortable | 2.0.0 | [original](https://github.com/mjsarfatti/nestedS
 jquery.relativeTime | 1.0.1 | custom
 favico.js | 0.3.10 | [favicon.js](https://github.com/ejci/favico.js)
 jquery.toast | 1.3.2 | [jquery.toast.js](https://github.com/kamranahmedse/jquery-toast-plugin)
-jquery.touchswipe | 1.6.18 | [jquery.touchswipe](https://github.com/mattbryson/TouchSwipe-Jquery-Plugin)
+jquery.touchswipe | 1.6.19 | [jquery.touchswipe](https://github.com/mattbryson/TouchSwipe-Jquery-Plugin)
 
 ### standalone plugins
 These pugins are not compiled into the core.js, they are moved to single folders and included on the pages using the plugin. If the plugin should be available globally, it must be compiled in the core.
@@ -50,11 +50,11 @@ These pugins are not compiled into the core.js, they are moved to single folders
 Plugin name  | plugin | version | URL
 ------------- | ----- | ----- | -------------
 jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
-jquery.fullcalendar | core/calendar | 3.8.0 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
+jquery.fullcalendar | core/calendar | 3.10.0 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
 jquery.jcrop | plugin/mediacenter | 2.0.4 | [jquery.jcrop](https://github.com/tapmodo/Jcrop)
 jquery.MonthPicker | core/calendar | 3.0.4 | [jquery.MonthPicker](https://kidsysco.github.io/jquery-ui-month-picker/)
-leaflet | core/calendar | 1.3.1 | [leaflet.js](https://leafletjs.com/)
+leaflet | core/calendar | 1.5.1 | [leaflet.js](https://leafletjs.com/)
 
 ### modules with dependency to jquery or jqueryUI
 The following independent javascript programmes/modules have dependencies with jQuery or jQueryUI and needs to be tested before upgrading one of these two.
