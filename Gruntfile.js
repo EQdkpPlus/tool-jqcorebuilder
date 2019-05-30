@@ -1,4 +1,5 @@
 /*global module:false*/
+
 module.exports = function(grunt) {
 
 	// Project configuration.
@@ -84,6 +85,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-shell');
+	grunt.loadNpmTasks('grunt-babel');
 
 	// build all files & copy to eqdkp folder
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
