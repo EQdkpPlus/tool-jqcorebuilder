@@ -23,7 +23,7 @@ The following plugins are compiled to the core.js file
 
 Plugin name  | Version | URL
 ------------- | ----- | -------------
-jquery | 3.4.1 | [jquery.com](http://www.jquery.com)
+jquery | 3.5.0 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.1 | [jqueryui.com](http://www.jqueryui.com)
 moment.js | 2.24.0 | [momentJS.com](http://momentjs.com)
 jquery.form	| 4.2.2 | [jquery.form](https://github.com/jquery-form/form)
@@ -54,7 +54,7 @@ jquery.fullcalendar | core/calendar | 3.10.0 | [fullcalendar.io](http://arshaw.c
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
 jquery.jcrop | plugin/mediacenter | 2.0.4 | [jquery.jcrop](https://github.com/tapmodo/Jcrop)
 jquery.MonthPicker | core/calendar | 3.0.4 | [jquery.MonthPicker](https://kidsysco.github.io/jquery-ui-month-picker/)
-leaflet | core/calendar | 1.5.1 | [leaflet.js](https://leafletjs.com/)
+leaflet | core/calendar | 1.6.0 | [leaflet.js](https://leafletjs.com/)
 
 ### modules with dependency to jquery or jqueryUI
 The following independent javascript programmes/modules have dependencies with jQuery or jQueryUI and needs to be tested before upgrading one of these two.
@@ -70,7 +70,7 @@ Plugins are loaded in the dev version of eqdkp-pkus only (uncompressed core, deb
 
 Plugin name | Version | URL
 ------------- | ----- | -------------
-jquery.migrate | 3.0.1 | [jquery.migrate](https://github.com/jquery/jquery-migrate)
+jquery.migrate | 3.2.0 | [jquery.migrate](https://github.com/jquery/jquery-migrate)
 
 ### to be replaced
 These plugins are currently used, but will be substituted in a future version of Eqdkp-Plus

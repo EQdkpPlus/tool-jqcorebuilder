@@ -27,6 +27,13 @@ module.exports = function(grunt) {
 				sourceMap :false
 			},
 			js: {
+				src: [
+					'src/js/*.js',
+					'!src/js/*test.js'
+				  ],
+				dest: 'temp/core-temp.js'
+			},
+			jsfull: {
 				src: 'src/js/*.js',
 				dest: 'dist/core.js'
 			},
@@ -85,7 +92,6 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-shell');
-	grunt.loadNpmTasks('grunt-babel');
 
 	// build all files & copy to eqdkp folder
 	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
