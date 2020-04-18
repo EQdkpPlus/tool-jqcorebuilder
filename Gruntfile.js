@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		build: {
-			eqdkppath: '/Users/swallmann/Sites/eqdkp'
+			eqdkppath: '/Users/simonwallmann/Sites/eqdkp'
 		},
 		shell: {
 			themerollerconvert: {
