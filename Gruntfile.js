@@ -42,14 +42,9 @@ module.exports = function(grunt) {
 				dest: 'dist/core.css'
 			}
 		},
-		uglify: {
+		terser: {
 			options: {
-				sourceMap : false,
-				banner: '/*! <%= pkg.title || pkg.name %> - v<%= pkg.version %> - ' +
-						'<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-						'<%= pkg.homepage ? "* " + pkg.homepage + "\\n" : "" %>' +
-						'* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' + "\n" +
-						' Licensed <%= pkg.license %> */\n'
+				sourceMap : false
 			},
 			js: {
 				src: ['<%= concat.js.dest %>'],
@@ -90,14 +85,14 @@ module.exports = function(grunt) {
 
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-concat');
-	grunt.loadNpmTasks('grunt-contrib-uglify');
+	grunt.loadNpmTasks('grunt-terser');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-shell');
 
 	// build all files & copy to eqdkp folder
 	//grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
-	grunt.registerTask('default', ['concat', 'uglify', 'copy:dist']);
+	grunt.registerTask('default', ['concat', 'terser', 'copy:dist']);
 	grunt.registerTask('buildUItemplate', ['shell:themerollerconvert']);
 	grunt.registerTask('buildLocales', ['shell:locales']);
-	grunt.registerTask('test', ['concat', 'uglify', 'cssmin']);
+	grunt.registerTask('test', ['concat', 'terser', 'cssmin']);
 };

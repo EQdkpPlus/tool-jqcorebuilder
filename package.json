@@ -33,6 +33,7 @@
     "grunt-curl": "^2.5.1",
     "grunt-decomment": "^0.2.4",
     "grunt-shell": "^3.0.1",
+    "grunt-terser": "^1.0.0",
     "load-grunt-tasks": "^5.1.0"
   },
   "keywords": []
