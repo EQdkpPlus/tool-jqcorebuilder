@@ -73,6 +73,7 @@ module.exports = function(grunt) {
 			dist: {
 				files: [
 					{expand: true, cwd: 'dist/', src: ["core.js", "core.min.js", "core.css", "core.min.css"], dest: "<%= build.eqdkppath %>/libraries/jquery/core/"},
+					{expand: true, cwd: 'src/plugins/migrate/', src: 'jquery-migrate.js', dest: "<%= build.eqdkppath %>/libraries/jquery/core/"},
 					{expand: true, cwd: 'src/locales/de', src: ["lang_jquery.js"], dest: "<%= build.eqdkppath %>/language/german/"},
 					{expand: true, cwd: 'src/plugins/fullcalendar/', src: ['fullcalendar.min.js', 'locale-all.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/'},
 					{expand: true, cwd: 'src/plugins/monthpicker/', src: ['MonthPicker.min.js', 'MonthPicker.min.css'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/monthpicker/'},
@@ -94,7 +95,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-shell');
 
 	// build all files & copy to eqdkp folder
-	grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
+	//grunt.registerTask('default', ['concat', 'uglify', 'cssmin', 'copy:dist']);
+	grunt.registerTask('default', ['concat', 'uglify', 'copy:dist']);
 	grunt.registerTask('buildUItemplate', ['shell:themerollerconvert']);
 	grunt.registerTask('buildLocales', ['shell:locales']);
 	grunt.registerTask('test', ['concat', 'uglify', 'cssmin']);
