@@ -25,7 +25,7 @@ Plugin name  | Version | URL
 ------------- | ----- | -------------
 jquery | 3.5.0 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.1 | [jqueryui.com](http://www.jqueryui.com)
-moment.js | 2.24.0 | [momentJS.com](http://momentjs.com)
+moment.js | 2.25.2 | [momentJS.com](http://momentjs.com)
 jquery.form	| 4.2.2 | [jquery.form](https://github.com/jquery-form/form)
 jquery.collapser | 2.0.1 | [jquery.collapser](https://github.com/EQdkpPlus/jquery.jcollapser)
 jquery.rssreader | 1.1.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
