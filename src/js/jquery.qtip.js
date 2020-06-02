@@ -1010,6 +1010,9 @@ PROTOTYPE.toggle = function(state, event) {
 
 		// Cache event
 		cache.event = $.event.fix(event);
+	} else {
+		// Clear cache when there's no original event
+		cache.event = NULL;
 	}
 
 	// If we're currently waiting and we've just hidden... stop it
@@ -1061,7 +1064,7 @@ PROTOTYPE.toggle = function(state, event) {
 
 		// Cache mousemove events for positioning purposes (if not already tracking)
 		if(!trackingBound && posOptions.target === 'mouse' && posOptions.adjust.mouse) {
-			$(document).bind('mousemove.'+NAMESPACE, this._storeMouse);
+			$(document).on('mousemove.'+NAMESPACE, this._storeMouse);
 			trackingBound = TRUE;
 		}
 
@@ -1308,6 +1311,7 @@ PROTOTYPE._setWidget = function()
 
 function showMethod(event) {
 	if(this.tooltip.hasClass(CLASS_DISABLED)) { return; }
+	if(!this.timers) { return; }
 
 	// Clear hide timers
 	clearTimeout(this.timers.show);
@@ -1384,7 +1388,7 @@ PROTOTYPE._storeMouse = function(event) {
 PROTOTYPE._bind = function(targets, events, method, suffix, context) {
 	if(!targets || !method || !events.length) { return; }
 	var ns = '.' + this._id + (suffix ? '-'+suffix : '');
-	$(targets).bind(
+	$(targets).on(
 		(events.split ? events : events.join(ns + ' ')) + ns,
 		$.proxy(method, context || this)
 	);
@@ -1775,7 +1779,7 @@ function init(elem, id, opts) {
 
 	// Remove title attribute and store it if present
 	if(config.suppress && (title = elem.attr('title'))) {
-		// Final attr call fixes event delegatiom and IE default tooltip showing problem
+		// Final attr call fixes event delegation and IE default tooltip showing problem
 		elem.removeAttr('title').attr(oldtitle, title).attr('title', '');
 	}
 
@@ -2669,7 +2673,7 @@ $.extend(TRUE, QTIP.defaults, {
 		return adjusted;
 	}
 
-	// Cach container details
+	// Cache container details
 	containerOffset = container.offset() || adjusted;
 	containerStatic = container.css('position') === 'static';
 
@@ -2678,7 +2682,7 @@ $.extend(TRUE, QTIP.defaults, {
 	viewportWidth = viewport[0] === window ? viewport.width() : viewport.outerWidth(FALSE);
 	viewportHeight = viewport[0] === window ? viewport.height() : viewport.outerHeight(FALSE);
 	viewportScroll = { left: fixed ? 0 : viewport.scrollLeft(), top: fixed ? 0 : viewport.scrollTop() };
-	viewportOffset = viewport.offset() || adjusted;
+	viewportOffset = viewport[0] !== window && viewport.offset() || adjusted;
 
 	// Generic calculation method
 	function calculate(side, otherSide, type, adjustment, side1, side2, lengthName, targetLength, elemLength) {
@@ -3043,17 +3047,17 @@ OVERLAY = function()
 			.hide();
 
 			// Make sure we can't focus anything outside the tooltip
-			$(document.body).bind('focusin'+MODALSELECTOR, stealFocus);
+			$(document.body).on('focusin'+MODALSELECTOR, stealFocus);
 
 			// Apply keyboard "Escape key" close handler
-			$(document).bind('keydown'+MODALSELECTOR, function(event) {
+			$(document).on('keydown'+MODALSELECTOR, function(event) {
 				if(current && current.options.show.modal.escape && event.keyCode === 27) {
 					current.hide(event);
 				}
 			});
 
 			// Apply click handler for blur option
-			elem.bind('click'+MODALSELECTOR, function(event) {
+			elem.on('click'+MODALSELECTOR, function(event) {
 				if(current && current.options.show.modal.blur) {
 					current.hide(event);
 				}
