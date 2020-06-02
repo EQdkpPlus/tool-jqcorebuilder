@@ -50,7 +50,7 @@ These pugins are not compiled into the core.js, they are moved to single folders
 Plugin name  | plugin | version | URL
 ------------- | ----- | ----- | -------------
 jquery.jqplot | core | 1.0.8 | [jquery.JQplot](http://www.jqplot.com)
-jquery.fullcalendar | core/calendar | 3.10.0 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
+jquery.fullcalendar | core/calendar | 3.10.2 | [fullcalendar.io](http://arshaw.com/fullcalendar/)
 jquery.circles | core/admin | 0.0.6 | [jquery.circles](https://github.com/lugolabs/circles)
 jquery.jcrop | plugin/mediacenter | 2.0.4 | [jquery.jcrop](https://github.com/tapmodo/Jcrop)
 jquery.MonthPicker | core/calendar | 3.0.4 | [jquery.MonthPicker](https://kidsysco.github.io/jquery-ui-month-picker/)
