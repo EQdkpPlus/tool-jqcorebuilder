@@ -34,7 +34,7 @@
 *                       title: 'test title',
 *                       ... Other jQueryUI Dialog Options ...
 *                   })
-*                   .bind('dialogclose', function(event, ui) {
+*                   .on('dialogclose', function(event, ui) {
 *                       alert("result: " + event.result);
 *                   });
 *
@@ -168,14 +168,14 @@
                 // TDR:
                 //  - on dialog open, set the height of the loading pane to that of the dialog's content container
                 //  - set the iframe src property here - this avoids the iframe's multiple-request issue
-                .bind('dialogopen', function(event, ui){
+                .on('dialogopen', function(event, ui){
                     $loadingPane.height($loadingPane.closest('.ui-dialog-content').height());
                     iframe.attr('src', url).on("load", function(e){
                         $(this).css('visibility', 'visible');
                         $loadingPane.hide();
                     });
                 })
-                .bind("dialogbeforeclose", function(event, ui) {
+                .on("dialogbeforeclose", function(event, ui) {
                     var frame = $(this);
                     var uid = frame.attr("id");
 
@@ -192,7 +192,7 @@
 
                     return result;
                 })
-                .bind('dialogclose', function(event, ui) {
+                .on('dialogclose', function(event, ui) {
                     var frame = $(this);
                     var uid = frame.attr("id");
                     var result = $.FrameDialog._results[uid] || null; //result or an explicit null
@@ -238,21 +238,21 @@
             wrap
                 .css('width', (opts.minWidth || opts.width || 200) + 'px')
                 .css('height', (opts.minHeight || opts.height || 120) + 'px')
-                .bind('dragstart', function() {
+                .on('dragstart', function() {
                     overlay.show();
                 })
-                .bind('dragstop', function() {
+                .on('dragstop', function() {
                     overlay.hide();
                 })
-                .bind('resizestart', function() {
+                .on('resizestart', function() {
                     overlay.show();
                 })
-                .bind('resize', function() {
+                .on('resize', function() {
                     iframe
                         .css('height', ret.height() + 'px')
                         .css('width', ret.width() + 'px');
                 })
-                .bind('resizestop', function() {
+                .on('resizestop', function() {
                     overlay.hide();
                     iframe
                         .css('height', ret.height() + 'px')
