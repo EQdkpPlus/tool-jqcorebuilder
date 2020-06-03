@@ -35,7 +35,7 @@ jquery.multiselect.filter | 2.0 | [jquery.multiselect.filter](https://github.com
 jquery.ui.framedialog | custom | [old homepage](http://plugins.jquery.com/project/jquery-framedialog)
 jquery.qtip2 | 3.0.3 | [jquery.qtip2](http://craigsworks.com/projects/qtip2/)
 jquery.colorbox | 1.6.4 | [jquery.colorbox](https://github.com/jackmoore/colorbox)
-jquery.spectrum | 1.8.0  | [jquery.spectrum](https://github.com/bgrins/spectrum)
+jquery.spectrum | 1.8.1 | [jquery.spectrum](https://github.com/bgrins/spectrum)
 jquery.toolbar | 1.1.0 | [jquery.toolbar](https://github.com/paulkinzett/toolbar)
 jquery.raty | 2.8.0 | [jquery.raty](https://github.com/wbotelhos/raty)
 jquery.nestedsortable | 2.0.0 | [original](https://github.com/mjsarfatti/nestedSortable/tree/2.0alpha) [current](https://github.com/ilikenwf/nestedSortable)
@@ -78,6 +78,7 @@ These plugins are currently used, but will be substituted in a future version of
 Plugin name | Version | URL | Sustitute Product | Reason
 ------------- | ----- | ------------- | ------------- | -------------
 jquery.timepicker | 1.6.3 | [jquery.timepicker](http://trentrichardson.com/examples/timepicker/) | [js flatpicker](https://flatpickr.js.org/examples/) | Not longer actively developed
+jquery.ui.framedialog | custom | [old homepage](http://plugins.jquery.com/project/jquery-framedialog)| tbs | really old code, throwing errors
 
 ### deprecated
 These plugins are deprecated and will be removed in the defined target version
