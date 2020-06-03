@@ -160,6 +160,7 @@
 		*/
 		setDefaults: function (settings) {
 			extendRemove(this._defaults, settings || {});
+			this._defaults.timeFormat = 'HH:mm:ss';
 			return this;
 		},
 
@@ -177,7 +178,7 @@
 					var attrValue = $input.attr('time:' + attrName);
 					if (attrValue) {
 						try {
-							inlineSettings[attrName] = eval(attrValue);
+							inlineSettings[attrName] = (new Function('return ('+attrValue+')'))();
 						} catch (err) {
 							inlineSettings[attrName] = attrValue;
 						}

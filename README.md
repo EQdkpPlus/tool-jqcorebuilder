@@ -23,9 +23,9 @@ The following plugins are compiled to the core.js file
 
 Plugin name  | Version | URL
 ------------- | ----- | -------------
-jquery | 3.5.0 | [jquery.com](http://www.jquery.com)
+jquery | 3.5.1 | [jquery.com](http://www.jquery.com)
 jquery.ui | 1.12.1 | [jqueryui.com](http://www.jqueryui.com)
-moment.js | 2.25.2 | [momentJS.com](http://momentjs.com)
+moment.js | 2.26.0 | [momentJS.com](http://momentjs.com)
 jquery.form	| 4.2.2 | [jquery.form](https://github.com/jquery-form/form)
 jquery.collapser | 2.0.1 | [jquery.collapser](https://github.com/EQdkpPlus/jquery.jcollapser)
 jquery.rssreader | 1.1.0 | [jquery.RSSreader](https://github.com/EQdkpPlus/jquery.rssreader)
@@ -75,9 +75,9 @@ jquery.migrate | 3.2.0 | [jquery.migrate](https://github.com/jquery/jquery-migra
 ### to be replaced
 These plugins are currently used, but will be substituted in a future version of Eqdkp-Plus
 
-Plugin name | Version | URL
-------------- | ----- | -------------
-
+Plugin name | Version | URL | Sustitute Product | Reason
+------------- | ----- | ------------- | ------------- | -------------
+jquery.timepicker | 1.6.3 | [jquery.timepicker](http://trentrichardson.com/examples/timepicker/) | [js flatpicker](https://flatpickr.js.org/examples/) | Not longer actively developed
 
 ### deprecated
 These plugins are deprecated and will be removed in the defined target version
