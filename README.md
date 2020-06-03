@@ -85,6 +85,7 @@ These plugins are deprecated and will be removed in the defined target version
 
  Plugin name | Version | Removed in | URL
 ------------- | ----- | ----- | -------------
+jquery.superfish | 1.7.9 | 2.3.31 | [jquery.superfish](https://superfish.joelbirch.design/)
 jquery.eqdualheight | unknown | 2.3.0 | [jquery.equalheight](http://www.cssnewbie.com/equalheights-jquery-plugin/)
 jquery.easydropdown | nightly | 2.3.0 | [jquery.easydropdown](https://github.com/patrickkunka/easydropdown)
 jquery.notify | 1.5 | 2.3.0 | [jquery.notify](https://github.com/ehynds/jquery-notify)
