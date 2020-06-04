@@ -52,7 +52,7 @@
 			}
 
 			//Slide up and down on click
-			$('.toggle_button', this).click(function(){
+			$('.toggle_button', this).on('click', function (){
 				$('.toggle_container', container).slideToggle("slow", function() {
 				if(options.persistence){
 					if($('.toggle_container', container).is(":visible")){

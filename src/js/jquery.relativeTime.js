@@ -30,7 +30,7 @@
 			this._elements = $(selector);
 			this._refresh();
 			
-			$("html").bind("DOMNodeInserted", function( e ) {
+			$("html").on("DOMNodeInserted", function( e ) {
 				if (e.target.className != "user_time") {
 					$.proxy(relativeTime, "_domNodeInserted")();
 				}
