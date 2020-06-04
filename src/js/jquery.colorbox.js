@@ -228,7 +228,7 @@
 
 		this.get = function(key) {
 			var value = this.value(key);
-			return $.isFunction(value) ? value.call(this.el, this) : value;
+			return (typeof value === "function") ? value.call(this.el, this) : value;
 		};
 	}
 
@@ -565,16 +565,7 @@
 						}
 					}
 				});
-
-				if ($.isFunction($.fn.on)) {
-					// For jQuery 1.7+
-					$(document).on('click.'+prefix, '.'+boxElement, clickHandler);
-				} else {
-					// For jQuery 1.3.x -> 1.6.x
-					// This code is never reached in jQuery 1.9, so do not contact me about 'live' being removed.
-					// This is not here for jQuery 1.9, it's here for legacy users.
-					$('.'+boxElement).live('click.'+prefix, clickHandler);
-				}
+				$(document).on('click.'+prefix, '.'+boxElement, clickHandler);
 			}
 			return true;
 		}
@@ -601,8 +592,7 @@
 		var $obj = this;
 
 		options = options || {};
-
-		if ($.isFunction($obj)) { // assume a call to $.colorbox
+		if (typeof $obj === "function") { // assume a call to $.colorbox
 			$obj = $('<a/>');
 			options.open = true;
 		}
@@ -727,7 +717,7 @@
 					}, 1);
 				}
 
-				if ($.isFunction(loadedCallback)) {
+				if (typeof loadedCallback === "function") {
 					loadedCallback();
 				}
 			},
