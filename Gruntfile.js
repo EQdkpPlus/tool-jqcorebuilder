@@ -51,23 +51,10 @@ module.exports = function(grunt) {
 				dest: 'dist/core.min.js'
 			}
 		},
-		cssmin: {
-			options: {
-				processImport: false,
-				restructuring: false,
-				advanced: false,
-				keepSpecialComments: 0
-			},
-			target: {
-				files: {
-					'dist/core.min.css': ['dist/core.css']
-				}
-			}
-		},
 		copy: {
 			dist: {
 				files: [
-					{expand: true, cwd: 'dist/', src: ["core.js", "core.min.js", "core.css", "core.min.css"], dest: "<%= build.eqdkppath %>/libraries/jquery/core/"},
+					{expand: true, cwd: 'dist/', src: ["core.js", "core.min.js", "core.css"], dest: "<%= build.eqdkppath %>/libraries/jquery/core/"},
 					{expand: true, cwd: 'src/plugins/migrate/', src: 'jquery-migrate.js', dest: "<%= build.eqdkppath %>/libraries/jquery/core/"},
 					{expand: true, cwd: 'src/locales/de', src: ["lang_jquery.js"], dest: "<%= build.eqdkppath %>/language/german/"},
 					{expand: true, cwd: 'src/plugins/fullcalendar/', src: ['fullcalendar.min.js', 'locale-all.js'], dest: '<%= build.eqdkppath %>/libraries/jquery/js/fullcalendar/'},
@@ -82,8 +69,7 @@ module.exports = function(grunt) {
 		}
 	});
 
-	grunt.loadNpmTasks('grunt-contrib-cssmin');
-	grunt.loadNpmTasks('grunt-contrib-concat');
+	grunt.loadNpmTasks('grunt-contrib-concat');;
 	grunt.loadNpmTasks('grunt-terser');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-shell');
